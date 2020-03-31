@@ -14,8 +14,7 @@ import conexion.Conexion;
 public class FrmMenu extends javax.swing.JFrame {
     private FrmConfiguracion frmconfig;
     private AgregarUsuarios agregarUsuarios;
-
-    private static Conexion conexion = new Conexion();
+    private Conexion conexion = new Conexion();
     /**
      * Creates new form FrmMenu
      */

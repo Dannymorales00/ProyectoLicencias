@@ -15,7 +15,7 @@ import java.sql.Time;
 public class Prueba {
     private Date fecha;
     private Time hora;
-    //private Oficial oficial;// oficial que va realizar la Prueba enviamos la cedula a db para relacionar el oficial
+    private Oficial oficial;// oficial que va realizar la Prueba enviamos la cedula a db para relacionar el oficial
     private String observaciones;
     private int nota;
     private String estado;//aprobado-reprobado
@@ -37,13 +37,13 @@ public class Prueba {
         this.hora = hora;
     }
 
-//    public Oficial getOficial() {
-//        return oficial;
-//    }
-//
-//    public void setOficial(Oficial oficial) {
-//        this.oficial = oficial;
-//    }
+    public Oficial getOficial() {
+        return oficial;
+    }
+
+    public void setOficial(Oficial oficial) {
+        this.oficial = oficial;
+    }
 
     public String getObservaciones() {
         return observaciones;
