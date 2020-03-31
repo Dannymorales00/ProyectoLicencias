@@ -19,10 +19,10 @@ public class Usuario {
     private int telefono;
     private String correo;
     private String sobrenombre;
-    private Password contraseña;
+    private String contraseña;
     private String tipo;//oficial/secretario
 
-    public Usuario(int cedula, String nombre, Date fechanacimiento, int telefono, String correo, String sobrenombre, Password contraseña, String tipo) {
+    public Usuario(int cedula, String nombre, Date fechanacimiento, int telefono, String correo, String sobrenombre, String contraseña, String tipo) {
         this.cedula = cedula;
         this.nombre = nombre;
         this.fechanacimiento = fechanacimiento;
@@ -93,11 +93,11 @@ public class Usuario {
         this.sobrenombre = sobrenombre;
     }
 
-    public Password getContraseña() {
+    public String getContraseña() {
         return contraseña;
     }
 
-    public void setContraseña(Password contraseña) {
+    public void setContraseña(String contraseña) {
         this.contraseña = contraseña;
     }
 
