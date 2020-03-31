@@ -66,7 +66,7 @@ public class Conexion {
         
             try {
                 
-                System.out.println("datos necesarios: "+url+"..."+user+"..."+password);
+              
                 conn = DriverManager.getConnection(url, user, password);
                 this.sentencias=this.conn.createStatement();
                 if(conn!=null)
