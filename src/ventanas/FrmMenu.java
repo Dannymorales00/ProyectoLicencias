@@ -13,6 +13,7 @@ import conexion.Conexion;
  */
 public class FrmMenu extends javax.swing.JFrame {
     private FrmConfiguracion frmconfig;
+    private AgregarUsuarios agregarUsuarios;
 
     private static Conexion conexion = new Conexion();
     /**
@@ -161,7 +162,10 @@ public class FrmMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemConfigActionPerformed
 
     private void jMenuItemVehiculosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemVehiculosActionPerformed
-
+        this.agregarUsuarios = new AgregarUsuarios();
+        this.jDesktopPane1.add(this.agregarUsuarios);
+        this.agregarUsuarios.setVisible(true);
+            
     }//GEN-LAST:event_jMenuItemVehiculosActionPerformed
 
     private void jMenuItemEntradaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemEntradaActionPerformed
