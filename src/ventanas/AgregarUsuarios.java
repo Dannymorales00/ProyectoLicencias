@@ -45,6 +45,7 @@ public class AgregarUsuarios extends javax.swing.JInternalFrame {
         jComboBox1 = new javax.swing.JComboBox<>();
         jFormattedTextField1 = new javax.swing.JFormattedTextField();
 
+        setClosable(true);
         setTitle("Agregar Usuarios");
 
         jLabel1.setText("Nombre");
@@ -65,8 +66,6 @@ public class AgregarUsuarios extends javax.swing.JInternalFrame {
         jLabel8.setText("Cedula");
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione un Tipo...", "oficial", "secretaria" }));
-
-        jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
