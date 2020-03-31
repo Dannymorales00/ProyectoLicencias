@@ -16,7 +16,7 @@ public class Cita {
     private int id;
     private Date fecha;
     private Time hora;
-    private Cliente cliente;
+    private Cliente cliente; 
 
     public Cita(int id, Date fecha, Time hora, Cliente cliente) {
         this.id = id;
@@ -68,6 +68,7 @@ public class Cita {
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
+    
     
     
     
