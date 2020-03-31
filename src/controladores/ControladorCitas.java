@@ -21,6 +21,7 @@ public class ControladorCitas {
     private Statement sentencias;
     private ResultSet datos;
     
+    
     public ControladorCitas() {
        
        //conn = FrmMenu.getConexion();
