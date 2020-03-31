@@ -34,7 +34,7 @@ public class ControladorOficiales {
         this.datos=conn.getDatos();
     }
     
-        public boolean añadir(Oficial oficial){
+    public boolean añadir(Oficial oficial){
         try {
            return sentencias.execute("insert into oficiales values(null,'"+oficial.getCedula()+"','"+oficial.getNombre()+"','"+oficial.getFechanacimiento()+"','"+oficial.getTelefono()+"','"+oficial.getCorreo()+"','"+oficial.getSalario()+"')",sentencias.RETURN_GENERATED_KEYS);
              
@@ -44,7 +44,7 @@ public class ControladorOficiales {
         return false;
     }
         
-        public Oficial buscar(String cedula){
+    public Oficial buscar(String cedula){
         try {
             
             this.datos = this.sentencias.executeQuery("select * from oficiales where cedula="+cedula);
@@ -96,8 +96,8 @@ public class ControladorOficiales {
         return false;
     }    
         
-            public ArrayList<Oficial> listar(String cedula){
-            ArrayList<Oficial> oficiales = new ArrayList();
+    public ArrayList<Oficial> listar(String cedula){
+        ArrayList<Oficial> oficiales = new ArrayList();
             try {
                 this.datos = this.sentencias.executeQuery("select * from oficiales where cedula='"+cedula+"'");
                 
@@ -110,6 +110,6 @@ public class ControladorOficiales {
             } catch (SQLException ex) {
                 System.out.println("Error al listar");
             }
-            return null; 
+        return null; 
     }
 }

@@ -37,8 +37,7 @@ public class Cliente {
         this.telefono = 0;
         this.correo = null;
         this.edad= 0;
-        
-        
+
     }
 
     
