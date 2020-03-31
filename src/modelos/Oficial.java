@@ -18,12 +18,25 @@ public class Oficial {
     private int telefono;
     private String correo;
     private double salario;
-    
-    
-    
-    
-    
 
+    public Oficial(int cedula, String nombre, Date fechanacimiento, int telefono, String correo, double salario) {
+        this.cedula = cedula;
+        this.nombre = nombre;
+        this.fechanacimiento = fechanacimiento;
+        this.telefono = telefono;
+        this.correo = correo;
+        this.salario = salario;
+    }
+    
+    public Oficial(){
+        this.cedula = 0;
+        this.nombre = null;
+        this.fechanacimiento = null;
+        this.telefono = 0;
+        this.correo = null;
+        this.salario = 0;
+    }
+    
     public int getCedula() {
         return cedula;
     }

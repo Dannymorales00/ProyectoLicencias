@@ -22,6 +22,29 @@ public class Usuario {
     private Password contraseña;
     private String tipo;//oficial/secretario
 
+    public Usuario(int cedula, String nombre, Date fechanacimiento, int telefono, String correo, String sobrenombre, Password contraseña, String tipo) {
+        this.cedula = cedula;
+        this.nombre = nombre;
+        this.fechanacimiento = fechanacimiento;
+        this.telefono = telefono;
+        this.correo = correo;
+        this.sobrenombre = sobrenombre;
+        this.contraseña = contraseña;
+        this.tipo = tipo;
+    }
+
+    public Usuario(){
+        this.cedula = 0;
+        this.nombre = null;
+        this.fechanacimiento = null;
+        this.telefono = 0;
+        this.correo = null;
+        this.sobrenombre = null;
+        this.contraseña = null;
+        this.tipo = null;
+    }
+    
+    
     public int getCedula() {
         return cedula;
     }

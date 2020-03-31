@@ -20,6 +20,7 @@ public class Prueba {
     private int nota;
     private String estado;//aprobado-reprobado
 
+    
     public Date getFecha() {
         return fecha;
     }

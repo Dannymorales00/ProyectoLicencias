@@ -35,7 +35,7 @@ public class ControladorUsuarios {
     }
     
     
-        public boolean añadir(Usuario usuario){
+    public boolean añadir(Usuario usuario){
         try {
            return sentencias.execute("insert into usuarios values(null,'"+usuario.getCedula()+"','"+usuario.getNombre()+"','"+usuario.getFechanacimiento()+"','"+usuario.getTelefono()+"','"+usuario.getCorreo()+"','"+usuario.getSobrenombre()+"','"+usuario.getContraseña()+"','"+usuario.getTipo()+"')",sentencias.RETURN_GENERATED_KEYS);
              
@@ -90,7 +90,7 @@ public class ControladorUsuarios {
         
         try {  
               
-            this.sentencias.executeUpdate("UPDATE usuario SET nombre='"+usuario.getNombre()+"' WHERE cedula ='"+usuario.getCedula()+"';");
+            this.sentencias.executeUpdate("UPDATE usuarios SET nombre='"+usuario.getNombre()+"' WHERE cedula ='"+usuario.getCedula()+"';");
             return true;
             
         } catch (SQLException ex) {
@@ -106,7 +106,7 @@ public class ControladorUsuarios {
                 
                 while(datos.next()){
               
-                   // usuarios.add(new Usuario(datos.getInt(2),datos.getString(3),datos.getDate(4),datos.getInt(5),datos.getString(6),datos.getString(7),datos.getString(8),datos.getString(9)));
+                   //usuarios.add(new Usuario(datos.getInt(2),datos.getString(3),datos.getDate(4),datos.getInt(5),datos.getString(6),datos.getString(7),datos.getString(8),datos.getString(9)));
                
                 }
                 return usuarios;
