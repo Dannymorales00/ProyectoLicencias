@@ -11,8 +11,6 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import ventanas.FrmConfiguracion;
 
 
@@ -21,15 +19,14 @@ import ventanas.FrmConfiguracion;
  * @author Danny_PC
  */
 public class Conexion {
-        Manejoconfig manejoconfig = new Manejoconfig();
+    Manejoconfig manejoconfig = new Manejoconfig();
     
         //profe
 
     private Statement sentencias;
     private ResultSet datos;
- 
     private Connection conn;
-    private String driver = "com.mysql.jdbc.Driver";
+   
 
     public Statement getSentencias() {
         return sentencias;
@@ -52,7 +49,7 @@ public class Conexion {
     public void Conectar() {
        
         
-        String datos[]=manejoconfig.leer();
+        String datos[]= manejoconfig.leer();
         
         if(datos!=null){
            
@@ -68,7 +65,8 @@ public class Conexion {
         
         
             try {
-            
+                
+                System.out.println("datos necesarios: "+url+"..."+user+"..."+password);
                 conn = DriverManager.getConnection(url, user, password);
                 this.sentencias=this.conn.createStatement();
                 if(conn!=null)
