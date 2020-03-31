@@ -21,6 +21,34 @@ public class Prueba {
     private String estado;//aprobado-reprobado
 
     
+    public Prueba(Date fecha, Time hora, Oficial oficial, String observaciones, int nota, String estado) {
+        this.fecha = fecha;
+        this.hora = hora;
+        this.oficial = oficial;
+        this.observaciones = observaciones;
+        this.nota = nota;
+        this.estado = estado;
+    }
+
+    public Prueba() {
+            
+        this.fecha = null;
+        this.hora = null;
+        this.oficial = null;
+        this.observaciones = null;
+        this.nota = 0;
+        this.estado = null;  
+            
+    }
+    
+    
+    
+
+    
+    
+    
+    
+    
     public Date getFecha() {
         return fecha;
     }
