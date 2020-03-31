@@ -6,12 +6,12 @@
       <SubComponents>
         <Menu class="javax.swing.JMenu" name="jMenuRegistar">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Registrar"/>
+            <Property name="text" type="java.lang.String" value="Usuarios"/>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItemVehiculos">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Veh&#xed;culos"/>
+                <Property name="text" type="java.lang.String" value="Agregar"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemVehiculosActionPerformed"/>
@@ -19,7 +19,7 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItemEntrada">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Llegadas"/>
+                <Property name="text" type="java.lang.String" value="Modificar"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemEntradaActionPerformed"/>
@@ -27,7 +27,7 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItemSalida">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Salidas"/>
+                <Property name="text" type="java.lang.String" value="Eliminar"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemSalidaActionPerformed"/>
@@ -37,18 +37,67 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="jMenuConfig">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Configuraci&#xf3;n"/>
+            <Property name="text" type="java.lang.String" value="Oficiales"/>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItemConfig">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Configurar conexi&#xf3;n"/>
+                <Property name="text" type="java.lang.String" value="Agregar"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemConfigActionPerformed"/>
               </Events>
             </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItemConfig1">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Calcular salario"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemConfig1ActionPerformed"/>
+              </Events>
+            </MenuItem>
           </SubComponents>
+        </Menu>
+        <Menu class="javax.swing.JMenu" name="jMenu1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Clientes"/>
+          </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem1">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Agregar"/>
+              </Properties>
+            </MenuItem>
+          </SubComponents>
+        </Menu>
+        <Menu class="javax.swing.JMenu" name="jMenu2">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Pruebas"/>
+          </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem2">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Agregar"/>
+              </Properties>
+            </MenuItem>
+          </SubComponents>
+        </Menu>
+        <Menu class="javax.swing.JMenu" name="jMenu3">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Citas"/>
+          </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem3">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Agregar"/>
+              </Properties>
+            </MenuItem>
+          </SubComponents>
+        </Menu>
+        <Menu class="javax.swing.JMenu" name="jMenu4">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Configuracion"/>
+          </Properties>
         </Menu>
       </SubComponents>
     </Menu>

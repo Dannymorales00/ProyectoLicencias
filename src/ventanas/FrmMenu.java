@@ -46,6 +46,14 @@ public class FrmMenu extends javax.swing.JFrame {
         jMenuItemSalida = new javax.swing.JMenuItem();
         jMenuConfig = new javax.swing.JMenu();
         jMenuItemConfig = new javax.swing.JMenuItem();
+        jMenuItemConfig1 = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenu3 = new javax.swing.JMenu();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        jMenu4 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -60,9 +68,9 @@ public class FrmMenu extends javax.swing.JFrame {
             .addGap(0, 280, Short.MAX_VALUE)
         );
 
-        jMenuRegistar.setText("Registrar");
+        jMenuRegistar.setText("Usuarios");
 
-        jMenuItemVehiculos.setText("Vehículos");
+        jMenuItemVehiculos.setText("Agregar");
         jMenuItemVehiculos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItemVehiculosActionPerformed(evt);
@@ -70,7 +78,7 @@ public class FrmMenu extends javax.swing.JFrame {
         });
         jMenuRegistar.add(jMenuItemVehiculos);
 
-        jMenuItemEntrada.setText("Llegadas");
+        jMenuItemEntrada.setText("Modificar");
         jMenuItemEntrada.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItemEntradaActionPerformed(evt);
@@ -78,7 +86,7 @@ public class FrmMenu extends javax.swing.JFrame {
         });
         jMenuRegistar.add(jMenuItemEntrada);
 
-        jMenuItemSalida.setText("Salidas");
+        jMenuItemSalida.setText("Eliminar");
         jMenuItemSalida.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItemSalidaActionPerformed(evt);
@@ -88,9 +96,9 @@ public class FrmMenu extends javax.swing.JFrame {
 
         jMenuBar2.add(jMenuRegistar);
 
-        jMenuConfig.setText("Configuración");
+        jMenuConfig.setText("Oficiales");
 
-        jMenuItemConfig.setText("Configurar conexión");
+        jMenuItemConfig.setText("Agregar");
         jMenuItemConfig.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItemConfigActionPerformed(evt);
@@ -98,7 +106,39 @@ public class FrmMenu extends javax.swing.JFrame {
         });
         jMenuConfig.add(jMenuItemConfig);
 
+        jMenuItemConfig1.setText("Calcular salario");
+        jMenuItemConfig1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemConfig1ActionPerformed(evt);
+            }
+        });
+        jMenuConfig.add(jMenuItemConfig1);
+
         jMenuBar2.add(jMenuConfig);
+
+        jMenu1.setText("Clientes");
+
+        jMenuItem1.setText("Agregar");
+        jMenu1.add(jMenuItem1);
+
+        jMenuBar2.add(jMenu1);
+
+        jMenu2.setText("Pruebas");
+
+        jMenuItem2.setText("Agregar");
+        jMenu2.add(jMenuItem2);
+
+        jMenuBar2.add(jMenu2);
+
+        jMenu3.setText("Citas");
+
+        jMenuItem3.setText("Agregar");
+        jMenu3.add(jMenuItem3);
+
+        jMenuBar2.add(jMenu3);
+
+        jMenu4.setText("Configuracion");
+        jMenuBar2.add(jMenu4);
 
         setJMenuBar(jMenuBar2);
 
@@ -131,6 +171,10 @@ public class FrmMenu extends javax.swing.JFrame {
     private void jMenuItemSalidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSalidaActionPerformed
 
     }//GEN-LAST:event_jMenuItemSalidaActionPerformed
+
+    private void jMenuItemConfig1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemConfig1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItemConfig1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -170,9 +214,17 @@ public class FrmMenu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane jDesktopPane1;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JMenu jMenuConfig;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItemConfig;
+    private javax.swing.JMenuItem jMenuItemConfig1;
     private javax.swing.JMenuItem jMenuItemEntrada;
     private javax.swing.JMenuItem jMenuItemSalida;
     private javax.swing.JMenuItem jMenuItemVehiculos;
