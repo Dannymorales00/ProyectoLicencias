@@ -12,7 +12,7 @@ import java.sql.Time;
  *
  * @author Danny_PC
  */
-public class Pruebas {
+public class Prueba {
     private Date fecha;
     private Time hora;
     //private Oficial oficial;// oficial que va realizar la Prueba enviamos la cedula a db para relacionar el oficial

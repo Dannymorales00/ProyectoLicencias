@@ -12,7 +12,7 @@ import sun.security.util.Password;
  *
  * @author Danny_PC
  */
-public class Usuarios {
+public class Usuario {
     private int cedula;
     private String nombre;
     private Date fechanacimiento;
