@@ -7,8 +7,8 @@ package modelos;
 
 /**
  *
- * @author LeanPC
+ * @author Danny_PC
  */
-public class prueba {
+public class NewClass {
     
 }
