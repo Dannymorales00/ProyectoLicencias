@@ -18,19 +18,16 @@ public class Cliente {
     private Date fechanacimiento;
     private int telefono;
     private String correo;
-    private String sobrenombre;
-    private Password contraseña;
-    private String tipo;//tipo de usuario /secretaria-oficial
+    private int edad;  //no se guarda en la base de datos.
 
-    public Cliente(int cedula, String nombre, Date fechanacimiento, int telefono, String correo, String sobrenombre, Password contraseña, String tipo) {
+
+    public Cliente(int cedula, String nombre, Date fechanacimiento, int telefono, String correo,int edad) {
         this.cedula = cedula;
         this.nombre = nombre;
         this.fechanacimiento = fechanacimiento;
         this.telefono = telefono;
         this.correo = correo;
-        this.sobrenombre = sobrenombre;
-        this.contraseña = contraseña;
-        this.tipo = tipo;
+        this.edad=edad;
     }
 
     public Cliente() {
@@ -39,9 +36,7 @@ public class Cliente {
         this.fechanacimiento = null;
         this.telefono = 0;
         this.correo = null;
-        this.sobrenombre = null;
-        this.contraseña = null;
-        this.tipo = null;
+        this.edad= 0;
         
         
     }
@@ -50,9 +45,7 @@ public class Cliente {
     
     
     
-    
-    
-    
+ 
     
     public int getCedula() {
         return cedula;
@@ -94,29 +87,15 @@ public class Cliente {
         this.correo = correo;
     }
 
-    public String getSobrenombre() {
-        return sobrenombre;
+    public int getEdad() {
+        return edad;
     }
 
-    public void setSobrenombre(String sobrenombre) {
-        this.sobrenombre = sobrenombre;
+    public void setEdad(int edad) {
+        this.edad = edad;
     }
 
-    public Password getContraseña() {
-        return contraseña;
-    }
-
-    public void setContraseña(Password contraseña) {
-        this.contraseña = contraseña;
-    }
-
-    public String getTipo() {
-        return tipo;
-    }
-
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
-    }
+    
     
     
     
