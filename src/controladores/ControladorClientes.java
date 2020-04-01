@@ -44,7 +44,7 @@ public class ControladorClientes {
         return false;
     }
     
-        public Cliente buscar(String cedula){
+        public Cliente buscar(int cedula){
         try {
             
             this.datos = this.sentencias.executeQuery("select * from clientes where cedula="+cedula);
