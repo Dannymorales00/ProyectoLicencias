@@ -209,7 +209,7 @@ public class AgregarUsuarios extends javax.swing.JInternalFrame {
         usuario.setTelefono(Integer.parseInt( this.TxtTelefono.getText() ));
         usuario.setTipo((String) this.jComboBoxTipo.getSelectedItem());
         
-        SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
+       
         usuario.setFechanacimiento(this.jDateChooser1.getDate());
         System.out.println("fecha:" +this.jDateChooser1.getDate());
 
