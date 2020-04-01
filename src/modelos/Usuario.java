@@ -5,13 +5,14 @@
  */
 package modelos;
 
-import java.sql.Date;
-import sun.security.util.Password;
+import java.util.Date;
+
 
 /**
  *
  * @author Danny_PC
  */
+
 public class Usuario {
     private int cedula;
     private String nombre;

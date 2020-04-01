@@ -9,6 +9,7 @@ import conexion.Conexion;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import modelos.Usuario;
 import ventanas.FrmMenu;
@@ -39,7 +40,8 @@ public class ControladorUsuarios {
     public boolean añadir(Usuario usuario){
         try 
         {
-            return sentencias.execute("insert into usuarios values(null,'"+usuario.getCedula()+"','"+usuario.getNombre()+"','"+usuario.getFechanacimiento()+"','"+usuario.getTelefono()+"','"+usuario.getCorreo()+"','"+usuario.getSobrenombre()+"','"+usuario.getContraseña()+"','"+usuario.getTipo()+"')",sentencias.RETURN_GENERATED_KEYS);
+            SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
+            return sentencias.execute("insert into usuarios values(null,'"+usuario.getCedula()+"','"+usuario.getNombre()+"','"+f.format(usuario.getFechanacimiento())+"','"+usuario.getTelefono()+"','"+usuario.getCorreo()+"','"+usuario.getSobrenombre()+"','"+usuario.getContraseña()+"','"+usuario.getTipo()+"')",sentencias.RETURN_GENERATED_KEYS);
             
         }catch (SQLException ex) {
             System.out.println("Error al añadir");
