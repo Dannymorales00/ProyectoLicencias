@@ -18,10 +18,10 @@ public class Prueba {
     private Oficial oficial;// oficial que va realizar la Prueba enviamos la cedula a db para relacionar el oficial
     private String observaciones;
     private int nota;
-    private String estado;//aprobado-reprobado
+    private Boolean estado;//aprobado-reprobado
 
     
-    public Prueba(Date fecha, Time hora, Oficial oficial, String observaciones, int nota, String estado) {
+    public Prueba(Date fecha, Time hora, Oficial oficial, String observaciones, int nota, Boolean estado) {
         this.fecha = fecha;
         this.hora = hora;
         this.oficial = oficial;
@@ -41,14 +41,7 @@ public class Prueba {
             
     }
     
-    
-    
 
-    
-    
-    
-    
-    
     public Date getFecha() {
         return fecha;
     }
@@ -89,11 +82,11 @@ public class Prueba {
         this.nota = nota;
     }
 
-    public String getEstado() {
+    public Boolean getEstado() {
         return estado;
     }
 
-    public void setEstado(String estado) {
+    public void setEstado(Boolean estado) {
         this.estado = estado;
     }
 }

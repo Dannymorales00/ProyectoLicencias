@@ -96,7 +96,7 @@ public class ControladorClientes {
         return false;
     } 
         
-       public ArrayList<Cliente> listar(String cedula){
+       public ArrayList<Cliente> listar(int cedula){
         ArrayList<Cliente> clientes = new ArrayList();
             try {
                 this.datos = this.sentencias.executeQuery("select * from clientes where cedula='"+cedula+"'");

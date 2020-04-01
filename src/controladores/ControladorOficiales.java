@@ -44,7 +44,7 @@ public class ControladorOficiales {
         return false;
     }
         
-    public Oficial buscar(String cedula){
+    public Oficial buscar(int cedula){
         try {
             
             this.datos = this.sentencias.executeQuery("select * from oficiales where cedula="+cedula);

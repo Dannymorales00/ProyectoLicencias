@@ -99,7 +99,7 @@ public class ControladorUsuarios {
         return false;
     }
     
-        public ArrayList<Usuario> listar(String cedula){
+        public ArrayList<Usuario> listar(int cedula){
             ArrayList<Usuario> usuarios = new ArrayList();
             try {
                 this.datos = this.sentencias.executeQuery("select * from usuarios where cedula='"+cedula+"'");
