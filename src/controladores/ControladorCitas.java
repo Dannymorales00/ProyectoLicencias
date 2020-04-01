@@ -106,6 +106,27 @@ public class ControladorCitas {
         return null; 
     }
     
-    
-    
+    //valida que exista un cliente para poder agregar una cita
+    public boolean ValidarFK(Cita cita){
+
+        try 
+        {
+            this.datos = this.sentencias.executeQuery("select * from clientes where cedula="+cita.getCliente().getCedula());
+                
+            if (datos.next()) 
+            {
+            
+                return true;
+              
+            }
+                
+        } catch (SQLException ex){
+            System.out.println("Error al validarFK");
+            
+        }
+         
+        return false;
+       
+    }   
+      
 }

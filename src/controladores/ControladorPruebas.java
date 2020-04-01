@@ -89,7 +89,7 @@ public class ControladorPruebas {
         return false;
     } 
         
-       public ArrayList<Prueba> listar(int cedula){
+    public ArrayList<Prueba> listar(int cedula){
         ArrayList<Prueba> pruebas = new ArrayList();
             try {
                 this.datos = this.sentencias.executeQuery("select * from pruebas where cedula_oficial='"+cedula+"'");
@@ -106,4 +106,27 @@ public class ControladorPruebas {
         return null; 
     }
     
+    //valida que exista un oficial para poder agregar una prueba
+    public boolean ValidarFK(Prueba prueba){
+
+        try 
+        {
+            this.datos = this.sentencias.executeQuery("select * from oficiales where cedula="+prueba.getOficial().getCedula());
+                
+            if (datos.next()) 
+            {
+            
+                return true;
+              
+            }
+                
+        } catch (SQLException ex){
+            System.out.println("Error al validarFK");
+            
+        }
+         
+        return false;
+       
+    }  
+       
 }
