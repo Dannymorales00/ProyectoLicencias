@@ -190,27 +190,37 @@ public class AgregarUsuarios extends javax.swing.JInternalFrame {
         //esto puede generar una excepcion por la conversion
 //        usuario.setCedula(Integer.parseInt( this.TxtCedula.getText()));
 //        usuario.setNombre(this.TxtNombre.getText());
-        usuario.setContraseña(this.TxtContraseña.getPassword()[0]);
-        System.out.println("la contra es: "+this.TxtContraseña.getPassword()[0]);
-        System.out.println("la contra es: "+this.TxtContraseña.getPassword()[1]);
+        usuario.setContraseña(this.concatenar(this.TxtContraseña.getPassword()));
+        System.out.println("contra: "+usuario.getContraseña());
+
         
         
         
-//        if(usuario.comprobar())
-//        {
-//            
-//            if(cu.añadir(usuario))
-//            {
-//                JOptionPane.showMessageDialog(this, "Usuario agregado");
-//                usuario=null;
-//            }else{System.out.println("No se pudo agregar ");}
-//            
-//            
-//        }else{ JOptionPane.showMessageDialog(this, "Debe rellenar todoas los campos"); }
+        if(usuario.comprobar())
+        {
+            
+            if(cu.añadir(usuario))
+            {
+                JOptionPane.showMessageDialog(this, "Usuario agregado");
+                usuario=null;
+            }else{System.out.println("No se pudo agregar ");}
+            
+            
+        }else{ JOptionPane.showMessageDialog(this, "Debe rellenar todoas los campos"); }
         
         
     }//GEN-LAST:event_BtnAgregarActionPerformed
 
+    public String concatenar(char pass[]) {
+        String pass2 ="";
+        for(int i=0;i<=pass.length-1;i++)
+        {
+            pass2 += pass[i];
+        
+        }
+        return pass2;
+    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnAgregar;

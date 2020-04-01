@@ -21,7 +21,7 @@ import ventanas.FrmConfiguracion;
 public class Conexion {
     Manejoconfig manejoconfig = new Manejoconfig();
     
-        //profe
+       
 
     private Statement sentencias;
     private ResultSet datos;
