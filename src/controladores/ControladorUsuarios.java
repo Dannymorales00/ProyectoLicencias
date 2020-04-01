@@ -61,7 +61,7 @@ public class ControladorUsuarios {
                     usuario.setTelefono(datos.getInt(5));
                     usuario.setCorreo(datos.getString(6));
                     usuario.setSobrenombre(datos.getString(7));
-                    //usuario.setContraseña(datos.getString(8));
+                    usuario.setContraseña(datos.getString(8));
                     usuario.setTipo(datos.getString(9));
                     
                     return usuario;
@@ -106,7 +106,7 @@ public class ControladorUsuarios {
                 
                 while(datos.next()){
               
-                   //usuarios.add(new Usuario(datos.getInt(2),datos.getString(3),datos.getDate(4),datos.getInt(5),datos.getString(6),datos.getString(7),datos.getString(8),datos.getString(9)));
+                   usuarios.add(new Usuario(datos.getInt(2),datos.getString(3),datos.getDate(4),datos.getInt(5),datos.getString(6),datos.getString(7),datos.getString(8),datos.getString(9)));
                
                 }
                 return usuarios;

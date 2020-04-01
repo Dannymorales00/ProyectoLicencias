@@ -55,10 +55,10 @@ public class ControladorCitas {
              
                     
                     Cita oficial = new Cita();
-                    oficial.setId(datos.getInt(1));
-                    oficial.setFecha(datos.getDate(2));
-                    oficial.setHora(datos.getTime(3));
-                    //oficial.setCliente(datos.getInt(4));
+                    cita.setId(datos.getInt(1));
+                    cita.setFecha(datos.getDate(2));
+                    cita.setHora(datos.getTime(3));
+                    //cita.setCliente(datos.getInt(4));
                     
                     return oficial;
                 } 
