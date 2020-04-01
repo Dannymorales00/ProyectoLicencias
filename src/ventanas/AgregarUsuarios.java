@@ -225,6 +225,7 @@ public class AgregarUsuarios extends javax.swing.JInternalFrame {
             {
                 JOptionPane.showMessageDialog(this, "Usuario agregado");
                 usuario=null;
+                Limpiar();
             }else{System.out.println("No se pudo agregar ");}
             
             
@@ -233,6 +234,8 @@ public class AgregarUsuarios extends javax.swing.JInternalFrame {
         
     }//GEN-LAST:event_BtnAgregarActionPerformed
 
+   
+    
     private void TxtCedulaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TxtCedulaKeyTyped
         
         //capturamos caracter por caracter
@@ -247,6 +250,11 @@ public class AgregarUsuarios extends javax.swing.JInternalFrame {
         if(c<'0' || c>'9')evt.consume();
     }//GEN-LAST:event_TxtTelefonoKeyTyped
 
+    
+    
+    
+    
+    
     public String concatenar(char pass[]) {
         String pass2 ="";
         
@@ -264,6 +272,20 @@ public class AgregarUsuarios extends javax.swing.JInternalFrame {
         }
     }
     
+    
+    
+    
+    public void Limpiar() {
+        this.TxtCedula.setText("");
+        this.TxtContraseña.setText("");
+        this.TxtCorreo.setText("");
+        this.TxtNombre.setText("");
+        this.TxtTelefono.setText("");
+        this.TxtNombreUsuario.setText("");
+        this.jComboBoxTipo.setSelectedIndex(0);
+        this.jDateChooser1.setCalendar(null);
+        
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnAgregar;
