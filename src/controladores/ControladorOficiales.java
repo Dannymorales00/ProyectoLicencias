@@ -36,7 +36,7 @@ public class ControladorOficiales {
     
     public boolean añadir(Oficial oficial){
         try {
-           return sentencias.execute("insert into oficiales values(null,'"+oficial.getCedula()+"','"+oficial.getNombre()+"','"+oficial.getFechanacimiento()+"','"+oficial.getTelefono()+"','"+oficial.getCorreo()+"','"+oficial.getSalario()+"')",sentencias.RETURN_GENERATED_KEYS);
+           return sentencias.execute("insert into oficiales values(null,"+oficial.getCedula()+",'"+oficial.getNombre()+"','"+oficial.getFechanacimiento()+"',"+oficial.getTelefono()+",'"+oficial.getCorreo()+"',"+oficial.getSalario()+")",sentencias.RETURN_GENERATED_KEYS);
              
         } catch (SQLException ex) {
             System.out.println("Error al añadir");

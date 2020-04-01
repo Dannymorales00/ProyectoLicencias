@@ -14,6 +14,7 @@ import conexion.Conexion;
 public class FrmMenu extends javax.swing.JFrame {
     private FrmConfiguracion frmconfig;
     private AgregarUsuarios agregarUsuarios;
+    private AgregarOficiales agregarOfiales;
     private Conexion conexion = new Conexion();
     /**
      * Creates new form FrmMenu
@@ -158,6 +159,8 @@ public class FrmMenu extends javax.swing.JFrame {
 
     private void jMenuItemConfigActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemConfigActionPerformed
         this.frmconfig.setVisible(true);
+        this.agregarOfiales = new AgregarOficiales();
+        agregarOfiales.setVisible(true);
     }//GEN-LAST:event_jMenuItemConfigActionPerformed
 
     private void jMenuItemVehiculosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemVehiculosActionPerformed
