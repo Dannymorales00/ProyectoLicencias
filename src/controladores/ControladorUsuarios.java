@@ -63,7 +63,7 @@ public class ControladorUsuarios {
                     usuario.setTelefono(datos.getInt(5));
                     usuario.setCorreo(datos.getString(6));
                     usuario.setSobrenombre(datos.getString(7));
-//                    usuario.setContraseña(datos.gets);
+                    usuario.setContraseña(datos.getString(8));
                     usuario.setTipo(datos.getString(9));
                     
                     return usuario;
