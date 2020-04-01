@@ -206,8 +206,10 @@ public class AgregarUsuarios extends javax.swing.JInternalFrame {
         usuario.setContraseña(this.concatenar(this.TxtContraseña.getPassword()));
         usuario.setCorreo(this.TxtCorreo.getText());
         usuario.setSobrenombre(this.TxtNombreUsuario.getText());
-        usuario.setTelefono(Integer.parseInt( this.TxtTelefono.getText() ));
+        usuario.setTelefono(Integer.parseInt(this.TxtTelefono.getText()));
         usuario.setTipo((String) this.jComboBoxTipo.getSelectedItem());
+        
+        
         
        
         usuario.setFechanacimiento(this.jDateChooser1.getDate());

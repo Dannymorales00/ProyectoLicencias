@@ -9,6 +9,7 @@ import conexion.Conexion;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import modelos.Oficial;
 import ventanas.FrmMenu;
@@ -37,8 +38,11 @@ public class ControladorOficiales {
     
     public boolean añadir(Oficial oficial){
         try {
-           return sentencias.execute("insert into oficiales values(null,"+oficial.getCedula()+",'"+oficial.getNombre()+"','"+oficial.getFechanacimiento()+"',"+oficial.getTelefono()+",'"+oficial.getCorreo()+"',"+oficial.getSalario()+")",sentencias.RETURN_GENERATED_KEYS);
-             
+            
+           SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
+           sentencias.execute("insert into oficiales values(null,"+oficial.getCedula()+",'"+oficial.getNombre()+"','"+f.format(oficial.getFechanacimiento())+"',"+oficial.getTelefono()+",'"+oficial.getCorreo()+"',"+oficial.getSalario()+")");
+           return true;
+           
         } catch (SQLException ex) {
             System.out.println("Error al añadir");
         }

@@ -37,8 +37,10 @@ public class ControladorPruebas {
     
         public boolean añadir(Prueba prueba){
         try {
-           return sentencias.execute("insert into pruebas values(null,'"+prueba.getFecha()+"','"+prueba.getHora()+"','"+prueba.getOficial().getCedula()+"','"+prueba.getObservaciones()+"','"+prueba.getNota()+"','"+prueba.getEstado()+"')",sentencias.RETURN_GENERATED_KEYS);
-             
+           sentencias.execute("insert into pruebas values(null,'"+prueba.getFecha()+"','"+prueba.getHora()+"','"+prueba.getOficial().getCedula()+"','"+prueba.getObservaciones()+"','"+prueba.getNota()+"','"+prueba.getEstado()+"')");
+           return true;
+           
+           
         } catch (SQLException ex) {
             System.out.println("Error al añadir");
         }

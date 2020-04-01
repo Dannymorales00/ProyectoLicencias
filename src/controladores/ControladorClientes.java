@@ -36,8 +36,10 @@ public class ControladorClientes {
     
     public boolean añadir(Cliente cliente){
         try {
-           return sentencias.execute("insert into clientes values(null,'"+cliente.getCedula()+"','"+cliente.getNombre()+"','"+cliente.getFechanacimiento()+"','"+cliente.getTelefono()+"','"+cliente.getCorreo()+"')",sentencias.RETURN_GENERATED_KEYS);
-             
+           sentencias.execute("insert into clientes values(null,'"+cliente.getCedula()+"','"+cliente.getNombre()+"','"+cliente.getFechanacimiento()+"','"+cliente.getTelefono()+"','"+cliente.getCorreo()+"')");
+           return true;  
+           
+           
         } catch (SQLException ex) {
             System.out.println("Error al añadir");
         }

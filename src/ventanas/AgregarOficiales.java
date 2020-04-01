@@ -178,7 +178,7 @@ public class AgregarOficiales extends javax.swing.JInternalFrame {
         if (verificarCampos()) {
             oficial.setNombre(nombreTxt.getText());
             oficial.setCedula(Integer.parseInt(cedulaTxt.getText()));
-            oficial.setFechanacimiento((Date) fechaDt.getDate());
+            oficial.setFechanacimiento(fechaDt.getDate());
             oficial.setTelefono(Integer.parseInt(telefonoTxt.getText()));
             oficial.setCorreo(correoTxt.getText());
             oficial.setSalario(Double.parseDouble(salarioTxt.getText()));

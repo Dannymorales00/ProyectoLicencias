@@ -37,8 +37,10 @@ public class ControladorCitas {
     
         public boolean añadir(Cita cita){
         try {
-           return sentencias.execute("insert into citas values(null,'"+cita.getFecha()+"','"+cita.getHora()+"','"+cita.getCliente().getCedula()+"')",sentencias.RETURN_GENERATED_KEYS);
-             
+           sentencias.execute("insert into citas values(null,'"+cita.getFecha()+"','"+cita.getHora()+"','"+cita.getCliente().getCedula()+"')");
+           return true;  
+           
+           
         } catch (SQLException ex) {
             System.out.println("Error al añadir");
         }
