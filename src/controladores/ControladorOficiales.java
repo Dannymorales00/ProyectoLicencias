@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import modelos.Oficial;
+import ventanas.FrmMenu;
 
 /**
  *
@@ -23,7 +24,7 @@ public class ControladorOficiales {
     
     public ControladorOficiales() {
        
-       //conn = FrmMenu.getConexion();
+       conn = FrmMenu.getConexion();
        this.sentencias= conn.getSentencias();
        this.datos=conn.getDatos();
     }

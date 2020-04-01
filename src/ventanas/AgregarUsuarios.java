@@ -187,9 +187,11 @@ public class AgregarUsuarios extends javax.swing.JInternalFrame {
     private void BtnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAgregarActionPerformed
         usuario= new Usuario();
         
-        //esto puede generar una excepcion por la conversion
-//        usuario.setCedula(Integer.parseInt( this.TxtCedula.getText()));
-//        usuario.setNombre(this.TxtNombre.getText());
+        try{
+        usuario.setCedula(Integer.parseInt( this.TxtCedula.getText()));
+        }catch(NumberFormatException e){ }
+        
+        usuario.setNombre(this.TxtNombre.getText());
         usuario.setContraseña(this.concatenar(this.TxtContraseña.getPassword()));
         System.out.println("contra: "+usuario.getContraseña());
 

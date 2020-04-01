@@ -14,7 +14,7 @@ import conexion.Conexion;
 public class FrmMenu extends javax.swing.JFrame {
     private FrmConfiguracion frmconfig;
     private AgregarUsuarios agregarUsuarios;
-    private AgregarOficiales agregarOfiales;
+    private AgregarOficiales agregarOficiales;
     private static Conexion conexion = new Conexion();
     /**
      * Creates new form FrmMenu
@@ -49,7 +49,7 @@ public class FrmMenu extends javax.swing.JFrame {
         jMenuItemVehiculos = new javax.swing.JMenuItem();
         jMenuItemEntrada = new javax.swing.JMenuItem();
         jMenuItemSalida = new javax.swing.JMenuItem();
-        jMenuConfig = new javax.swing.JMenu();
+        jMenuOficial = new javax.swing.JMenu();
         jMenuItemConfig = new javax.swing.JMenuItem();
         jMenuItemConfig1 = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
@@ -101,7 +101,7 @@ public class FrmMenu extends javax.swing.JFrame {
 
         jMenuBar2.add(jMenuRegistar);
 
-        jMenuConfig.setText("Oficiales");
+        jMenuOficial.setText("Oficiales");
 
         jMenuItemConfig.setText("Agregar");
         jMenuItemConfig.addActionListener(new java.awt.event.ActionListener() {
@@ -109,7 +109,7 @@ public class FrmMenu extends javax.swing.JFrame {
                 jMenuItemConfigActionPerformed(evt);
             }
         });
-        jMenuConfig.add(jMenuItemConfig);
+        jMenuOficial.add(jMenuItemConfig);
 
         jMenuItemConfig1.setText("Calcular salario");
         jMenuItemConfig1.addActionListener(new java.awt.event.ActionListener() {
@@ -117,9 +117,9 @@ public class FrmMenu extends javax.swing.JFrame {
                 jMenuItemConfig1ActionPerformed(evt);
             }
         });
-        jMenuConfig.add(jMenuItemConfig1);
+        jMenuOficial.add(jMenuItemConfig1);
 
-        jMenuBar2.add(jMenuConfig);
+        jMenuBar2.add(jMenuOficial);
 
         jMenu1.setText("Clientes");
 
@@ -162,9 +162,12 @@ public class FrmMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItemConfigActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemConfigActionPerformed
-        this.frmconfig.setVisible(true);
-        this.agregarOfiales = new AgregarOficiales();
-        agregarOfiales.setVisible(true);
+        
+        this.agregarOficiales = new AgregarOficiales();
+        this.jDesktopPane1.add(this.agregarOficiales);
+        agregarOficiales.setVisible(true);
+  
+        
     }//GEN-LAST:event_jMenuItemConfigActionPerformed
 
     private void jMenuItemVehiculosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemVehiculosActionPerformed
@@ -229,7 +232,6 @@ public class FrmMenu extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar2;
-    private javax.swing.JMenu jMenuConfig;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
@@ -238,6 +240,7 @@ public class FrmMenu extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItemEntrada;
     private javax.swing.JMenuItem jMenuItemSalida;
     private javax.swing.JMenuItem jMenuItemVehiculos;
+    private javax.swing.JMenu jMenuOficial;
     private javax.swing.JMenu jMenuRegistar;
     // End of variables declaration//GEN-END:variables
 }
