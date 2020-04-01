@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import modelos.Usuario;
+import ventanas.FrmMenu;
 
 /**
  *
@@ -23,7 +24,7 @@ public class ControladorUsuarios {
     
     public ControladorUsuarios() {
        
-       //conn = FrmMenu.getConexion();
+       conn = FrmMenu.getConexion();
        this.sentencias= conn.getSentencias();
        this.datos=conn.getDatos();
     }
@@ -36,10 +37,11 @@ public class ControladorUsuarios {
     
     
     public boolean añadir(Usuario usuario){
-        try {
-           return sentencias.execute("insert into usuarios values(null,'"+usuario.getCedula()+"','"+usuario.getNombre()+"','"+usuario.getFechanacimiento()+"','"+usuario.getTelefono()+"','"+usuario.getCorreo()+"','"+usuario.getSobrenombre()+"','"+usuario.getContraseña()+"','"+usuario.getTipo()+"')",sentencias.RETURN_GENERATED_KEYS);
-             
-        } catch (SQLException ex) {
+        try 
+        {
+            return sentencias.execute("insert into usuarios values(null,'"+usuario.getCedula()+"','"+usuario.getNombre()+"','"+usuario.getFechanacimiento()+"','"+usuario.getTelefono()+"','"+usuario.getCorreo()+"','"+usuario.getSobrenombre()+"','"+usuario.getContraseña()+"','"+usuario.getTipo()+"')",sentencias.RETURN_GENERATED_KEYS);
+            
+        }catch (SQLException ex) {
             System.out.println("Error al añadir");
         }
         return false;
@@ -61,7 +63,7 @@ public class ControladorUsuarios {
                     usuario.setTelefono(datos.getInt(5));
                     usuario.setCorreo(datos.getString(6));
                     usuario.setSobrenombre(datos.getString(7));
-                    usuario.setContraseña(datos.getString(8));
+//                    usuario.setContraseña(datos.gets);
                     usuario.setTipo(datos.getString(9));
                     
                     return usuario;
@@ -106,7 +108,7 @@ public class ControladorUsuarios {
                 
                 while(datos.next()){
               
-                   usuarios.add(new Usuario(datos.getInt(2),datos.getString(3),datos.getDate(4),datos.getInt(5),datos.getString(6),datos.getString(7),datos.getString(8),datos.getString(9)));
+//                   usuarios.add(new Usuario(datos.getInt(2),datos.getString(3),datos.getDate(4),datos.getInt(5),datos.getString(6),datos.getString(7),datos.getString(8),datos.getString(9)));
                
                 }
                 return usuarios;

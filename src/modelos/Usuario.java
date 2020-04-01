@@ -19,10 +19,10 @@ public class Usuario {
     private int telefono;
     private String correo;
     private String sobrenombre;
-    private String contraseña;
+    private char contraseña;
     private String tipo;//oficial/secretario
 
-    public Usuario(int cedula, String nombre, Date fechanacimiento, int telefono, String correo, String sobrenombre, String contraseña, String tipo) {
+    public Usuario(int cedula, String nombre, Date fechanacimiento, int telefono, String correo, String sobrenombre, char contraseña, String tipo) {
         this.cedula = cedula;
         this.nombre = nombre;
         this.fechanacimiento = fechanacimiento;
@@ -40,8 +40,19 @@ public class Usuario {
         this.telefono = 0;
         this.correo = null;
         this.sobrenombre = null;
-        this.contraseña = null;
+        this.contraseña = 0;
         this.tipo = null;
+    }
+    
+    
+    
+    public boolean comprobar() {
+        
+        return  this.telefono >0 && this.tipo!=null &&
+                this.cedula >0 && this.nombre!=null && 
+                this.contraseña >0 && this.correo!=null && 
+                this.fechanacimiento!=null && this.sobrenombre!=null ;
+        
     }
     
     
@@ -93,11 +104,11 @@ public class Usuario {
         this.sobrenombre = sobrenombre;
     }
 
-    public String getContraseña() {
+    public char getContraseña() {
         return contraseña;
     }
 
-    public void setContraseña(String contraseña) {
+    public void setContraseña(char contraseña) {
         this.contraseña = contraseña;
     }
 
