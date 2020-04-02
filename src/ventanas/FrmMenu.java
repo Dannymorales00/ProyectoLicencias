@@ -14,6 +14,7 @@ import conexion.Conexion;
 public class FrmMenu extends javax.swing.JFrame {
     private FrmConfiguracion frmconfig;
     private AgregarUsuarios agregarUsuarios;
+    private ModificarUsuarios modificarUsuarios;
     private AgregarOficiales agregarOficiales;
     private static Conexion conexion = new Conexion();
     /**
@@ -46,9 +47,9 @@ public class FrmMenu extends javax.swing.JFrame {
         jDesktopPane1 = new javax.swing.JDesktopPane();
         jMenuBar2 = new javax.swing.JMenuBar();
         jMenuRegistar = new javax.swing.JMenu();
-        jMenuItemVehiculos = new javax.swing.JMenuItem();
-        jMenuItemEntrada = new javax.swing.JMenuItem();
-        jMenuItemSalida = new javax.swing.JMenuItem();
+        jMenuItemAgregarUsuarios = new javax.swing.JMenuItem();
+        jMenuItemModificarUsuarios = new javax.swing.JMenuItem();
+        jMenuItemEliminarUsuarios = new javax.swing.JMenuItem();
         jMenuOficial = new javax.swing.JMenu();
         jMenuItemConfig = new javax.swing.JMenuItem();
         jMenuItemConfig1 = new javax.swing.JMenuItem();
@@ -75,29 +76,29 @@ public class FrmMenu extends javax.swing.JFrame {
 
         jMenuRegistar.setText("Usuarios");
 
-        jMenuItemVehiculos.setText("Agregar");
-        jMenuItemVehiculos.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemAgregarUsuarios.setText("Agregar");
+        jMenuItemAgregarUsuarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemVehiculosActionPerformed(evt);
+                jMenuItemAgregarUsuariosActionPerformed(evt);
             }
         });
-        jMenuRegistar.add(jMenuItemVehiculos);
+        jMenuRegistar.add(jMenuItemAgregarUsuarios);
 
-        jMenuItemEntrada.setText("Modificar");
-        jMenuItemEntrada.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemModificarUsuarios.setText("Modificar");
+        jMenuItemModificarUsuarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemEntradaActionPerformed(evt);
+                jMenuItemModificarUsuariosActionPerformed(evt);
             }
         });
-        jMenuRegistar.add(jMenuItemEntrada);
+        jMenuRegistar.add(jMenuItemModificarUsuarios);
 
-        jMenuItemSalida.setText("Eliminar");
-        jMenuItemSalida.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemEliminarUsuarios.setText("Eliminar");
+        jMenuItemEliminarUsuarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemSalidaActionPerformed(evt);
+                jMenuItemEliminarUsuariosActionPerformed(evt);
             }
         });
-        jMenuRegistar.add(jMenuItemSalida);
+        jMenuRegistar.add(jMenuItemEliminarUsuarios);
 
         jMenuBar2.add(jMenuRegistar);
 
@@ -170,20 +171,27 @@ public class FrmMenu extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jMenuItemConfigActionPerformed
 
-    private void jMenuItemVehiculosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemVehiculosActionPerformed
+    private void jMenuItemAgregarUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAgregarUsuariosActionPerformed
         this.agregarUsuarios = new AgregarUsuarios();
         this.jDesktopPane1.add(this.agregarUsuarios);
         this.agregarUsuarios.setVisible(true);
             
-    }//GEN-LAST:event_jMenuItemVehiculosActionPerformed
+    }//GEN-LAST:event_jMenuItemAgregarUsuariosActionPerformed
 
-    private void jMenuItemEntradaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemEntradaActionPerformed
- 
-    }//GEN-LAST:event_jMenuItemEntradaActionPerformed
+    private void jMenuItemModificarUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemModificarUsuariosActionPerformed
+        this.modificarUsuarios = new ModificarUsuarios();
+        this.jDesktopPane1.add(this.modificarUsuarios);
+        this.modificarUsuarios.setVisible(true);
+            
+        
+        
+        
+        
+    }//GEN-LAST:event_jMenuItemModificarUsuariosActionPerformed
 
-    private void jMenuItemSalidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSalidaActionPerformed
+    private void jMenuItemEliminarUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemEliminarUsuariosActionPerformed
 
-    }//GEN-LAST:event_jMenuItemSalidaActionPerformed
+    }//GEN-LAST:event_jMenuItemEliminarUsuariosActionPerformed
 
     private void jMenuItemConfig1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemConfig1ActionPerformed
         // TODO add your handling code here:
@@ -235,11 +243,11 @@ public class FrmMenu extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItemAgregarUsuarios;
     private javax.swing.JMenuItem jMenuItemConfig;
     private javax.swing.JMenuItem jMenuItemConfig1;
-    private javax.swing.JMenuItem jMenuItemEntrada;
-    private javax.swing.JMenuItem jMenuItemSalida;
-    private javax.swing.JMenuItem jMenuItemVehiculos;
+    private javax.swing.JMenuItem jMenuItemEliminarUsuarios;
+    private javax.swing.JMenuItem jMenuItemModificarUsuarios;
     private javax.swing.JMenu jMenuOficial;
     private javax.swing.JMenu jMenuRegistar;
     // End of variables declaration//GEN-END:variables

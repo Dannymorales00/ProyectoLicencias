@@ -272,7 +272,7 @@ public class ModificarUsuarios extends javax.swing.JInternalFrame {
         
         if( !this.TxtCedula.equals(""))
         {
-
+            System.out.println("esta vacio cedula");
             usuario= new Usuario();  
             int cedula = Integer.parseInt(this.TxtCedula.getText());
             usuario.setCedula(cedula);
@@ -304,7 +304,7 @@ public class ModificarUsuarios extends javax.swing.JInternalFrame {
               
             
             
-        }
+        }else{System.out.println("esta vacio cedula");}
         
         
     }//GEN-LAST:event_BtnCargarActionPerformed
