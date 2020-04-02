@@ -51,7 +51,7 @@ public class ControladorUsuarios {
         
     public Usuario buscar(Usuario usuario){
         try {
-            usuario.setNombre("juan");
+          
          
             this.datos = this.sentencias.executeQuery("select * from usuarios where cedula="+usuario.getCedula());
  
@@ -96,12 +96,13 @@ public class ControladorUsuarios {
     public boolean actualizar(Usuario usuario){
         
         try {  
-              
-            this.sentencias.executeUpdate("UPDATE usuarios SET nombre='"+usuario.getNombre()+"',fecha_nacimiento='"+usuario.getFechanacimiento()+"', telefono='"+usuario.getTelefono()+"', correo='"+usuario.getCorreo()+"', nombre_usuario='"+usuario.getSobrenombre()+"', contraseña='"+usuario.getContraseña()+"',tipo='"+usuario.getTipo()+"' WHERE cedula ='"+usuario.getCedula()+"';");
+            SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
+            this.sentencias.executeUpdate("UPDATE usuarios SET nombre='"+usuario.getNombre()+"',fecha_nacimiento='"+f.format(usuario.getFechanacimiento())+"', telefono='"+usuario.getTelefono()+"', correo='"+usuario.getCorreo()+"', nombre_usuario='"+usuario.getSobrenombre()+"', contraseña='"+usuario.getContraseña()+"',tipo_usuario='"+usuario.getTipo()+"' WHERE cedula ='"+usuario.getCedula()+"';");
             return true;
             
         } catch (SQLException ex) {
             System.out.println("Error al actualizar");
+            System.out.println(ex);
         }
         return false;
     }
