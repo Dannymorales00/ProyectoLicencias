@@ -247,7 +247,7 @@ public class ModificarUsuarios extends javax.swing.JInternalFrame {
             }else{System.out.println("No se pudo agregar ");}
             
             
-        }else{ JOptionPane.showMessageDialog(this, "Debe rellenar todoas los campos"); }
+        }else{ JOptionPane.showMessageDialog(this, "Debe rellenar todos los campos"); }
         
         
     }//GEN-LAST:event_BtnActualizarActionPerformed
@@ -270,13 +270,14 @@ public class ModificarUsuarios extends javax.swing.JInternalFrame {
 
     private void BtnCargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCargarActionPerformed
         
-        if( !this.TxtCedula.equals(""))
+        if(!this.TxtCedula.getText().equals(""))
         {
-            System.out.println("esta vacio cedula");
+         
             usuario= new Usuario();  
             int cedula = Integer.parseInt(this.TxtCedula.getText());
             usuario.setCedula(cedula);
-            if( cu.buscar(usuario) !=null  ){
+            if( cu.buscar(usuario) !=null  )
+            {
                 
                 usuario = cu.buscar(usuario);
                 this.TxtCedula.setText(String.valueOf(usuario.getCedula()));
@@ -299,12 +300,12 @@ public class ModificarUsuarios extends javax.swing.JInternalFrame {
                 
                 
                 
-            }
+            }else{usuario=null;}
             
               
             
             
-        }else{System.out.println("esta vacio cedula");}
+        }else{JOptionPane.showMessageDialog(this, "Debe ingresar la cedula para carga el usuario");}
         
         
     }//GEN-LAST:event_BtnCargarActionPerformed

@@ -231,7 +231,7 @@ public class AgregarUsuarios extends javax.swing.JInternalFrame {
             }else{System.out.println("No se pudo agregar ");}
             
             
-        }else{ JOptionPane.showMessageDialog(this, "Debe rellenar todoas los campos"); }
+        }else{ JOptionPane.showMessageDialog(this, "Debe rellenar todos los campos"); }
         
         
     }//GEN-LAST:event_BtnAgregarActionPerformed

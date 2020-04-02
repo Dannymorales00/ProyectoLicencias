@@ -51,9 +51,11 @@ public class ControladorUsuarios {
         
     public Usuario buscar(Usuario usuario){
         try {
-            
+            usuario.setNombre("juan");
+            System.out.println("antes de la sentencia...."+usuario.getNombre());
             this.datos = this.sentencias.executeQuery("select * from usuarios where cedula="+usuario.getCedula());
-            
+                System.out.println("despues de la sentencia");
+                
                 if(datos.next())
                 {
              
@@ -72,11 +74,12 @@ public class ControladorUsuarios {
                 } 
                 
         }catch (SQLException ex) {
-                System.out.println("Error al buscar");
+                System.out.println("Error al buscar"+ex);
             }
         return null;
 
     }
+    
     
     public boolean eliminar(Usuario usuario){
         try {
