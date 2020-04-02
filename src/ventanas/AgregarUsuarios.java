@@ -6,7 +6,6 @@
 package ventanas;
 
 import controladores.ControladorUsuarios;
-import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
 import modelos.Usuario;
 
@@ -201,12 +200,17 @@ public class AgregarUsuarios extends javax.swing.JInternalFrame {
     private void BtnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAgregarActionPerformed
         
         usuario= new Usuario();
+        
+        try{
         usuario.setCedula(Integer.parseInt( this.TxtCedula.getText() ));
+        usuario.setTelefono(Integer.parseInt(this.TxtTelefono.getText()));
+        }catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(this, "Debe rellenar el campo cedula y nombre");
+        }
         usuario.setNombre(this.TxtNombre.getText());
         usuario.setContraseña(this.concatenar(this.TxtContraseña.getPassword()));
         usuario.setCorreo(this.TxtCorreo.getText());
         usuario.setSobrenombre(this.TxtNombreUsuario.getText());
-        usuario.setTelefono(Integer.parseInt(this.TxtTelefono.getText()));
         usuario.setTipo((String) this.jComboBoxTipo.getSelectedItem());
         usuario.setFechanacimiento(this.jDateChooser1.getDate());
        
