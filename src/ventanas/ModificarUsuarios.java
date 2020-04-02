@@ -14,13 +14,13 @@ import modelos.Usuario;
  *
  * @author Danny_PC
  */
-public class AgregarUsuarios extends javax.swing.JInternalFrame {
+public class ModificarUsuarios extends javax.swing.JInternalFrame {
     private Usuario usuario;
     private ControladorUsuarios cu;
     /**
      * Creates new form AgregarUsuarios
      */
-    public AgregarUsuarios() {
+    public ModificarUsuarios() {
        cu = new ControladorUsuarios(); 
         initComponents();
 
@@ -49,14 +49,15 @@ public class AgregarUsuarios extends javax.swing.JInternalFrame {
         TxtNombre = new javax.swing.JTextField();
         TxtCorreo = new javax.swing.JTextField();
         TxtNombreUsuario = new javax.swing.JTextField();
-        TxtContraseña = new javax.swing.JPasswordField();
         jComboBoxTipo = new javax.swing.JComboBox<>();
-        BtnAgregar = new javax.swing.JButton();
+        BtnActualizar = new javax.swing.JButton();
         TxtTelefono = new javax.swing.JTextField();
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        BtnCargar = new javax.swing.JButton();
+        BtnCambiarContraseña = new javax.swing.JButton();
 
         setClosable(true);
-        setTitle("Agregar Usuarios");
+        setTitle("Modificar Usuarios");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -94,11 +95,11 @@ public class AgregarUsuarios extends javax.swing.JInternalFrame {
         jComboBoxTipo.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jComboBoxTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione un Tipo...", "oficial", "secretaria" }));
 
-        BtnAgregar.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        BtnAgregar.setText("Agregar");
-        BtnAgregar.addActionListener(new java.awt.event.ActionListener() {
+        BtnActualizar.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        BtnActualizar.setText("Actualizar");
+        BtnActualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnAgregarActionPerformed(evt);
+                BtnActualizarActionPerformed(evt);
             }
         });
 
@@ -107,6 +108,16 @@ public class AgregarUsuarios extends javax.swing.JInternalFrame {
                 TxtTelefonoKeyTyped(evt);
             }
         });
+
+        BtnCargar.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        BtnCargar.setText("Cargar");
+        BtnCargar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnCargarActionPerformed(evt);
+            }
+        });
+
+        BtnCambiarContraseña.setText("Cambiar contraseña...");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -125,25 +136,30 @@ public class AgregarUsuarios extends javax.swing.JInternalFrame {
                     .addComponent(jLabel7))
                 .addGap(21, 21, 21)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(TxtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(TxtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(TxtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jDateChooser1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(TxtNombre, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 237, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jComboBoxTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(TxtContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(TxtNombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(37, 37, 37)
-                        .addComponent(BtnAgregar)))
-                .addContainerGap(38, Short.MAX_VALUE))
+                            .addComponent(TxtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(TxtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(TxtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jDateChooser1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(TxtNombre, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 237, Short.MAX_VALUE)))
+                        .addContainerGap(71, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jComboBoxTipo, 0, 153, Short.MAX_VALUE)
+                            .addComponent(TxtNombreUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE)
+                            .addComponent(BtnCambiarContraseña, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(BtnActualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(BtnCargar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(31, 31, 31))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(33, Short.MAX_VALUE)
+                .addContainerGap(26, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(TxtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -170,12 +186,13 @@ public class AgregarUsuarios extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(TxtContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(BtnCargar)
+                    .addComponent(BtnCambiarContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(jComboBoxTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BtnAgregar))
+                    .addComponent(BtnActualizar))
                 .addGap(44, 44, 44))
         );
 
@@ -199,7 +216,7 @@ public class AgregarUsuarios extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void BtnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAgregarActionPerformed
+    private void BtnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnActualizarActionPerformed
         
         usuario= new Usuario();
         
@@ -210,7 +227,6 @@ public class AgregarUsuarios extends javax.swing.JInternalFrame {
            
         }
         usuario.setNombre(this.TxtNombre.getText());
-        usuario.setContraseña(this.concatenar(this.TxtContraseña.getPassword()));
         usuario.setCorreo(this.TxtCorreo.getText());
         usuario.setSobrenombre(this.TxtNombreUsuario.getText());
         usuario.setTipo((String) this.jComboBoxTipo.getSelectedItem());
@@ -234,7 +250,7 @@ public class AgregarUsuarios extends javax.swing.JInternalFrame {
         }else{ JOptionPane.showMessageDialog(this, "Debe rellenar todoas los campos"); }
         
         
-    }//GEN-LAST:event_BtnAgregarActionPerformed
+    }//GEN-LAST:event_BtnActualizarActionPerformed
 
    
     
@@ -251,6 +267,47 @@ public class AgregarUsuarios extends javax.swing.JInternalFrame {
         char c = evt.getKeyChar();
         if(c<'0' || c>'9')evt.consume();
     }//GEN-LAST:event_TxtTelefonoKeyTyped
+
+    private void BtnCargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCargarActionPerformed
+        
+        if( !this.TxtCedula.equals(""))
+        {
+
+            usuario= new Usuario();  
+            int cedula = Integer.parseInt(this.TxtCedula.getText());
+            usuario.setCedula(cedula);
+            if( cu.buscar(usuario) !=null  ){
+                
+                usuario = cu.buscar(usuario);
+                this.TxtCedula.setText(String.valueOf(usuario.getCedula()));
+                this.TxtNombre.setText(usuario.getNombre());
+                this.jDateChooser1.setDate(usuario.getFechanacimiento());
+                this.TxtTelefono.setText(String.valueOf( usuario.getTelefono()));
+                this.TxtCorreo.setText(usuario.getCorreo());
+                this.TxtNombreUsuario.setText(usuario.getSobrenombre());
+                
+                if(usuario.getTipo().equals("oficial"))
+                {
+                    this.jComboBoxTipo.setSelectedItem(1);
+                }else{
+                
+                    this.jComboBoxTipo.setSelectedItem(usuario.getTipo());
+                
+                }
+                
+                
+                
+                
+                
+            }
+            
+              
+            
+            
+        }
+        
+        
+    }//GEN-LAST:event_BtnCargarActionPerformed
 
     
     
@@ -278,7 +335,6 @@ public class AgregarUsuarios extends javax.swing.JInternalFrame {
     
     public void Limpiar() {
         this.TxtCedula.setText("");
-        this.TxtContraseña.setText("");
         this.TxtCorreo.setText("");
         this.TxtNombre.setText("");
         this.TxtTelefono.setText("");
@@ -289,9 +345,10 @@ public class AgregarUsuarios extends javax.swing.JInternalFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BtnAgregar;
+    private javax.swing.JButton BtnActualizar;
+    private javax.swing.JButton BtnCambiarContraseña;
+    private javax.swing.JButton BtnCargar;
     private javax.swing.JTextField TxtCedula;
-    private javax.swing.JPasswordField TxtContraseña;
     private javax.swing.JTextField TxtCorreo;
     private javax.swing.JTextField TxtNombre;
     private javax.swing.JTextField TxtNombreUsuario;

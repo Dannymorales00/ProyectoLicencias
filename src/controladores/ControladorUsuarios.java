@@ -49,26 +49,26 @@ public class ControladorUsuarios {
         return false;
     }
         
-    public Usuario buscar(String cedula){
+    public Usuario buscar(Usuario usuario){
         try {
             
-            this.datos = this.sentencias.executeQuery("select * from usuarios where cedula="+cedula);
+            this.datos = this.sentencias.executeQuery("select * from usuarios where cedula="+usuario.getCedula());
             
                 if(datos.next())
                 {
              
                     
-                    Usuario usuario = new Usuario();
-                    usuario.setCedula(datos.getInt(2));
-                    usuario.setNombre(datos.getString(3));
-                    usuario.setFechanacimiento(datos.getDate(4));
-                    usuario.setTelefono(datos.getInt(5));
-                    usuario.setCorreo(datos.getString(6));
-                    usuario.setSobrenombre(datos.getString(7));
-                    usuario.setContraseña(datos.getString(8));
-                    usuario.setTipo(datos.getString(9));
+                    Usuario usuario2 = new Usuario();
+                    usuario2.setCedula(datos.getInt(2));
+                    usuario2.setNombre(datos.getString(3));
+                    usuario2.setFechanacimiento(datos.getDate(4));
+                    usuario2.setTelefono(datos.getInt(5));
+                    usuario2.setCorreo(datos.getString(6));
+                    usuario2.setSobrenombre(datos.getString(7));
+                    usuario2.setContraseña(datos.getString(8));
+                    usuario2.setTipo(datos.getString(9));
                     
-                    return usuario;
+                    return usuario2;
                 } 
                 
         }catch (SQLException ex) {
@@ -119,4 +119,5 @@ public class ControladorUsuarios {
             }
             return null; 
     }
+
 }
