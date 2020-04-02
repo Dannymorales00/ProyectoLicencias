@@ -83,7 +83,8 @@
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="jComboBoxTipo" alignment="0" pref="153" max="32767" attributes="0"/>
                               <Component id="TxtNombreUsuario" alignment="0" pref="153" max="32767" attributes="0"/>
-                              <Component id="BtnCambiarContraseña" alignment="0" max="32767" attributes="0"/>
+                              <Component id="BtnCambiarContraseña" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jPasswordField1" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -99,7 +100,7 @@
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace pref="26" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="TxtCedula" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -133,7 +134,7 @@
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="BtnCargar" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="BtnCambiarContraseña" alignment="3" min="-2" pref="16" max="-2" attributes="0"/>
+                      <Component id="jPasswordField1" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -141,7 +142,8 @@
                       <Component id="jComboBoxTipo" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="BtnActualizar" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+                  <Component id="BtnCambiarContraseña" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -272,6 +274,11 @@
         <Component class="javax.swing.JButton" name="BtnCambiarContrase&#xf1;a">
           <Properties>
             <Property name="text" type="java.lang.String" value="Cambiar contrase&#xf1;a..."/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JPasswordField" name="jPasswordField1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="jPasswordField1"/>
           </Properties>
         </Component>
       </SubComponents>

@@ -52,9 +52,9 @@ public class ControladorUsuarios {
     public Usuario buscar(Usuario usuario){
         try {
             usuario.setNombre("juan");
-            System.out.println("antes de la sentencia...."+usuario.getNombre());
+         
             this.datos = this.sentencias.executeQuery("select * from usuarios where cedula="+usuario.getCedula());
-                System.out.println("despues de la sentencia");
+ 
                 
                 if(datos.next())
                 {
@@ -97,7 +97,7 @@ public class ControladorUsuarios {
         
         try {  
               
-            this.sentencias.executeUpdate("UPDATE usuarios SET nombre='"+usuario.getNombre()+"' WHERE cedula ='"+usuario.getCedula()+"';");
+            this.sentencias.executeUpdate("UPDATE usuarios SET nombre='"+usuario.getNombre()+"',fecha_nacimiento='"+usuario.getFechanacimiento()+"', telefono='"+usuario.getTelefono()+"', correo='"+usuario.getCorreo()+"', nombre_usuario='"+usuario.getSobrenombre()+"', contraseña='"+usuario.getContraseña()+"',tipo='"+usuario.getTipo()+"' WHERE cedula ='"+usuario.getCedula()+"';");
             return true;
             
         } catch (SQLException ex) {

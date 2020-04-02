@@ -55,6 +55,7 @@ public class ModificarUsuarios extends javax.swing.JInternalFrame {
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
         BtnCargar = new javax.swing.JButton();
         BtnCambiarContraseña = new javax.swing.JButton();
+        jPasswordField1 = new javax.swing.JPasswordField();
 
         setClosable(true);
         setTitle("Modificar Usuarios");
@@ -119,6 +120,8 @@ public class ModificarUsuarios extends javax.swing.JInternalFrame {
 
         BtnCambiarContraseña.setText("Cambiar contraseña...");
 
+        jPasswordField1.setText("jPasswordField1");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -149,7 +152,8 @@ public class ModificarUsuarios extends javax.swing.JInternalFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jComboBoxTipo, 0, 153, Short.MAX_VALUE)
                             .addComponent(TxtNombreUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE)
-                            .addComponent(BtnCambiarContraseña, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(BtnCambiarContraseña)
+                            .addComponent(jPasswordField1))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(BtnActualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -159,7 +163,7 @@ public class ModificarUsuarios extends javax.swing.JInternalFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(26, Short.MAX_VALUE)
+                .addGap(26, 26, 26)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(TxtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -187,13 +191,14 @@ public class ModificarUsuarios extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(BtnCargar)
-                    .addComponent(BtnCambiarContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(jComboBoxTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(BtnActualizar))
-                .addGap(44, 44, 44))
+                .addGap(19, 19, 19)
+                .addComponent(BtnCambiarContraseña, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -231,6 +236,7 @@ public class ModificarUsuarios extends javax.swing.JInternalFrame {
         usuario.setSobrenombre(this.TxtNombreUsuario.getText());
         usuario.setTipo((String) this.jComboBoxTipo.getSelectedItem());
         usuario.setFechanacimiento(this.jDateChooser1.getDate());
+        usuario.setContraseña(concatenar(this.jPasswordField1.getPassword()));
        
 
         
@@ -239,12 +245,12 @@ public class ModificarUsuarios extends javax.swing.JInternalFrame {
         if(usuario.comprobar())
         {
             
-            if(cu.añadir(usuario))
+            if(cu.actualizar(usuario))
             {
                 JOptionPane.showMessageDialog(this, "Usuario agregado");
                 usuario=null;
                 Limpiar();
-            }else{System.out.println("No se pudo agregar ");}
+            }else{System.out.println("No se pudo actualizar ");}
             
             
         }else{ JOptionPane.showMessageDialog(this, "Debe rellenar todos los campos"); }
@@ -286,15 +292,9 @@ public class ModificarUsuarios extends javax.swing.JInternalFrame {
                 this.TxtTelefono.setText(String.valueOf( usuario.getTelefono()));
                 this.TxtCorreo.setText(usuario.getCorreo());
                 this.TxtNombreUsuario.setText(usuario.getSobrenombre());
+                this.jComboBoxTipo.setSelectedItem(usuario.getTipo());
                 
-                if(usuario.getTipo().equals("oficial"))
-                {
-                    this.jComboBoxTipo.setSelectedItem(1);
-                }else{
-                
-                    this.jComboBoxTipo.setSelectedItem(usuario.getTipo());
-                
-                }
+        
                 
                 
                 
@@ -365,5 +365,6 @@ public class ModificarUsuarios extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPasswordField jPasswordField1;
     // End of variables declaration//GEN-END:variables
 }
