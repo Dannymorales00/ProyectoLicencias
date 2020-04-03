@@ -21,9 +21,10 @@ public class ModificarUsuarios extends javax.swing.JInternalFrame {
      * Creates new form AgregarUsuarios
      */
     public ModificarUsuarios() {
-       cu = new ControladorUsuarios(); 
+    
         initComponents();
-
+        usuario=null;
+        cu = new ControladorUsuarios(); 
         
     }
 
@@ -295,6 +296,7 @@ public class ModificarUsuarios extends javax.swing.JInternalFrame {
             usuario= new Usuario();  
             int cedula = Integer.parseInt(this.TxtCedula.getText());
             usuario.setCedula(cedula);
+            
             if( cu.buscar(usuario) !=null  )
             {
                 
@@ -331,7 +333,23 @@ public class ModificarUsuarios extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_BtnCargarActionPerformed
 
     private void BtnCambiarContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCambiarContraseñaActionPerformed
-        // TODO add your handling code here:
+        
+        if(usuario!=null && usuario.comprobar()){
+            Frame f = JOptionPane.getFrameForComponent(this);
+            JDialogCambiarContraseña jdialog = new JDialogCambiarContraseña(f,true);
+            jdialog.setContraseñaActual(concatenar(this.jPasswordField1.getPassword()));
+            jdialog.setVisible(true);//cuando se muestra se pausa aquí
+        
+            if(jdialog.getUsuario()!=null)
+            {
+                this.jPasswordField1.setEditable(true);
+                this.jPasswordField1.setText(    jdialog.getUsuario().getContraseña() );
+                this.jPasswordField1.setEditable(false);
+            }
+        
+        
+        }else{JOptionPane.showMessageDialog(this, "Debe cargar un usuario");}
+        
     }//GEN-LAST:event_BtnCambiarContraseñaActionPerformed
 
     
