@@ -6,13 +6,15 @@
 package ventanas;
 
 import conexion.Conexion;
+import java.awt.Frame;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author LeanPC
  */
 public class FrmMenu extends javax.swing.JFrame {
-    private FrmConfiguracion frmconfig;
+
     private AgregarUsuarios agregarUsuarios;
     private ModificarUsuarios modificarUsuarios;
     private AgregarOficiales agregarOficiales;
@@ -23,8 +25,24 @@ public class FrmMenu extends javax.swing.JFrame {
     public FrmMenu() {
         initComponents();
         this.setExtendedState(this.MAXIMIZED_BOTH);
-        frmconfig = new FrmConfiguracion();
+        
+  
         conexion.Conectar();
+        
+        if(conexion.getConn()==null)
+        {
+          
+            Frame f = JOptionPane.getFrameForComponent(null);
+            JDialogConfiguracion jdconfig = new JDialogConfiguracion(f,true);
+            jdconfig.setVisible(true);
+            
+            if(jdconfig.getConn()==null)
+            {
+                System.exit(0);
+            }
+            
+            
+        }
         
     
     }
@@ -34,6 +52,36 @@ public class FrmMenu extends javax.swing.JFrame {
     }
 
 
+    
+    public void VerificarConexion() {
+        //sino se logro conectar abre la ventana para configurar
+        //si en la ventana de configurar no se logra conectar se cierra toda la aplicacion
+        
+        if(conexion.getConn()==null)
+        {
+          
+            Frame f = JOptionPane.getFrameForComponent(null);
+            JDialogConfiguracion jdconfig = new JDialogConfiguracion(f,true);
+            jdconfig.setVisible(true);
+            
+            if(jdconfig.getConn()==null)
+            {
+                System.out.println("no se conecto jdiag conn");
+                System.exit(0);
+            }else
+            {
+                // si en la ventana configuracion se conecto, volvemos a realizar la conexion aquí 
+                conexion.Conectar();
+            
+            }
+            
+            
+        }
+        
+    }
+    
+    
+    
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -59,7 +107,8 @@ public class FrmMenu extends javax.swing.JFrame {
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
-        jMenu4 = new javax.swing.JMenu();
+        jmenu = new javax.swing.JMenu();
+        jMenuItemAbrirConfiguracion = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -143,8 +192,22 @@ public class FrmMenu extends javax.swing.JFrame {
 
         jMenuBar2.add(jMenu3);
 
-        jMenu4.setText("Configuracion");
-        jMenuBar2.add(jMenu4);
+        jmenu.setText("Configuracion");
+        jmenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmenuActionPerformed(evt);
+            }
+        });
+
+        jMenuItemAbrirConfiguracion.setText("jMenuItem4");
+        jMenuItemAbrirConfiguracion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemAbrirConfiguracionActionPerformed(evt);
+            }
+        });
+        jmenu.add(jMenuItemAbrirConfiguracion);
+
+        jMenuBar2.add(jmenu);
 
         setJMenuBar(jMenuBar2);
 
@@ -197,6 +260,16 @@ public class FrmMenu extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItemConfig1ActionPerformed
 
+    private void jmenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmenuActionPerformed
+        // TODO add your handling code here:   
+    }//GEN-LAST:event_jmenuActionPerformed
+
+    private void jMenuItemAbrirConfiguracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAbrirConfiguracionActionPerformed
+        Frame f = JOptionPane.getFrameForComponent(null);
+        JDialogConfiguracion jdconfig = new JDialogConfiguracion(f,true);
+        jdconfig.setVisible(true);
+    }//GEN-LAST:event_jMenuItemAbrirConfiguracionActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -238,11 +311,11 @@ public class FrmMenu extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItemAbrirConfiguracion;
     private javax.swing.JMenuItem jMenuItemAgregarUsuarios;
     private javax.swing.JMenuItem jMenuItemConfig;
     private javax.swing.JMenuItem jMenuItemConfig1;
@@ -250,5 +323,6 @@ public class FrmMenu extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItemModificarUsuarios;
     private javax.swing.JMenu jMenuOficial;
     private javax.swing.JMenu jMenuRegistar;
+    private javax.swing.JMenu jmenu;
     // End of variables declaration//GEN-END:variables
 }

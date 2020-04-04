@@ -11,7 +11,8 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import ventanas.FrmConfiguracion;
+
+
 
 
 /**
@@ -44,6 +45,11 @@ public class Conexion {
         this.datos = datos;
     }
 
+    public Connection getConn() {
+        return conn;
+    }
+    
+    
     
     
     public void Conectar() {
@@ -79,9 +85,8 @@ public class Conexion {
             } catch (SQLException e) {
             
                 System.out.println("no se conecto la madre");
-                //System.out.println(e);
-                FrmConfiguracion frmconfig= new FrmConfiguracion();
-                frmconfig.setVisible(true);
+
+
             } 
         
             

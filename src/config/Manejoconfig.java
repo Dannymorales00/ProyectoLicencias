@@ -7,7 +7,7 @@ package config;
 import java.io.File;
 import java.io.IOException;
 import org.ini4j.*;
-import ventanas.FrmConfiguracion;
+
 /**
  *
  * @author Danny_PC
@@ -60,11 +60,7 @@ public class Manejoconfig {
             System.out.println("verifique la libreria necesaria para la conexion");
             System.out.println("Intente crear de nuevo el archivo config");
             
-          
-            FrmConfiguracion frmconfig = new FrmConfiguracion();
-            frmconfig.setVisible(true);
-            frmconfig.setAlwaysOnTop(true);
-            
+
             
             
         } catch (IOException e) {
@@ -75,10 +71,7 @@ public class Manejoconfig {
         }catch(Exception e){
             
             System.out.println("error al leer el archivo config.ini ubicado en los recursos ");
-            
-            FrmConfiguracion frmconfig = new FrmConfiguracion();
-            frmconfig.setVisible(true);
-            frmconfig.setAlwaysOnTop(true);
+
             
         }            
         
@@ -129,18 +122,14 @@ public class Manejoconfig {
         }catch (IOException e) {
             System.out.println("Error al crear el archivo wini");
             System.out.println("verifique que tenga instalado la libreria correspondiente");
-            FrmConfiguracion frmconfig = new FrmConfiguracion();
-            frmconfig.setVisible(true);
-            frmconfig.setAlwaysOnTop(true);
+  
             
             
         }catch(Exception e){
             
             System.out.println("error al leer el archivo config.ini ubicado en los recursos ");
             
-            FrmConfiguracion frmconfig = new FrmConfiguracion();
-            frmconfig.setVisible(true);
-            frmconfig.setAlwaysOnTop(true);
+
             
         }     
             
