@@ -83,14 +83,16 @@ public class ControladorUsuarios {
     
     public boolean eliminar(Usuario usuario){
         try {
+            
             this.sentencias.executeUpdate("delete from usuarios where cedula="+usuario.getCedula());
+            return true;
             
-            
-        } catch (SQLException ex) {
+        }catch (SQLException ex) {
                 
             System.out.println("Error al borrar");
         }
-            return false;
+            
+        return false;
     }
     
     public boolean actualizar(Usuario usuario){
@@ -107,14 +109,16 @@ public class ControladorUsuarios {
         return false;
     }
     
-        public ArrayList<Usuario> listar(int cedula){
+    
+    
+        public ArrayList<Usuario> listarUsuarios(){
             ArrayList<Usuario> usuarios = new ArrayList();
             try {
-                this.datos = this.sentencias.executeQuery("select * from usuarios where cedula='"+cedula+"'");
+                this.datos = this.sentencias.executeQuery("select * from usuarios ");
                 
                 while(datos.next()){
               
-//                   usuarios.add(new Usuario(datos.getInt(2),datos.getString(3),datos.getDate(4),datos.getInt(5),datos.getString(6),datos.getString(7),datos.getString(8),datos.getString(9)));
+                    usuarios.add(new Usuario(datos.getInt(2),datos.getString(3),datos.getDate(4),datos.getInt(5),datos.getString(6),datos.getString(7),datos.getString(8),datos.getString(9)));
                
                 }
                 return usuarios;

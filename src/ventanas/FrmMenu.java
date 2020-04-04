@@ -199,7 +199,7 @@ public class FrmMenu extends javax.swing.JFrame {
             }
         });
 
-        jMenuItemAbrirConfiguracion.setText("jMenuItem4");
+        jMenuItemAbrirConfiguracion.setText("Abrir");
         jMenuItemAbrirConfiguracion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItemAbrirConfiguracionActionPerformed(evt);
@@ -253,7 +253,9 @@ public class FrmMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemModificarUsuariosActionPerformed
 
     private void jMenuItemEliminarUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemEliminarUsuariosActionPerformed
-
+        EliminarUsuarios eliminarUsuarios = new EliminarUsuarios();
+        this.jDesktopPane1.add(eliminarUsuarios);
+        eliminarUsuarios.setVisible(true);
     }//GEN-LAST:event_jMenuItemEliminarUsuariosActionPerformed
 
     private void jMenuItemConfig1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemConfig1ActionPerformed
