@@ -49,16 +49,16 @@ public class ControladorOficiales {
         return false;
     }
         
-    public Oficial buscar(int cedula){
+    public Oficial buscar(Oficial oficial){
         try {
             
-            this.datos = this.sentencias.executeQuery("select * from oficiales where cedula="+cedula);
+            this.datos = this.sentencias.executeQuery("select * from oficiales where cedula="+oficial.getCedula());
             
                 if(datos.next())
                 {
              
                     
-                    Oficial oficial = new Oficial();
+                    Oficial oficial2 = new Oficial();
                     oficial.setCedula(datos.getInt(2));
                     oficial.setNombre(datos.getString(3));
                     oficial.setFechanacimiento(datos.getDate(4));
@@ -66,7 +66,7 @@ public class ControladorOficiales {
                     oficial.setCorreo(datos.getString(6));
                     oficial.setSalario(datos.getDouble(7));
                     
-                    return oficial;
+                    return oficial2;
                 } 
                 
         }catch (SQLException ex) {
@@ -79,7 +79,7 @@ public class ControladorOficiales {
     public boolean eliminar(Oficial oficial){
         try {
             this.sentencias.executeUpdate("delete from oficiales where cedula="+oficial.getCedula());
-            
+            return true;
             
         } catch (SQLException ex) {
                 

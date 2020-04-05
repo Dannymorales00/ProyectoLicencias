@@ -10,6 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import modelos.Oficial;
 import modelos.Prueba;
 
 /**
@@ -21,6 +22,7 @@ public class ControladorPruebas {
     private Statement sentencias;
     private ResultSet datos;
     private ControladorOficiales conOficiales;
+    private Oficial oficial;
     
     public ControladorPruebas() {
        
@@ -47,16 +49,20 @@ public class ControladorPruebas {
         return false;
     }
     
-        public Prueba buscar(int cedula){
+    public Prueba buscar(Prueba prueba){
         try {
             
-            this.datos = this.sentencias.executeQuery("select * from pruebas where cedula_oficial="+cedula);
+            this.datos = this.sentencias.executeQuery("select * from pruebas where cedula_oficial="+prueba.getOficial().getCedula());
             
                 if(datos.next())
                 {
              
-                    Prueba prueba = new Prueba(datos.getDate(2),datos.getTime(3),this.conOficiales.buscar(datos.getInt(4)),datos.getString(5),datos.getInt(6),datos.getBoolean(7));
-                    return prueba;
+                    //Para poder buscar el oficial
+                    oficial = new Oficial();
+                    oficial.setCedula(datos.getInt(4));
+                    
+                    Prueba prueba2 = new Prueba(datos.getDate(2),datos.getTime(3),this.conOficiales.buscar(oficial),datos.getString(5),datos.getInt(6),datos.getBoolean(7));
+                    return prueba2;
                 } 
                 
         }catch (SQLException ex) {
@@ -69,7 +75,7 @@ public class ControladorPruebas {
     public boolean eliminar(Prueba prueba){
         try {
             this.sentencias.executeUpdate("delete from pruebas where cedula_oficial="+prueba.getOficial().getCedula());
-            
+            return true;
             
         } catch (SQLException ex) {
                 
@@ -98,7 +104,10 @@ public class ControladorPruebas {
                 
                 while(datos.next()){
                     
-                    pruebas.add(new Prueba(datos.getDate(2),datos.getTime(3),this.conOficiales.buscar(datos.getInt(4)),datos.getString(5),datos.getInt(6),datos.getBoolean(7)));
+                    oficial = new Oficial();
+                    oficial.setCedula(datos.getInt(4));
+                    
+                    pruebas.add(new Prueba(datos.getDate(2),datos.getTime(3),this.conOficiales.buscar(oficial),datos.getString(5),datos.getInt(6),datos.getBoolean(7)));
                
                 }
                 return pruebas;

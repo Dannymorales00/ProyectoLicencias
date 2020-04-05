@@ -153,7 +153,7 @@ public class ModificarClientes extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(TxtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 102, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BtnActualizar)
                     .addComponent(BtnCargar)))
@@ -288,8 +288,6 @@ public class ModificarClientes extends javax.swing.JInternalFrame {
         this.TxtTelefono.setText("");
         this.jDateChooser1.setCalendar(null);
  
-        
-        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

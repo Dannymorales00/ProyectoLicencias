@@ -57,7 +57,7 @@ public class ControladorClientes {
                 if(datos.next())
                 {
              
-                    
+
                     Cliente cliente2 = new Cliente();
                     cliente2.setCedula(datos.getInt(2));
                     cliente2.setNombre(datos.getString(3));

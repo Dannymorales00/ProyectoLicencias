@@ -37,6 +37,10 @@ public class Oficial {
         this.salario = 0;
     }
     
+    public boolean comprobar(){
+        return this.cedula>0 && this.telefono>0 && this.salario>0 && this.nombre!=null && this.correo!=null && this.fechanacimiento!=null;
+    }
+    
     public int getCedula() {
         return cedula;
     }
