@@ -73,6 +73,18 @@ public class ModificarOficiales extends javax.swing.JInternalFrame {
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel7.setText("Salario:");
 
+        txtCedula.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCedulaKeyTyped(evt);
+            }
+        });
+
+        txtTelefono.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtTelefonoKeyTyped(evt);
+            }
+        });
+
         btnCargar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnCargar.setText("Cargar");
         btnCargar.addActionListener(new java.awt.event.ActionListener() {
@@ -253,6 +265,16 @@ public class ModificarOficiales extends javax.swing.JInternalFrame {
         }
         
     }//GEN-LAST:event_btnActualizarActionPerformed
+
+    private void txtTelefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelefonoKeyTyped
+        char c = evt.getKeyChar();
+        if(c<'0' || c>'9')evt.consume();
+    }//GEN-LAST:event_txtTelefonoKeyTyped
+
+    private void txtCedulaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCedulaKeyTyped
+        char c = evt.getKeyChar();
+        if(c<'0' || c>'9')evt.consume();
+    }//GEN-LAST:event_txtCedulaKeyTyped
 
     public void Limpiar() {
         this.txtCedula.setText("");
