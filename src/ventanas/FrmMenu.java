@@ -104,6 +104,7 @@ public class FrmMenu extends javax.swing.JFrame {
         jMenuItemConfig1 = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
         jMenuItemAgregarClientes = new javax.swing.JMenuItem();
+        jMenuItemModificarClientes = new javax.swing.JMenuItem();
         jMenuItemEliminarClientes = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
@@ -184,6 +185,14 @@ public class FrmMenu extends javax.swing.JFrame {
             }
         });
         jMenu1.add(jMenuItemAgregarClientes);
+
+        jMenuItemModificarClientes.setText("Modificar");
+        jMenuItemModificarClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemModificarClientesActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItemModificarClientes);
 
         jMenuItemEliminarClientes.setText("Eliminar");
         jMenuItemEliminarClientes.addActionListener(new java.awt.event.ActionListener() {
@@ -301,6 +310,13 @@ public class FrmMenu extends javax.swing.JFrame {
         eliminarClientes.setVisible(true);
     }//GEN-LAST:event_jMenuItemEliminarClientesActionPerformed
 
+    private void jMenuItemModificarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemModificarClientesActionPerformed
+        ModificarClientes modificarClientes = new ModificarClientes();
+        this.jDesktopPane1.add(modificarClientes);
+        modificarClientes.setVisible(true);
+        
+    }//GEN-LAST:event_jMenuItemModificarClientesActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -353,6 +369,7 @@ public class FrmMenu extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItemConfig1;
     private javax.swing.JMenuItem jMenuItemEliminarClientes;
     private javax.swing.JMenuItem jMenuItemEliminarUsuarios;
+    private javax.swing.JMenuItem jMenuItemModificarClientes;
     private javax.swing.JMenuItem jMenuItemModificarUsuarios;
     private javax.swing.JMenu jMenuOficial;
     private javax.swing.JMenu jMenuRegistar;
