@@ -91,8 +91,8 @@ public class ControladorClientes {
     public boolean actualizar(Cliente cliente){
         
         try {  
-              
-            this.sentencias.executeUpdate("UPDATE clientes SET nombre='"+cliente.getNombre()+"' WHERE cedula ='"+cliente.getCedula()+"';");
+            SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");   
+            this.sentencias.executeUpdate("UPDATE clientes SET nombre='"+cliente.getNombre()+"',fecha_nacimiento='"+f.format(cliente.getFechanacimiento())+"',telefono='"+cliente.getTelefono()+"',correo='"+cliente.getCorreo()+"'  WHERE cedula ='"+cliente.getCedula()+"';");
             return true;
             
         } catch (SQLException ex) {
