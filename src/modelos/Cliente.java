@@ -5,7 +5,7 @@
  */
 package modelos;
 
-import java.sql.Date;
+import java.util.Date;
 
 
 /**
@@ -41,6 +41,14 @@ public class Cliente {
     }
 
     
+    
+       public boolean comprobar() {
+        
+        return  this.telefono >0 &&
+                this.cedula >0 && this.nombre!=null && 
+                this.correo!=null && this.fechanacimiento!=null;
+        
+    }
     
     
     

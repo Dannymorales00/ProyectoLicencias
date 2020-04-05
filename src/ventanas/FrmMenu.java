@@ -92,6 +92,7 @@ public class FrmMenu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenuItem1 = new javax.swing.JMenuItem();
         jDesktopPane1 = new javax.swing.JDesktopPane();
         jMenuBar2 = new javax.swing.JMenuBar();
         jMenuRegistar = new javax.swing.JMenu();
@@ -102,13 +103,16 @@ public class FrmMenu extends javax.swing.JFrame {
         jMenuItemConfig = new javax.swing.JMenuItem();
         jMenuItemConfig1 = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItemAgregarClientes = new javax.swing.JMenuItem();
+        jMenuItemEliminarClientes = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
         jmenu = new javax.swing.JMenu();
         jMenuItemAbrirConfiguracion = new javax.swing.JMenuItem();
+
+        jMenuItem1.setText("jMenuItem1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -173,8 +177,21 @@ public class FrmMenu extends javax.swing.JFrame {
 
         jMenu1.setText("Clientes");
 
-        jMenuItem1.setText("Agregar");
-        jMenu1.add(jMenuItem1);
+        jMenuItemAgregarClientes.setText("Agregar");
+        jMenuItemAgregarClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemAgregarClientesActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItemAgregarClientes);
+
+        jMenuItemEliminarClientes.setText("Eliminar");
+        jMenuItemEliminarClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemEliminarClientesActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItemEliminarClientes);
 
         jMenuBar2.add(jMenu1);
 
@@ -272,6 +289,18 @@ public class FrmMenu extends javax.swing.JFrame {
         jdconfig.setVisible(true);
     }//GEN-LAST:event_jMenuItemAbrirConfiguracionActionPerformed
 
+    private void jMenuItemAgregarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAgregarClientesActionPerformed
+        AgregarClientes agregarClientes = new AgregarClientes();
+        this.jDesktopPane1.add(agregarClientes);
+        agregarClientes.setVisible(true);
+    }//GEN-LAST:event_jMenuItemAgregarClientesActionPerformed
+
+    private void jMenuItemEliminarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemEliminarClientesActionPerformed
+        EliminarClientes eliminarClientes =  new EliminarClientes();
+        this.jDesktopPane1.add(eliminarClientes);
+        eliminarClientes.setVisible(true);
+    }//GEN-LAST:event_jMenuItemEliminarClientesActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -318,9 +347,11 @@ public class FrmMenu extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItemAbrirConfiguracion;
+    private javax.swing.JMenuItem jMenuItemAgregarClientes;
     private javax.swing.JMenuItem jMenuItemAgregarUsuarios;
     private javax.swing.JMenuItem jMenuItemConfig;
     private javax.swing.JMenuItem jMenuItemConfig1;
+    private javax.swing.JMenuItem jMenuItemEliminarClientes;
     private javax.swing.JMenuItem jMenuItemEliminarUsuarios;
     private javax.swing.JMenuItem jMenuItemModificarUsuarios;
     private javax.swing.JMenu jMenuOficial;

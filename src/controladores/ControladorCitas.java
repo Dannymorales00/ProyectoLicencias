@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import modelos.Cita;
+import modelos.Cliente;
 
 /**
  *
@@ -20,7 +21,8 @@ public class ControladorCitas {
     private Conexion conn;
     private Statement sentencias;
     private ResultSet datos;
-    private ControladorClientes conCliente;
+    private ControladorClientes cc;
+    private Cliente cliente;
     
     public ControladorCitas() {
        
@@ -54,8 +56,8 @@ public class ControladorCitas {
             
                 if(datos.next())
                 {
-             
-                    Cita cita = new Cita(datos.getInt(1),datos.getDate(2),datos.getTime(3),this.conCliente.buscar(cedula));
+                    cliente.setCedula(datos.getInt(4));
+                    Cita cita = new Cita(datos.getInt(1),datos.getDate(2),datos.getTime(3),this.cc.buscar(cliente));
                     return cita;
                 } 
                 
@@ -92,14 +94,16 @@ public class ControladorCitas {
     }    
         
     public ArrayList<Cita> listar(int id){
+        
         ArrayList<Cita> citas = new ArrayList();
             try {
                 this.datos = this.sentencias.executeQuery("select * from citas where id='"+id+"'");
                 
                 while(datos.next()){
                     
-                    citas.add(new Cita(datos.getInt(1),datos.getDate(2),datos.getTime(3),this.conCliente.buscar(datos.getInt(4))));
-               
+                    cliente.setCedula(datos.getInt(4));
+                    citas.add(new Cita(datos.getInt(1),datos.getDate(2),datos.getTime(3), cc.buscar(cliente)) );
+                                                                                             
                 }
                 return citas;
             } catch (SQLException ex) {

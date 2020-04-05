@@ -9,8 +9,10 @@ import conexion.Conexion;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import modelos.Cliente;
+import ventanas.FrmMenu;
 
 /**
  *
@@ -23,7 +25,7 @@ public class ControladorClientes {
     
     public ControladorClientes() {
        
-       //conn = FrmMenu.getConexion();
+       conn = FrmMenu.getConexion();
        this.sentencias= conn.getSentencias();
        this.datos=conn.getDatos();
     }
@@ -36,7 +38,8 @@ public class ControladorClientes {
     
     public boolean añadir(Cliente cliente){
         try {
-           sentencias.execute("insert into clientes values(null,'"+cliente.getCedula()+"','"+cliente.getNombre()+"','"+cliente.getFechanacimiento()+"','"+cliente.getTelefono()+"','"+cliente.getCorreo()+"')");
+           SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd"); 
+           sentencias.execute("insert into clientes values(null,'"+cliente.getCedula()+"','"+cliente.getNombre()+"','"+f.format(cliente.getFechanacimiento())+"','"+cliente.getTelefono()+"','"+cliente.getCorreo()+"')");
            return true;  
            
            
@@ -46,24 +49,24 @@ public class ControladorClientes {
         return false;
     }
     
-        public Cliente buscar(int cedula){
+        public Cliente buscar(Cliente cliente){
         try {
             
-            this.datos = this.sentencias.executeQuery("select * from clientes where cedula="+cedula);
+            this.datos = this.sentencias.executeQuery("select * from clientes where cedula="+cliente.getCedula());
             
                 if(datos.next())
                 {
              
                     
-                    Cliente cliente = new Cliente();
-                    cliente.setCedula(datos.getInt(2));
-                    cliente.setNombre(datos.getString(3));
-                    cliente.setFechanacimiento(datos.getDate(4));
-                    cliente.setTelefono(datos.getInt(5));
-                    cliente.setCorreo(datos.getString(6));
+                    Cliente cliente2 = new Cliente();
+                    cliente2.setCedula(datos.getInt(2));
+                    cliente2.setNombre(datos.getString(3));
+                    cliente2.setFechanacimiento(datos.getDate(4));
+                    cliente2.setTelefono(datos.getInt(5));
+                    cliente2.setCorreo(datos.getString(6));
                 
                     
-                    return cliente;
+                    return cliente2;
                 } 
                 
         }catch (SQLException ex) {
@@ -76,7 +79,7 @@ public class ControladorClientes {
     public boolean eliminar(Cliente cliente){
         try {
             this.sentencias.executeUpdate("delete from clientes where cedula="+cliente.getCedula());
-            
+            return true;
             
         } catch (SQLException ex) {
                 
