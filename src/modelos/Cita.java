@@ -5,7 +5,7 @@
  */
 package modelos;
 
-import java.sql.Date;
+import java.util.Date;
 import java.sql.Time;
 
 /**
@@ -15,25 +15,34 @@ import java.sql.Time;
 public class Cita {
     private int id;
     private Date fecha;
-    private Time hora;
+    private String hora;
     private Cliente cliente; 
+    private String estado;
+    
 
-    public Cita(int id, Date fecha, Time hora, Cliente cliente) {
-        this.id = id;
+    public Cita(Date fecha, String hora, Cliente cliente) {
+        
         this.fecha = fecha;
         this.hora = hora;
         this.cliente = cliente;
+        this.estado = "activado";
     }
 
     public Cita() {
-        this.id = 0;
+    
         this.fecha = null;
         this.hora = null;
         this.cliente = null;
-        
+        this.estado =null;
         
     }
 
+    
+    public boolean comprobar() {
+        
+        return this.fecha!=null && this.hora!=null && this.estado!=null && this.cliente!=null;
+    }
+    
     
     
     
@@ -53,11 +62,11 @@ public class Cita {
         this.fecha = fecha;
     }
 
-    public Time getHora() {
+    public String getHora() {
         return hora;
     }
 
-    public void setHora(Time hora) {
+    public void setHora(String hora) {
         this.hora = hora;
     }
 
@@ -68,6 +77,15 @@ public class Cita {
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+    
     
     
     

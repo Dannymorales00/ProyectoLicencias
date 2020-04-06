@@ -101,20 +101,24 @@ public class ControladorClientes {
         return false;
     } 
         
-       public ArrayList<Cliente> listar(int cedula){
+       public ArrayList<Cliente> listar(){
         ArrayList<Cliente> clientes = new ArrayList();
             try {
-                this.datos = this.sentencias.executeQuery("select * from clientes where cedula='"+cedula+"'");
+                this.datos = this.sentencias.executeQuery("select * from clientes");
                 
                 while(datos.next()){
-                    //No se pueden agregar al array porque le falta la edad y esta no esta en la base de datos
-                    //clientes.add(new Cliente(datos.getInt(2),datos.getString(3),datos.getDate(4),datos.getInt(5),datos.getString(6)));
+                  
+                   
+                    clientes.add(new Cliente(datos.getInt(2),datos.getString(3),datos.getDate(4),datos.getInt(5),datos.getString(6)));
                
                 }
                 return clientes;
-            } catch (SQLException ex) {
+            
+            }catch (SQLException ex) {
+                
                 System.out.println("Error al listar");
             }
+            
         return null; 
     }   
        

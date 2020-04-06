@@ -109,7 +109,7 @@ public class FrmMenu extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
-        jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuItemAgregarCita = new javax.swing.JMenuItem();
         jmenu = new javax.swing.JMenu();
         jMenuItemAbrirConfiguracion = new javax.swing.JMenuItem();
 
@@ -213,8 +213,13 @@ public class FrmMenu extends javax.swing.JFrame {
 
         jMenu3.setText("Citas");
 
-        jMenuItem3.setText("Agregar");
-        jMenu3.add(jMenuItem3);
+        jMenuItemAgregarCita.setText("Agregar");
+        jMenuItemAgregarCita.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemAgregarCitaActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItemAgregarCita);
 
         jMenuBar2.add(jMenu3);
 
@@ -317,6 +322,12 @@ public class FrmMenu extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jMenuItemModificarClientesActionPerformed
 
+    private void jMenuItemAgregarCitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAgregarCitaActionPerformed
+        AgregarCitas agregarCitas= new AgregarCitas();
+        this.jDesktopPane1.add(agregarCitas);
+        agregarCitas.setVisible(true);
+    }//GEN-LAST:event_jMenuItemAgregarCitaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -361,8 +372,8 @@ public class FrmMenu extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItemAbrirConfiguracion;
+    private javax.swing.JMenuItem jMenuItemAgregarCita;
     private javax.swing.JMenuItem jMenuItemAgregarClientes;
     private javax.swing.JMenuItem jMenuItemAgregarUsuarios;
     private javax.swing.JMenuItem jMenuItemConfig;

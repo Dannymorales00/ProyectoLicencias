@@ -9,9 +9,11 @@ import conexion.Conexion;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import modelos.Cita;
 import modelos.Cliente;
+import ventanas.FrmMenu;
 
 /**
  *
@@ -26,7 +28,7 @@ public class ControladorCitas {
     
     public ControladorCitas() {
        
-       //conn = FrmMenu.getConexion();
+       conn = FrmMenu.getConexion();
        this.sentencias= conn.getSentencias();
        this.datos=conn.getDatos();
     }
@@ -39,12 +41,16 @@ public class ControladorCitas {
     
         public boolean añadir(Cita cita){
         try {
-           sentencias.execute("insert into citas values(null,'"+cita.getFecha()+"','"+cita.getHora()+"','"+cita.getCliente().getCedula()+"')");
+            System.out.println(cita.getHora()); 
+           SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
+         
+           sentencias.execute("insert into citas values(null,'"+f.format(cita.getFecha())+"','"+cita.getHora()+"','"+cita.getCliente().getCedula()+"','"+cita.getEstado()+"')");
            return true;  
            
            
         } catch (SQLException ex) {
             System.out.println("Error al añadir");
+            System.out.println(ex);
         }
         return false;
     }
@@ -57,8 +63,8 @@ public class ControladorCitas {
                 if(datos.next())
                 {
                     cliente.setCedula(datos.getInt(4));
-                    Cita cita = new Cita(datos.getInt(1),datos.getDate(2),datos.getTime(3),this.cc.buscar(cliente));
-                    return cita;
+                    //Cita cita = new Cita(datos.getInt(1),datos.getDate(2),datos.getTime(3),this.cc.buscar(cliente));
+                   // return cita;
                 } 
                 
         }catch (SQLException ex) {
@@ -102,7 +108,7 @@ public class ControladorCitas {
                 while(datos.next()){
                     
                     cliente.setCedula(datos.getInt(4));
-                    citas.add(new Cita(datos.getInt(1),datos.getDate(2),datos.getTime(3), cc.buscar(cliente)) );
+                    //citas.add(new Cita(datos.getInt(1),datos.getDate(2),datos.getTime(3), cc.buscar(cliente)) );
                                                                                              
                 }
                 return citas;

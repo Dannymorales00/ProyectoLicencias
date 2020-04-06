@@ -21,13 +21,13 @@ public class Cliente {
     private int edad;  //no se guarda en la base de datos.
 
 
-    public Cliente(int cedula, String nombre, Date fechanacimiento, int telefono, String correo,int edad) {
+    public Cliente(int cedula, String nombre, Date fechanacimiento, int telefono, String correo) {
         this.cedula = cedula;
         this.nombre = nombre;
         this.fechanacimiento = fechanacimiento;
         this.telefono = telefono;
         this.correo = correo;
-        this.edad=edad;
+        this.edad=0;
     }
 
     public Cliente() {
