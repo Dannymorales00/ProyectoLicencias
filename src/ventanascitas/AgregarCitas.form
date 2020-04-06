@@ -164,7 +164,7 @@
               <Font name="Tahoma" size="12" style="1"/>
             </Property>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="60">
+              <StringArray count="61">
                 <StringItem index="0" value="Elige Minuto"/>
                 <StringItem index="1" value="1&#x9;"/>
                 <StringItem index="2" value="2&#x9;"/>
@@ -225,6 +225,7 @@
                 <StringItem index="57" value="57&#x9;"/>
                 <StringItem index="58" value="58&#x9;"/>
                 <StringItem index="59" value="59"/>
+                <StringItem index="60" value=" "/>
               </StringArray>
             </Property>
           </Properties>
@@ -271,7 +272,7 @@
             </Property>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="60">
-                <StringItem index="0" value="Elige Minuto"/>
+                <StringItem index="0" value="Elige Segundos"/>
                 <StringItem index="1" value="1&#x9;"/>
                 <StringItem index="2" value="2&#x9;"/>
                 <StringItem index="3" value="3&#x9;"/>

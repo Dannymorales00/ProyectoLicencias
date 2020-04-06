@@ -101,10 +101,10 @@ public class ControladorOficiales {
         return false;
     }    
         
-    public ArrayList<Oficial> listar(String cedula){
+    public ArrayList<Oficial> listar(){
         ArrayList<Oficial> oficiales = new ArrayList();
             try {
-                this.datos = this.sentencias.executeQuery("select * from oficiales where cedula='"+cedula+"'");
+                this.datos = this.sentencias.executeQuery("select * from oficiales");
                 
                 while(datos.next()){
               

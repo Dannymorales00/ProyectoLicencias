@@ -61,7 +61,7 @@ public class ControladorPruebas {
                     oficial = new Oficial();
                     oficial.setCedula(datos.getInt(4));
                     
-                    Prueba prueba2 = new Prueba(datos.getDate(2),datos.getTime(3),this.conOficiales.buscar(oficial),datos.getString(5),datos.getInt(6),datos.getBoolean(7));
+                    Prueba prueba2 = new Prueba(datos.getDate(2),datos.getTime(3).toString(),this.conOficiales.buscar(oficial),datos.getString(5),datos.getInt(6),datos.getBoolean(7));
                     return prueba2;
                 } 
                 
@@ -97,17 +97,17 @@ public class ControladorPruebas {
         return false;
     } 
         
-    public ArrayList<Prueba> listar(int cedula){
+    public ArrayList<Prueba> listar(){
         ArrayList<Prueba> pruebas = new ArrayList();
             try {
-                this.datos = this.sentencias.executeQuery("select * from pruebas where cedula_oficial='"+cedula+"'");
+                this.datos = this.sentencias.executeQuery("select * from pruebas");
                 
                 while(datos.next()){
                     
                     oficial = new Oficial();
                     oficial.setCedula(datos.getInt(4));
                     
-                    pruebas.add(new Prueba(datos.getDate(2),datos.getTime(3),this.conOficiales.buscar(oficial),datos.getString(5),datos.getInt(6),datos.getBoolean(7)));
+                    pruebas.add(new Prueba(datos.getDate(2),datos.getTime(3).toString(),this.conOficiales.buscar(oficial),datos.getString(5),datos.getInt(6),datos.getBoolean(7)));
                
                 }
                 return pruebas;

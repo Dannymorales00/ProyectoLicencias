@@ -5,7 +5,7 @@
  */
 package modelos;
 
-import java.sql.Date;
+import java.util.Date;
 import java.sql.Time;
 
 /**
@@ -14,14 +14,14 @@ import java.sql.Time;
  */
 public class Prueba {
     private Date fecha;
-    private Time hora;
+    private String hora;
     private Oficial oficial;// oficial que va realizar la Prueba enviamos la cedula a db para relacionar el oficial
     private String observaciones;
     private int nota;
     private Boolean estado;//aprobado-reprobado
 
     
-    public Prueba(Date fecha, Time hora, Oficial oficial, String observaciones, int nota, Boolean estado) {
+    public Prueba(Date fecha, String hora, Oficial oficial, String observaciones, int nota, Boolean estado) {
         this.fecha = fecha;
         this.hora = hora;
         this.oficial = oficial;
@@ -50,11 +50,11 @@ public class Prueba {
         this.fecha = fecha;
     }
 
-    public Time getHora() {
+    public String getHora() {
         return hora;
     }
 
-    public void setHora(Time hora) {
+    public void setHora(String hora) {
         this.hora = hora;
     }
 

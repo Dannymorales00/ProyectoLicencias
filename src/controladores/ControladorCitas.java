@@ -39,7 +39,7 @@ public class ControladorCitas {
         this.datos=conn.getDatos();
     }
     
-        public boolean añadir(Cita cita){
+    public boolean añadir(Cita cita){
         try {
             
            SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
@@ -55,16 +55,16 @@ public class ControladorCitas {
         return false;
     }
       
-    public Cita buscar(int cedula){
+    public Cita buscar(Cita cita){
         try {
             
-            this.datos = this.sentencias.executeQuery("select * from citas where cedula_cliente="+cedula);
+            this.datos = this.sentencias.executeQuery("select * from citas where cedula_cliente="+cita.getCliente().getCedula());
             
                 if(datos.next())
                 {
                     cliente.setCedula(datos.getInt(4));
-                    //Cita cita = new Cita(datos.getInt(1),datos.getDate(2),datos.getTime(3),this.cc.buscar(cliente));
-                   // return cita;
+                    Cita cita2 = new Cita(datos.getDate(2),datos.getTime(3).toString(),this.cc.buscar(cliente));
+                    return cita2;
                 } 
                 
         }catch (SQLException ex) {
@@ -99,16 +99,16 @@ public class ControladorCitas {
         return false;
     }    
         
-    public ArrayList<Cita> listar(int id){
+    public ArrayList<Cita> listar(){
         
         ArrayList<Cita> citas = new ArrayList();
             try {
-                this.datos = this.sentencias.executeQuery("select * from citas where id='"+id+"'");
+                this.datos = this.sentencias.executeQuery("select * from citas");
                 
                 while(datos.next()){
                     
                     cliente.setCedula(datos.getInt(4));
-                    //citas.add(new Cita(datos.getInt(1),datos.getDate(2),datos.getTime(3), cc.buscar(cliente)) );
+                    citas.add(new Cita(datos.getDate(2),datos.getTime(3).toString(), cc.buscar(cliente)));
                                                                                              
                 }
                 return citas;
