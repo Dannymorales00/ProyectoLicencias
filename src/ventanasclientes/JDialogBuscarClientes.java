@@ -12,8 +12,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 
 ;
 import modelos.Cliente;
@@ -77,17 +76,17 @@ public class JDialogBuscarClientes extends javax.swing.JDialog {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(395, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(343, 343, 343)
                 .addComponent(jLabel1)
-                .addGap(347, 347, 347))
+                .addContainerGap(399, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(23, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(28, 28, 28)
                 .addComponent(jLabel1)
-                .addGap(37, 37, 37))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
 
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -245,8 +244,8 @@ public class JDialogBuscarClientes extends javax.swing.JDialog {
             matriz[i][1]=clientes.get(i).getNombre();
             matriz[i][2]=String.valueOf( clientes.get(i).getFechanacimiento() );
             matriz[i][3]=String.valueOf( clientes.get(i).getTelefono() );
-            matriz[i][4]=String.valueOf( clientes.get(i).getCorreo() );
-            matriz[i][5]=String.valueOf(15);
+            matriz[i][4]= clientes.get(i).getCorreo();
+            matriz[i][5]=String.valueOf( clientes.get(i).getEdad()  );
            
             
         }
