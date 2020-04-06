@@ -3,28 +3,28 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ventanas;
+package ventanasusuarios;
 
-import controladores.ControladorClientes;
+import controladores.ControladorUsuarios;
+import java.awt.Frame;
 import javax.swing.JOptionPane;
-import modelos.Cliente;
-
+import modelos.Usuario;
 
 /**
  *
  * @author Danny_PC
  */
-public class ModificarClientes extends javax.swing.JInternalFrame {
-    private Cliente cliente;
-    private ControladorClientes cc;
+public class ModificarUsuarios extends javax.swing.JInternalFrame {
+    private Usuario usuario;
+    private ControladorUsuarios cu;
     /**
-     * Creates new form ModificarClientes
+     * Creates new form AgregarUsuarios
      */
-    public ModificarClientes() {
+    public ModificarUsuarios() {
     
         initComponents();
-        cliente=null;
-        cc = new ControladorClientes(); 
+        usuario=null;
+        cu = new ControladorUsuarios(); 
         
     }
 
@@ -42,17 +42,24 @@ public class ModificarClientes extends javax.swing.JInternalFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         TxtCedula = new javax.swing.JTextField();
         TxtNombre = new javax.swing.JTextField();
         TxtCorreo = new javax.swing.JTextField();
+        TxtNombreUsuario = new javax.swing.JTextField();
+        jComboBoxTipo = new javax.swing.JComboBox<>();
         BtnActualizar = new javax.swing.JButton();
         TxtTelefono = new javax.swing.JTextField();
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
         BtnCargar = new javax.swing.JButton();
+        BtnCambiarContraseña = new javax.swing.JButton();
+        jPasswordField1 = new javax.swing.JPasswordField();
 
         setClosable(true);
-        setTitle("Modificar Clientes");
+        setTitle("Modificar Usuarios");
 
         jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
@@ -69,6 +76,15 @@ public class ModificarClientes extends javax.swing.JInternalFrame {
         jLabel4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel4.setText("Correo:");
 
+        jLabel5.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel5.setText("Nombre usuario:");
+
+        jLabel6.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel6.setText("Contraseña:");
+
+        jLabel7.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel7.setText("Tipo:");
+
         jLabel8.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel8.setText("Cedula:");
 
@@ -77,6 +93,9 @@ public class ModificarClientes extends javax.swing.JInternalFrame {
                 TxtCedulaKeyTyped(evt);
             }
         });
+
+        jComboBoxTipo.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jComboBoxTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione un Tipo...", "oficial", "secretaria" }));
 
         BtnActualizar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         BtnActualizar.setText("Actualizar");
@@ -100,6 +119,15 @@ public class ModificarClientes extends javax.swing.JInternalFrame {
             }
         });
 
+        BtnCambiarContraseña.setText("Cambiar...");
+        BtnCambiarContraseña.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnCambiarContraseñaActionPerformed(evt);
+            }
+        });
+
+        jPasswordField1.setEditable(false);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -113,7 +141,10 @@ public class ModificarClientes extends javax.swing.JInternalFrame {
                             .addComponent(jLabel8)
                             .addComponent(jLabel2)
                             .addComponent(jLabel3)
-                            .addComponent(jLabel4))
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel7))
                         .addGap(21, 21, 21)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(TxtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -121,7 +152,13 @@ public class ModificarClientes extends javax.swing.JInternalFrame {
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(jDateChooser1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 237, Short.MAX_VALUE)
                                 .addComponent(TxtNombre, javax.swing.GroupLayout.Alignment.LEADING))
-                            .addComponent(TxtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(TxtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(TxtNombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(2, 2, 2)
+                                .addComponent(BtnCambiarContraseña))
+                            .addComponent(jComboBoxTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 40, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -153,10 +190,26 @@ public class ModificarClientes extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(TxtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BtnActualizar)
-                    .addComponent(BtnCargar)))
+                    .addComponent(jLabel5)
+                    .addComponent(TxtNombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BtnCambiarContraseña, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel7)
+                            .addComponent(jComboBoxTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(76, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(BtnActualizar)
+                            .addComponent(BtnCargar)))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -179,36 +232,54 @@ public class ModificarClientes extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void BtnCargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCargarActionPerformed
-
-        if(!this.TxtCedula.getText().equals(""))
-        {
-
-            cliente= new Cliente();
-            int cedula = Integer.parseInt(this.TxtCedula.getText());
-            cliente.setCedula(cedula);
-
-            if( cc.buscar(cliente) !=null  )
-            {
-
-                cliente = cc.buscar(cliente);
-                this.TxtCedula.setEditable(true);
-                this.TxtCedula.setText(String.valueOf(cliente.getCedula()));
-                this.TxtCedula.setEditable(false);
-                this.TxtNombre.setText(cliente.getNombre());
-                this.jDateChooser1.setDate(cliente.getFechanacimiento());
-                this.TxtTelefono.setText(String.valueOf(cliente.getTelefono()));
-                this.TxtCorreo.setText(cliente.getCorreo());
+    private void BtnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnActualizarActionPerformed
+        
+        usuario= new Usuario();
+        
+        try{
+            usuario.setCedula(Integer.parseInt( this.TxtCedula.getText() ));
+            usuario.setTelefono(Integer.parseInt(this.TxtTelefono.getText()));
+        }catch(NumberFormatException e){
            
+        }
+        usuario.setNombre(this.TxtNombre.getText());
+        usuario.setCorreo(this.TxtCorreo.getText());
+        usuario.setSobrenombre(this.TxtNombreUsuario.getText());
+        usuario.setTipo((String) this.jComboBoxTipo.getSelectedItem());
+        usuario.setFechanacimiento(this.jDateChooser1.getDate());
+        usuario.setContraseña(concatenar(this.jPasswordField1.getPassword()));
+       
 
-            }else{
-                JOptionPane.showMessageDialog(this, "Cliente no encontrado");
-                cliente=null;
-            }
+        
+        
+        
+        if(usuario.comprobar())
+        {
+            
+            if(cu.actualizar(usuario))
+            {
+                JOptionPane.showMessageDialog(this, "Usuario actualizado");
+                this.TxtCedula.setEditable(true);
+                this.jPasswordField1.setEditable(true);
+                usuario=null;
+                Limpiar();
+            }else{System.out.println("No se pudo actualizar ");}
+            
+            
+        }else{ JOptionPane.showMessageDialog(this, "Debe rellenar todos los campos"); }
+        
+        
+    }//GEN-LAST:event_BtnActualizarActionPerformed
 
-        }else{JOptionPane.showMessageDialog(this, "Debe ingresar la cedula para carga el Cliente");}
-
-    }//GEN-LAST:event_BtnCargarActionPerformed
+   
+    
+    private void TxtCedulaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TxtCedulaKeyTyped
+        
+        //capturamos caracter por caracter
+        char c = evt.getKeyChar();
+        if(c<'0' || c>'9')evt.consume();
+        
+    }//GEN-LAST:event_TxtCedulaKeyTyped
 
     private void TxtTelefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TxtTelefonoKeyTyped
         //capturamos caracter por caracter
@@ -216,47 +287,70 @@ public class ModificarClientes extends javax.swing.JInternalFrame {
         if(c<'0' || c>'9')evt.consume();
     }//GEN-LAST:event_TxtTelefonoKeyTyped
 
-    private void BtnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnActualizarActionPerformed
-
-        cliente= new Cliente();
-
-        try{
-            cliente.setCedula(Integer.parseInt( this.TxtCedula.getText() ));
-            cliente.setTelefono(Integer.parseInt(this.TxtTelefono.getText()));
-        }catch(NumberFormatException e){
-
-        }
-
-        cliente.setNombre(this.TxtNombre.getText());
-        cliente.setCorreo(this.TxtCorreo.getText());
-        cliente.setFechanacimiento(this.jDateChooser1.getDate());
-
-        if(cliente.comprobar())
+    private void BtnCargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCargarActionPerformed
+        
+        if(!this.TxtCedula.getText().equals(""))
         {
-
-            if(cc.actualizar(cliente))
+         
+            usuario= new Usuario();  
+            int cedula = Integer.parseInt(this.TxtCedula.getText());
+            usuario.setCedula(cedula);
+            
+            if( cu.buscar(usuario) !=null  )
             {
-                JOptionPane.showMessageDialog(this, "Cliente actualizado");
+                
+                usuario = cu.buscar(usuario);
                 this.TxtCedula.setEditable(true);
-               
-                cliente=null;
-                Limpiar();
-            }else{System.out.println("No se pudo actualizar ");}
+                this.TxtCedula.setText(String.valueOf(usuario.getCedula()));
+                this.TxtCedula.setEditable(false);
+                this.TxtNombre.setText(usuario.getNombre());
+                this.jDateChooser1.setDate(usuario.getFechanacimiento());
+                this.TxtTelefono.setText(String.valueOf( usuario.getTelefono()));
+                this.TxtCorreo.setText(usuario.getCorreo());
+                this.TxtNombreUsuario.setText(usuario.getSobrenombre());
+                this.jComboBoxTipo.setSelectedItem(usuario.getTipo());
+                this.jPasswordField1.setEditable(true);
+                this.jPasswordField1.setText(usuario.getContraseña());
+                this.jPasswordField1.setEditable(false);
+        
+                
+                
+                
+                
+                
+            }else{
+                JOptionPane.showMessageDialog(this, "Usuario no encontrado");
+                usuario=null;
+            }
+            
+              
+            
+            
+        }else{JOptionPane.showMessageDialog(this, "Debe ingresar la cedula para carga el usuario");}
+        
+        
+    }//GEN-LAST:event_BtnCargarActionPerformed
 
-        }else{ JOptionPane.showMessageDialog(this, "Debe rellenar todos los campos"); }
+    private void BtnCambiarContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCambiarContraseñaActionPerformed
+        
+        if(usuario!=null && usuario.comprobar()){
+            Frame f = JOptionPane.getFrameForComponent(this);
+            JDialogCambiarContraseña jdialog = new JDialogCambiarContraseña(f,true);
+            jdialog.setContraseñaActual(concatenar(this.jPasswordField1.getPassword()));
+            jdialog.setVisible(true);//cuando se muestra se pausa aquí
+        
+            if(jdialog.getUsuario()!=null)
+            {
+                this.jPasswordField1.setEditable(true);
+                this.jPasswordField1.setText(    jdialog.getUsuario().getContraseña() );
+                this.jPasswordField1.setEditable(false);
+            }
+        
+        
+        }else{JOptionPane.showMessageDialog(this, "Debe cargar un usuario");}
+        
+    }//GEN-LAST:event_BtnCambiarContraseñaActionPerformed
 
-    }//GEN-LAST:event_BtnActualizarActionPerformed
-
-    private void TxtCedulaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TxtCedulaKeyTyped
-
-        //capturamos caracter por caracter
-        char c = evt.getKeyChar();
-        if(c<'0' || c>'9')evt.consume();
-
-    }//GEN-LAST:event_TxtCedulaKeyTyped
-
-   
-    
     
     
     
@@ -286,23 +380,34 @@ public class ModificarClientes extends javax.swing.JInternalFrame {
         this.TxtCorreo.setText("");
         this.TxtNombre.setText("");
         this.TxtTelefono.setText("");
+        this.TxtNombreUsuario.setText("");
+        this.jComboBoxTipo.setSelectedIndex(0);
         this.jDateChooser1.setCalendar(null);
- 
+        this.jPasswordField1.setText("");
+        
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnActualizar;
+    private javax.swing.JButton BtnCambiarContraseña;
     private javax.swing.JButton BtnCargar;
     private javax.swing.JTextField TxtCedula;
     private javax.swing.JTextField TxtCorreo;
     private javax.swing.JTextField TxtNombre;
+    private javax.swing.JTextField TxtNombreUsuario;
     private javax.swing.JTextField TxtTelefono;
+    private javax.swing.JComboBox<String> jComboBoxTipo;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPasswordField jPasswordField1;
     // End of variables declaration//GEN-END:variables
 }

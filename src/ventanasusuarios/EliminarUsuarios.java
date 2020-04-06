@@ -4,28 +4,27 @@
  * and open the template in the editor.
  */
 
-package ventanas;
+package ventanasusuarios;
 
-import controladores.ControladorClientes;
+import controladores.ControladorUsuarios;
 import java.beans.PropertyVetoException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import modelos.Cliente;
-
+import modelos.Usuario;
 
 /**
  *
  * @author Danny_PC
  */
-public class EliminarClientes extends javax.swing.JInternalFrame {
-    private Cliente cliente;
-    private ControladorClientes cc;
-    /** Creates new form EliminarClientes */
-    public EliminarClientes() {
+public class EliminarUsuarios extends javax.swing.JInternalFrame {
+    private Usuario usuario;
+    private ControladorUsuarios cu;
+    /** Creates new form EliminarUsuarios */
+    public EliminarUsuarios() {
        
         initComponents();
-        cc = new ControladorClientes();
+        cu = new ControladorUsuarios();
         
     }
 
@@ -47,10 +46,10 @@ public class EliminarClientes extends javax.swing.JInternalFrame {
         BtnCancelar = new javax.swing.JButton();
 
         setClosable(true);
-        setTitle("EliminarClientes");
+        setTitle("EliminarUsuarios");
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel1.setText("Eliminar Cliente");
+        jLabel1.setText("Eliminar Usuario");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -146,24 +145,27 @@ public class EliminarClientes extends javax.swing.JInternalFrame {
     
         
         if(!this.TxtCedula.getText().equals("")){    
-            cliente = new Cliente();
-            cliente.setCedula(Integer.valueOf( this.TxtCedula.getText() ));
+            usuario = new Usuario();
+            usuario.setCedula(Integer.valueOf( this.TxtCedula.getText() ));
     
             
             
-            if(cc.buscar(cliente)!= null)
+            if(cu.buscar(usuario)!= null)
             {
-                cliente = cc.buscar(cliente);
-               
-                if(cc.eliminar(cliente) )
+                usuario = cu.buscar(usuario);
+                //si hay más de un usuario se puede eliminar
+                if(cu.listarUsuarios().size()>1 && cu.eliminar(usuario) )
                 {
-                    JOptionPane.showMessageDialog(this, "Cliente Eliminado");
-                    cliente=null;
+                    JOptionPane.showMessageDialog(this, "Usuario Eliminado");
+                    usuario=null;
                     limpiar();
+                }else
+                {
+                    JOptionPane.showMessageDialog(this, "No se puede eliminar el ultimo usuario");
                 }
             }else
             {
-                JOptionPane.showMessageDialog(this, "No se encontro ese cliente");
+                JOptionPane.showMessageDialog(this, "No se encontro ese usuario");
             }
             
         }else
@@ -194,7 +196,7 @@ public class EliminarClientes extends javax.swing.JInternalFrame {
         try {
             this.setClosed(true);
         } catch (PropertyVetoException ex) {
-            Logger.getLogger(EliminarClientes.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(EliminarUsuarios.class.getName()).log(Level.SEVERE, null, ex);
         }    
     }//GEN-LAST:event_BtnCancelarActionPerformed
 

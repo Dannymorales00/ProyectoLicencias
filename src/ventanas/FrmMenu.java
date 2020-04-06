@@ -5,6 +5,14 @@
  */
 package ventanas;
 
+import ventanascitas.AgregarCitas;
+import ventanasclientes.ModificarClientes;
+import ventanasclientes.AgregarClientes;
+import ventanasclientes.EliminarClientes;
+import ventanasusuarios.AgregarUsuarios;
+import ventanasusuarios.ModificarUsuarios;
+import ventanasusuarios.EliminarUsuarios;
+import ventanasoficiales.AgregarOficiales;
 import conexion.Conexion;
 import java.awt.Frame;
 import javax.swing.JOptionPane;

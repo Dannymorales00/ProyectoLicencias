@@ -3,9 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ventanas;
+package ventanascitas;
 
 
+import ventanasclientes.JDialogBuscarClientes;
 import controladores.ControladorCitas;
 import controladores.ControladorClientes;
 import java.sql.Date;
