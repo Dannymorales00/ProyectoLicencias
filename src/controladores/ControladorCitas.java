@@ -41,7 +41,7 @@ public class ControladorCitas {
     
         public boolean añadir(Cita cita){
         try {
-            System.out.println(cita.getHora()); 
+            
            SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
          
            sentencias.execute("insert into citas values(null,'"+f.format(cita.getFecha())+"','"+cita.getHora()+"','"+cita.getCliente().getCedula()+"','"+cita.getEstado()+"')");

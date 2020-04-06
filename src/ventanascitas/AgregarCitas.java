@@ -9,13 +9,7 @@ package ventanascitas;
 import ventanasclientes.JDialogBuscarClientes;
 import controladores.ControladorCitas;
 import controladores.ControladorClientes;
-import java.sql.Date;
-import java.sql.Time;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import modelos.Cita;
 import modelos.Cliente;
@@ -255,18 +249,21 @@ public class AgregarCitas extends javax.swing.JInternalFrame {
         
         cita.setFecha(this.jDateChooser1.getDate());
         
-        if(this.JComboBoxHora.getSelectedIndex()>0 && this.JCombreBoxMinutos.getSelectedIndex()>0 && this.JComboBoxSegundos.getSelectedIndex()>0 && cliente!=null)
+        if(this.JComboBoxHora.getSelectedIndex()>0 && this.JCombreBoxMinutos.getSelectedIndex()>0 && this.JComboBoxSegundos.getSelectedIndex()>0 )
         {
             
             hora = String.valueOf(this.JComboBoxHora.getSelectedItem());
             minutos = String.valueOf(this.JCombreBoxMinutos.getSelectedItem());
             segundos = String.valueOf(this.JComboBoxSegundos.getSelectedItem());
-            System.out.println("hora--------:"+concatenarhora());
             cita.setHora( concatenarhora() );
             cita.setEstado("activado");
-            cita.setCliente(cliente);
             
             
+            if(cliente!=null){
+                
+                cita.setCliente(cliente);
+            
+            }else{JOptionPane.showMessageDialog(this, "Debe agregar un cliente");}
             
            
          
@@ -285,7 +282,7 @@ public class AgregarCitas extends javax.swing.JInternalFrame {
             
             }else{ JOptionPane.showMessageDialog(this, "Debe rellenar todos los campos"); }
         
-        }else{JOptionPane.showMessageDialog(this, "Debe rellenar todos los campos");} 
+        }else{JOptionPane.showMessageDialog(this, "Debe selecionar una hora, minuto y segundo");} 
         
         
         
@@ -316,7 +313,7 @@ public class AgregarCitas extends javax.swing.JInternalFrame {
     
     
     public String concatenarhora() {
-        
+        //una sola hora y eliminamos espacios
         return (this.hora+":"+this.minutos+":"+this.segundos+"").replaceAll("\\s",""); 
         
     }
@@ -325,6 +322,11 @@ public class AgregarCitas extends javax.swing.JInternalFrame {
     public void Limpiar() {
    
         this.jDateChooser1.setCalendar(null);
+        this.TxtCedula.setText("");
+        this.TxtNombre.setText("");
+        this.JComboBoxHora.setSelectedIndex(0);
+        this.JCombreBoxMinutos.setSelectedIndex(0);
+        this.JComboBoxSegundos.setSelectedIndex(0);
         
         
     }
