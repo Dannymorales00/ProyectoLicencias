@@ -133,7 +133,7 @@ public class ControladorClientes {
 //       
         int fechaActual2 = Integer.parseInt( f.format(fechaActual).substring(0, 4) );
         int fechanacimiento = Integer.parseInt( f.format(fecha).substring(0, 4) );
-        System.out.println("edad------:"+(fechaActual2-fechanacimiento));
+    
         return (fechaActual2-fechanacimiento) ;
            
     }

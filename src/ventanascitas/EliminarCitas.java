@@ -158,18 +158,18 @@ public class EliminarCitas extends javax.swing.JInternalFrame {
                
                 if(ccitas.eliminar(cita) )
                 {
-                    JOptionPane.showMessageDialog(this, "Cliente Eliminado");
+                    JOptionPane.showMessageDialog(this, "Cita Eliminada");
                     cita=null;
                     limpiar();
                 }
             }else
             {
-                JOptionPane.showMessageDialog(this, "No se encontro ese cliente");
+                JOptionPane.showMessageDialog(this, "No se encontro esa cita");
             }
             
         }else
         {
-             JOptionPane.showMessageDialog(this, "Debe rellenar el campo cedula");
+             JOptionPane.showMessageDialog(this, "Debe escrbir el id de su cita");
         }    
             
     }//GEN-LAST:event_BtnEliminarActionPerformed

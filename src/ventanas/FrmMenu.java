@@ -16,6 +16,7 @@ import ventanasoficiales.AgregarOficiales;
 import conexion.Conexion;
 import java.awt.Frame;
 import javax.swing.JOptionPane;
+import ventanascitas.EliminarCitas;
 
 /**
  *
@@ -39,7 +40,7 @@ public class FrmMenu extends javax.swing.JFrame {
         
         if(conexion.getConn()==null)
         {
-          
+            
             Frame f = JOptionPane.getFrameForComponent(null);
             JDialogConfiguracion jdconfig = new JDialogConfiguracion(f,true);
             jdconfig.setVisible(true);
@@ -118,6 +119,7 @@ public class FrmMenu extends javax.swing.JFrame {
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenuItemAgregarCita = new javax.swing.JMenuItem();
+        jMenuItemEliminarCitas = new javax.swing.JMenuItem();
         jmenu = new javax.swing.JMenu();
         jMenuItemAbrirConfiguracion = new javax.swing.JMenuItem();
 
@@ -229,6 +231,14 @@ public class FrmMenu extends javax.swing.JFrame {
         });
         jMenu3.add(jMenuItemAgregarCita);
 
+        jMenuItemEliminarCitas.setText("Eliminar");
+        jMenuItemEliminarCitas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemEliminarCitasActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItemEliminarCitas);
+
         jMenuBar2.add(jMenu3);
 
         jmenu.setText("Configuracion");
@@ -336,6 +346,14 @@ public class FrmMenu extends javax.swing.JFrame {
         agregarCitas.setVisible(true);
     }//GEN-LAST:event_jMenuItemAgregarCitaActionPerformed
 
+    private void jMenuItemEliminarCitasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemEliminarCitasActionPerformed
+        EliminarCitas eliminarCitas = new EliminarCitas();
+        this.jDesktopPane1.add(eliminarCitas);
+        eliminarCitas.setVisible(true);
+        
+        
+    }//GEN-LAST:event_jMenuItemEliminarCitasActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -386,6 +404,7 @@ public class FrmMenu extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItemAgregarUsuarios;
     private javax.swing.JMenuItem jMenuItemConfig;
     private javax.swing.JMenuItem jMenuItemConfig1;
+    private javax.swing.JMenuItem jMenuItemEliminarCitas;
     private javax.swing.JMenuItem jMenuItemEliminarClientes;
     private javax.swing.JMenuItem jMenuItemEliminarUsuarios;
     private javax.swing.JMenuItem jMenuItemModificarClientes;

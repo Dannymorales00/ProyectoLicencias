@@ -26,12 +26,18 @@ public class ControladorCitas {
     private ResultSet datos;
     private ControladorClientes ccliente = new ControladorClientes();
     private Cliente cliente; 
+    private Statement sentencias2;
     
     public ControladorCitas() {
        
        conn = FrmMenu.getConexion();
-       this.sentencias= conn.getSentencias();
-       this.datos=conn.getDatos();
+        try {
+            this.sentencias2 = FrmMenu.getConexion().getConn().createStatement();
+        } catch (SQLException ex) {
+            System.out.println("Erros al crear otra sentencia");
+        }
+       this.sentencias = conn.getSentencias();
+       this.datos = conn.getDatos();
     }
 
     public ControladorCitas(Conexion conn) {
@@ -63,26 +69,25 @@ public class ControladorCitas {
     public Cita buscar(Cita cita){
         try {
             
-            this.datos = this.sentencias.executeQuery("select * from citas where id="+ cita.getId());
             
+            System.out.println("cita id----:"+cita.getId());
+            this.datos = this.sentencias2.executeQuery("select * from citas where id="+ cita.getId());
+            System.out.println("despues de la sentencia ");
                 if(datos.next())
                 {
-//                    Cita cita2 = new Cita();
-//                    cita2.setId(datos.getInt(1));
-//                    cita2.setFecha(datos.getDate(2));
-//                    cita2.setHora(String.valueOf( datos.getTime(3)));
+                    
+                    
                     cliente = new Cliente();
                     cliente.setCedula(datos.getInt(4));
-//                    cita2.setCliente(ccliente.buscar(cliente));
-//                    cita2.setEstado(datos.getString(5));
-//                    
-                    Cita cita2 = new Cita(datos.getInt(1),datos.getDate(2),String.valueOf(datos.getTime(3)),ccliente.buscar(cliente),datos.getString(5));
+                    cliente =  ccliente.buscar(cliente);
+                    Cita cita2 = new Cita(datos.getInt(1),datos.getDate(2),String.valueOf(datos.getTime(3)),cliente,datos.getString(5));
                     ComprobarEstadoCita(cita2);
                     return cita2;
                 } 
                 
         }catch (SQLException ex) {
                 System.out.println("Error al buscar");
+                System.out.println(ex);
             }
         return null;
 
@@ -91,7 +96,7 @@ public class ControladorCitas {
     public boolean eliminar(Cita cita){
         try {
             this.sentencias.executeUpdate("delete from citas where id="+cita.getId());
-            
+            return true;
             
         } catch (SQLException ex) {
                 
