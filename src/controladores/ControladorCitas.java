@@ -68,11 +68,9 @@ public class ControladorCitas {
       
     public Cita buscar(Cita cita){
         try {
-            
-            
-            System.out.println("cita id----:"+cita.getId());
+           
             this.datos = this.sentencias2.executeQuery("select * from citas where id="+ cita.getId());
-            System.out.println("despues de la sentencia ");
+           
                 if(datos.next())
                 {
                     
@@ -167,12 +165,16 @@ public class ControladorCitas {
         
         
     if ( cita.getFecha().compareTo(fechaActual)<0 ){
-        System.out.println("La Fecha 1 es menor ");
+        cita.setEstado("desactivado");
+        
+        System.out.println("La Fecha es menor ");
     }else{
      if (   cita.getFecha().compareTo(fechaActual)>0 ){
-            System.out.println("La Fecha 1 es mayor");
+            System.out.println("La Fecha es mayor");
+            cita.setEstado("activado");
      }else{
-        System.out.println("son iguales");
+        //System.out.println("son iguales");
+        cita.setEstado("desactivado");
      }
         
     }
