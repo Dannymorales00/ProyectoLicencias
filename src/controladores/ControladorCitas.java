@@ -10,7 +10,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
-import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Date;
 import modelos.Cita;
@@ -123,8 +122,8 @@ public class ControladorCitas {
                 while(datos.next()){
                     
                     cliente.setCedula(datos.getInt(4));
-                    citas.add(new Cita(datos.getDate(2),datos.getTime(3).toString(), cc.buscar(cliente)));
-                                                                                             
+                    citas.add(new Cita(datos.getDate(2),datos.getTime(3).toString(), ccliente.buscar(cliente)));
+                                                                                            
                 }
                 return citas;
             } catch (SQLException ex) {
