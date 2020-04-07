@@ -99,11 +99,11 @@ public class ControladorCitas {
         return false;
     }    
         
-    public ArrayList<Cita> listar(){
+    public ArrayList<Cita> listar(Cita cita){
         
         ArrayList<Cita> citas = new ArrayList();
             try {
-                this.datos = this.sentencias.executeQuery("select * from citas");
+                this.datos = this.sentencias.executeQuery("select * from citas where fecha ='"+cita.getFecha()+"';");
                 
                 while(datos.next()){
                     

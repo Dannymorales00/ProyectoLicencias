@@ -318,7 +318,7 @@ public class AgregarPruebas extends javax.swing.JInternalFrame {
             cita.setCliente(cliente);
             cita = cCita.buscar(cita);
             this.txtFecha.setText(cita.getFecha().toString());
-            this.txtHora.setText(cita.getHora().toString());
+            this.txtHora.setText(cita.getHora());
             fecha= cita.getFecha();
         }
         
