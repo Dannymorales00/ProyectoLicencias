@@ -10,7 +10,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
+import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Date;
 import modelos.Cita;
 import modelos.Cliente;
 import ventanas.FrmMenu;
@@ -23,8 +25,8 @@ public class ControladorCitas {
     private Conexion conn;
     private Statement sentencias;
     private ResultSet datos;
-    private ControladorClientes cc;
-    private Cliente cliente;
+    private ControladorClientes ccliente = new ControladorClientes();
+    private Cliente cliente; 
     
     public ControladorCitas() {
        
@@ -54,16 +56,29 @@ public class ControladorCitas {
         }
         return false;
     }
+    
+        
+        
+        
       
     public Cita buscar(Cita cita){
         try {
             
-            this.datos = this.sentencias.executeQuery("select * from citas where cedula_cliente="+cita.getCliente().getCedula());
+            this.datos = this.sentencias.executeQuery("select * from citas where id="+ cita.getId());
             
                 if(datos.next())
                 {
+//                    Cita cita2 = new Cita();
+//                    cita2.setId(datos.getInt(1));
+//                    cita2.setFecha(datos.getDate(2));
+//                    cita2.setHora(String.valueOf( datos.getTime(3)));
+                    cliente = new Cliente();
                     cliente.setCedula(datos.getInt(4));
-                    Cita cita2 = new Cita(datos.getDate(2),datos.getTime(3).toString(),this.cc.buscar(cliente));
+//                    cita2.setCliente(ccliente.buscar(cliente));
+//                    cita2.setEstado(datos.getString(5));
+//                    
+                    Cita cita2 = new Cita(datos.getInt(1),datos.getDate(2),String.valueOf(datos.getTime(3)),ccliente.buscar(cliente),datos.getString(5));
+                    ComprobarEstadoCita(cita2);
                     return cita2;
                 } 
                 
@@ -140,5 +155,25 @@ public class ControladorCitas {
         return false;
        
     }   
+    
+    
+    public void ComprobarEstadoCita(Cita cita ) {
+        Date fechaActual = new Date();
+        SimpleDateFormat ffecha = new SimpleDateFormat("yyyy-MM-dd");
+        
+        
+    if ( cita.getFecha().compareTo(fechaActual)<0 ){
+        System.out.println("La Fecha 1 es menor ");
+    }else{
+     if (   cita.getFecha().compareTo(fechaActual)>0 ){
+            System.out.println("La Fecha 1 es mayor");
+     }else{
+        System.out.println("son iguales");
+     }
+        
+    }
+    
       
+    }
+    
 }

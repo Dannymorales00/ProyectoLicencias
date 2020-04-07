@@ -6,7 +6,7 @@
 package modelos;
 
 import java.util.Date;
-import java.sql.Time;
+
 
 /**
  *
@@ -27,6 +27,16 @@ public class Cita {
         this.cliente = cliente;
         this.estado = "activado";
     }
+
+    public Cita(int id, Date fecha, String hora, Cliente cliente, String estado) {
+        this.id = id;
+        this.fecha = fecha;
+        this.hora = hora;
+        this.cliente = cliente;
+        this.estado = estado;
+    }
+
+    
 
     public Cita() {
     
