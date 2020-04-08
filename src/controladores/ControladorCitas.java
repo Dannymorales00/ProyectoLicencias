@@ -20,6 +20,7 @@ import ventanas.FrmMenu;
  *
  * @author Danny_PC
  */
+
 public class ControladorCitas {
     private Conexion conn;
     private Statement sentencias;
@@ -122,15 +123,23 @@ public class ControladorCitas {
         return false;
     }    
         
+    /**
+     * este metodo recibe una cita y devuelve un arraylist con la citas que tiene la misma fecha
+     *
+     * @param cita recibe una cita 
+   
+     * @return Arraylist de citas
+     */
     public ArrayList<Cita> listar(Cita cita){
         
         ArrayList<Cita> citas = new ArrayList();
             try {
                 
                 SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
-                System.out.println("la fecha de la cita es: "+f.format(cita.getFecha()));
-                this.datos = this.sentencias2.executeQuery("select * from citas where fecha ='"+f.format(cita.getFecha())+"'");
                 
+                this.datos = this.sentencias2.executeQuery("select * from citas where fecha ='"+f.format(cita.getFecha())+"';");
+                
+                //si se encontro resultados en la consulta se guardan en el arrayList
                 while(datos.next())
                 {
                     cliente = new Cliente();
@@ -138,8 +147,10 @@ public class ControladorCitas {
                     citas.add(new Cita(datos.getDate(2),String.valueOf(datos.getTime(3)), ccliente.buscar(cliente)));
                                                                                             
                 }
-                return citas;
-                
+                //si se encontro una cita o más, las retornamos
+                if(citas.size()>0){
+                    return citas;
+                }
             } catch (SQLException ex) {
                 System.out.println("Error al listar");
                 System.out.println(ex);
@@ -172,6 +183,27 @@ public class ControladorCitas {
         
         
         
+        
+    }
+    
+   
+    
+    
+    public boolean ValidarCantCitas(Cita cita) {
+        
+        
+        if( listar(cita)!=null )
+        {
+            if(listar(cita).size()<4)
+            {
+                return true;
+            
+            }
+            
+        
+        }
+        
+        return false;
         
     }
     
