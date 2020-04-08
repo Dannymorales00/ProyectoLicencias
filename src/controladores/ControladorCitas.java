@@ -147,12 +147,13 @@ public class ControladorCitas {
         
         try 
         {
+            System.out.println("cedula cita ---:"+cita.getCliente().getCedula());
             this.datos = this.sentencias.executeQuery("select * from citas where cedula_cliente = '"+cita.getCliente().getCedula()+"' AND estado = 'activado' ");
             System.out.println("despues de la sentencia");    
             if (datos.next()) 
             {
                 System.out.println("estaba activado");
-                return true;
+                return false;
             }
                 
         } catch (SQLException ex){
@@ -160,7 +161,7 @@ public class ControladorCitas {
             
         }
          
-        return false;
+        return true;
        
         
         
