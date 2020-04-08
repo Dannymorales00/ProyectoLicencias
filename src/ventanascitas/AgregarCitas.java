@@ -269,14 +269,17 @@ public class AgregarCitas extends javax.swing.JInternalFrame {
             if(cita.comprobar())
             {
             
-                if(ccita.añadir(cita))
+                if(ccita.validarPK(cita))
                 {
-                    JOptionPane.showMessageDialog(this, "Cita agregada");
-                    cita=null;
-                    cliente=null;
-                    Limpiar();
-                }else{System.out.println("No se pudo agregar ");}
-            
+                    if(ccita.ValidarFK(cita) &&ccita.añadir(cita))
+                    {
+                        JOptionPane.showMessageDialog(this, "Cita agregada");
+                        cita=null;
+                        cliente=null;
+                        Limpiar();
+                    }else{JOptionPane.showMessageDialog(this, "No se encuentra ese cliente");}
+                
+                }else{JOptionPane.showMessageDialog(this, "No puede tener 2 citas activas el mismo cliente");}
             
             }else{ JOptionPane.showMessageDialog(this, "Debe rellenar todos los campos"); }
         

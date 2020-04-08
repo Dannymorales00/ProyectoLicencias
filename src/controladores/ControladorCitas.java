@@ -79,7 +79,12 @@ public class ControladorCitas {
                     cliente.setCedula(datos.getInt(4));
                     cliente =  ccliente.buscar(cliente);
                     Cita cita2 = new Cita(datos.getInt(1),datos.getDate(2),String.valueOf(datos.getTime(3)),cliente,datos.getString(5));
-                    ComprobarEstadoCita(cita2);
+                    
+                    if( CambiarEstadoCita(cita2) )
+                    {
+                        actualizar(cita);
+                    }
+                    
                     return cita2;
                 } 
                 
@@ -107,7 +112,8 @@ public class ControladorCitas {
         
         try {  
               
-            this.sentencias.executeUpdate("UPDATE citas SET fecha_cita='"+cita.getFecha()+"' WHERE cedula ='"+cita.getCliente().getCedula()+"';");
+            this.sentencias.executeUpdate("UPDATE citas SET fecha='"+cita.getFecha()+"', hora='"+cita.getHora()+"', estado='"+cita.getEstado()+"'  WHERE id ='"+cita.getId()+"';");
+            
             return true;
             
         } catch (SQLException ex) {
@@ -135,6 +141,37 @@ public class ControladorCitas {
         return null; 
     }
     
+    
+    public boolean validarPK(Cita cita) {
+        
+        
+        try 
+        {
+            this.datos = this.sentencias.executeQuery("select * from citas where cedula_cliente = '"+cita.getCliente().getCedula()+"' AND estado = 'activado' ");
+            System.out.println("despues de la sentencia");    
+            if (datos.next()) 
+            {
+                System.out.println("estaba activado");
+                return true;
+            }
+                
+        } catch (SQLException ex){
+            System.out.println("Error al validarPK");
+            
+        }
+         
+        return false;
+       
+        
+        
+        
+        
+    }
+    
+    
+    
+    
+    
     //valida que exista un cliente para poder agregar una cita
     public boolean ValidarFK(Cita cita){
 
@@ -144,9 +181,7 @@ public class ControladorCitas {
                 
             if (datos.next()) 
             {
-            
                 return true;
-              
             }
                 
         } catch (SQLException ex){
@@ -156,28 +191,41 @@ public class ControladorCitas {
          
         return false;
        
-    }   
+    }
     
     
-    public void ComprobarEstadoCita(Cita cita ) {
+     
+    
+    
+    private boolean CambiarEstadoCita(Cita cita ) {
         Date fechaActual = new Date();
         SimpleDateFormat ffecha = new SimpleDateFormat("yyyy-MM-dd");
         
         
-    if ( cita.getFecha().compareTo(fechaActual)<0 ){
-        cita.setEstado("desactivado");
+        if ( cita.getFecha().compareTo(fechaActual)<0 )
+        {
+            cita.setEstado("desactivado");
+            System.out.println("La Fecha es menor ");
+            return true;
         
-        System.out.println("La Fecha es menor ");
-    }else{
-     if (   cita.getFecha().compareTo(fechaActual)>0 ){
-            System.out.println("La Fecha es mayor");
-            cita.setEstado("activado");
-     }else{
-        //System.out.println("son iguales");
-        cita.setEstado("desactivado");
-     }
+      
         
-    }
+        }else{
+        
+            if (   cita.getFecha().compareTo(fechaActual)>0 )
+            {
+                System.out.println("La Fecha es mayor");
+                return false;
+        
+            
+            }else{
+                //System.out.println("son iguales");
+                cita.setEstado("desactivado");
+                return true;
+          
+            }
+        
+        }
     
       
     }
