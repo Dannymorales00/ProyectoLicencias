@@ -129,7 +129,7 @@ public class ControladorCitas {
                 
                 SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
                 System.out.println("la fecha de la cita es: "+f.format(cita.getFecha()));
-                this.datos = this.sentencias2.executeQuery("select * from citas where fecha ='"+f.format(cita.getFecha())+"';");
+                this.datos = this.sentencias2.executeQuery("select * from citas where fecha ='"+f.format(cita.getFecha())+"'");
                 
                 while(datos.next())
                 {

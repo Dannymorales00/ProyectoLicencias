@@ -107,10 +107,13 @@
             <Property name="text" type="java.lang.String" value="Pruebas"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem2">
+            <MenuItem class="javax.swing.JMenuItem" name="MenuItemAgregarPruebas">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Agregar"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MenuItemAgregarPruebasActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>

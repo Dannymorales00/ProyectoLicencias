@@ -19,6 +19,7 @@ import javax.swing.JOptionPane;
 import ventanascitas.EliminarCitas;
 import ventanascitas.JDialogBuscarCitas;
 import ventanasclientes.JDialogBuscarClientes;
+import ventanaspruebas.AgregarPruebas;
 
 /**
  *
@@ -119,7 +120,7 @@ public class FrmMenu extends javax.swing.JFrame {
         jMenuItemModificarClientes = new javax.swing.JMenuItem();
         jMenuItemEliminarClientes = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        MenuItemAgregarPruebas = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenuItemAgregarCita = new javax.swing.JMenuItem();
         jMenuItemEliminarCitas = new javax.swing.JMenuItem();
@@ -227,8 +228,13 @@ public class FrmMenu extends javax.swing.JFrame {
 
         jMenu2.setText("Pruebas");
 
-        jMenuItem2.setText("Agregar");
-        jMenu2.add(jMenuItem2);
+        MenuItemAgregarPruebas.setText("Agregar");
+        MenuItemAgregarPruebas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuItemAgregarPruebasActionPerformed(evt);
+            }
+        });
+        jMenu2.add(MenuItemAgregarPruebas);
 
         jMenuBar2.add(jMenu2);
 
@@ -370,6 +376,12 @@ public class FrmMenu extends javax.swing.JFrame {
         jdiagbuscarcitas.setVisible(true);
     }//GEN-LAST:event_jMenuItemMostrarCitasActionPerformed
 
+    private void MenuItemAgregarPruebasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuItemAgregarPruebasActionPerformed
+       AgregarPruebas agregarPruebas = new AgregarPruebas();
+       this.jDesktopPane1.add(agregarPruebas);
+       agregarPruebas.setVisible(true);
+    }//GEN-LAST:event_MenuItemAgregarPruebasActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -407,13 +419,13 @@ public class FrmMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem MenuItemAgregarPruebas;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItemAbrirConfiguracion;
     private javax.swing.JMenuItem jMenuItemAgregarCita;
     private javax.swing.JMenuItem jMenuItemAgregarClientes;
