@@ -32,6 +32,8 @@ public class JDialogBuscarCitas extends javax.swing.JDialog {
     public JDialogBuscarCitas(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        cCita = new ControladorCitas();
+        cCliente = new ControladorClientes();
     }
 
     public Cita getCita() {
@@ -176,6 +178,7 @@ public class JDialogBuscarCitas extends javax.swing.JDialog {
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         Date fecha = new Date();
         cita = new Cita();
+         
         cita.setFecha(fecha);
         
         cCita.listar(cita);
