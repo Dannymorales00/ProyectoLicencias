@@ -126,17 +126,23 @@ public class ControladorCitas {
         
         ArrayList<Cita> citas = new ArrayList();
             try {
-                this.datos = this.sentencias.executeQuery("select * from citas where fecha ='"+cita.getFecha()+"';");
                 
-                while(datos.next()){
-                    
+                SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
+                System.out.println("la fecha de la cita es: "+f.format(cita.getFecha()));
+                this.datos = this.sentencias2.executeQuery("select * from citas where fecha ='"+f.format(cita.getFecha())+"';");
+                
+                while(datos.next())
+                {
+                    cliente = new Cliente();
                     cliente.setCedula(datos.getInt(4));
-                    citas.add(new Cita(datos.getDate(2),datos.getTime(3).toString(), ccliente.buscar(cliente)));
+                    citas.add(new Cita(datos.getDate(2),String.valueOf(datos.getTime(3)), ccliente.buscar(cliente)));
                                                                                             
                 }
                 return citas;
+                
             } catch (SQLException ex) {
                 System.out.println("Error al listar");
+                System.out.println(ex);
             }
         return null; 
     }
@@ -147,12 +153,12 @@ public class ControladorCitas {
         
         try 
         {
-            System.out.println("cedula cita ---:"+cita.getCliente().getCedula());
+
             this.datos = this.sentencias.executeQuery("select * from citas where cedula_cliente = '"+cita.getCliente().getCedula()+"' AND estado = 'activado' ");
-            System.out.println("despues de la sentencia");    
+           
             if (datos.next()) 
             {
-                System.out.println("estaba activado");
+              
                 return false;
             }
                 

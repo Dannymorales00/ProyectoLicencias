@@ -12,6 +12,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import javax.swing.JOptionPane;
 import modelos.Cita;
 import modelos.Cliente;
 
@@ -32,6 +33,7 @@ public class JDialogBuscarCitas extends javax.swing.JDialog {
     public JDialogBuscarCitas(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        citas = new ArrayList();
         cCita = new ControladorCitas();
         cCliente = new ControladorClientes();
     }
@@ -181,8 +183,14 @@ public class JDialogBuscarCitas extends javax.swing.JDialog {
          
         cita.setFecha(fecha);
         
-        cCita.listar(cita);
-        mostrar();
+        if( cCita.listar(cita)!= null )
+        {
+            
+            citas=cCita.listar(cita);
+            mostrar();
+             
+        }else{JOptionPane.showMessageDialog(this, "No se encontraron citas para noy");} 
+
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked

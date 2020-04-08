@@ -17,6 +17,8 @@ import conexion.Conexion;
 import java.awt.Frame;
 import javax.swing.JOptionPane;
 import ventanascitas.EliminarCitas;
+import ventanascitas.JDialogBuscarCitas;
+import ventanasclientes.JDialogBuscarClientes;
 
 /**
  *
@@ -111,6 +113,7 @@ public class FrmMenu extends javax.swing.JFrame {
         jMenuOficial = new javax.swing.JMenu();
         jMenuItemConfig = new javax.swing.JMenuItem();
         jMenuItemConfig1 = new javax.swing.JMenuItem();
+        jMenuItemMostrarCitas = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
         jMenuItemAgregarClientes = new javax.swing.JMenuItem();
         jMenuItemModificarClientes = new javax.swing.JMenuItem();
@@ -183,6 +186,14 @@ public class FrmMenu extends javax.swing.JFrame {
             }
         });
         jMenuOficial.add(jMenuItemConfig1);
+
+        jMenuItemMostrarCitas.setText("MostrarCitas");
+        jMenuItemMostrarCitas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemMostrarCitasActionPerformed(evt);
+            }
+        });
+        jMenuOficial.add(jMenuItemMostrarCitas);
 
         jMenuBar2.add(jMenuOficial);
 
@@ -354,6 +365,11 @@ public class FrmMenu extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jMenuItemEliminarCitasActionPerformed
 
+    private void jMenuItemMostrarCitasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemMostrarCitasActionPerformed
+        JDialogBuscarCitas jdiagbuscarcitas = new JDialogBuscarCitas(null,true);
+        jdiagbuscarcitas.setVisible(true);
+    }//GEN-LAST:event_jMenuItemMostrarCitasActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -409,6 +425,7 @@ public class FrmMenu extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItemEliminarUsuarios;
     private javax.swing.JMenuItem jMenuItemModificarClientes;
     private javax.swing.JMenuItem jMenuItemModificarUsuarios;
+    private javax.swing.JMenuItem jMenuItemMostrarCitas;
     private javax.swing.JMenu jMenuOficial;
     private javax.swing.JMenu jMenuRegistar;
     private javax.swing.JMenu jmenu;
