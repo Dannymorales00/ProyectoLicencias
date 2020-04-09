@@ -161,7 +161,7 @@ public class EliminarOficiales extends javax.swing.JInternalFrame {
                     this.limpiar();
                 }
             }else{
-               JOptionPane.showMessageDialog(this, "No se encontro ese cliente"); 
+               JOptionPane.showMessageDialog(this, "No se encontro ese Oficial"); 
             }        
         }else{
              JOptionPane.showMessageDialog(this, "Debe rellenar el campo cedula");

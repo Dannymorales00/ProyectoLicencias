@@ -193,7 +193,6 @@ public class ControladorCitas {
     
     /**
      * valida cuantas citas hay 
-     *
      * @param cita recibe una cita
      * @return retorna verdadero si no existen citas en una fecha ó si tiene menos de 4 citas en una fecha; retorna falso de lo contrario
      */
@@ -211,7 +210,7 @@ public class ControladorCitas {
     
     //valida que exista un cliente para poder agregar una cita
     public boolean ValidarFK(Cita cita){
-
+        
         try 
         {
             this.datos = this.sentencias.executeQuery("select * from clientes where cedula="+cita.getCliente().getCedula());
