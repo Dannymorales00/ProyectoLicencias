@@ -152,16 +152,16 @@ public class EliminarCitas extends javax.swing.JInternalFrame {
     
             
             
-            if(ccitas.buscar(cita)!= null)
+            if( (cita = ccitas.buscar(cita))!= null )
             {
-                cita = ccitas.buscar(cita);
+                
                
-                if(ccitas.eliminar(cita) )
-                {
-                    JOptionPane.showMessageDialog(this, "Cita Eliminada");
-                    cita=null;
-                    limpiar();
-                }
+//                if(ccitas.eliminar(cita) )
+//                {
+//                    JOptionPane.showMessageDialog(this, "Cita Eliminada");
+//                    cita=null;
+//                    limpiar();
+//                }
             }else
             {
                 JOptionPane.showMessageDialog(this, "No se encontro esa cita");

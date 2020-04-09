@@ -83,7 +83,8 @@ public class ControladorCitas {
                     
                     if( CambiarEstadoCita(cita2) )
                     {
-                        actualizar(cita);
+                        //si la fecha se vencio desactivamos la cita 
+                        actualizar(cita2);
                     }
                     
                     return cita2;
@@ -145,10 +146,12 @@ public class ControladorCitas {
                     cliente = new Cliente();
                     cliente.setCedula(datos.getInt(4));
                     citas.add(new Cita(datos.getDate(2),String.valueOf(datos.getTime(3)), ccliente.buscar(cliente)));
+                  
                                                                                             
                 }
                 //si se encontro una cita o más, las retornamos
-                if(citas.size()>0){
+                if(citas.size()>0)
+                {
                     return citas;
                 }
             } catch (SQLException ex) {
@@ -164,9 +167,9 @@ public class ControladorCitas {
         
         try 
         {
-
-            this.datos = this.sentencias.executeQuery("select * from citas where cedula_cliente = '"+cita.getCliente().getCedula()+"' AND estado = 'activado' ");
-           
+          
+            this.datos = this.sentencias.executeQuery("select * from citas where cedula_cliente = '"+cita.getCliente().getCedula()+"'  AND estado = 'activado'  ;");
+          
             if (datos.next()) 
             {
               
@@ -175,7 +178,7 @@ public class ControladorCitas {
                 
         } catch (SQLException ex){
             System.out.println("Error al validarPK");
-            
+           
         }
          
         return true;
@@ -191,20 +194,9 @@ public class ControladorCitas {
     
     public boolean ValidarCantCitas(Cita cita) {
         
-        
-        if( listar(cita)!=null )
-        {
-            if(listar(cita).size()<4)
-            {
-                return true;
-            
-            }
-            
-        
-        }
-        
-        return false;
-        
+     //si está vacio ó hay menos de 4 citas    
+     return listar(cita) == null || listar(cita).size()<4;
+     
     }
     
     
@@ -234,11 +226,16 @@ public class ControladorCitas {
     
     
      
-    
+    /**
+     * utiliza la fecha del parametro cita y la compara con la fecha actual
+     *
+     * @param cita 
+     * @return verdadero si la fecha es menor
+     */
     
     private boolean CambiarEstadoCita(Cita cita ) {
         Date fechaActual = new Date();
-        SimpleDateFormat ffecha = new SimpleDateFormat("yyyy-MM-dd");
+
         
         
         if ( cita.getFecha().compareTo(fechaActual)<0 )
