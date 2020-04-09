@@ -125,13 +125,13 @@ public class ControladorCitas {
     }    
         
     /**
-     * este metodo recibe una cita y devuelve un arraylist con la citas que tiene la misma fecha
+     * este metodo recibe una cita y devuelve un arraylist con la citas que tengan la misma fecha
      *
      * @param cita recibe una cita 
    
      * @return Arraylist de citas
      */
-    public ArrayList<Cita> listar(Cita cita){
+    public ArrayList<Cita> listarPorFecha(Cita cita){
         
         ArrayList<Cita> citas = new ArrayList();
             try {
@@ -191,11 +191,17 @@ public class ControladorCitas {
     
    
     
-    
+    /**
+     * valida cuantas citas hay 
+     *
+     * @param cita recibe una cita
+     * @return retorna verdadero si no existen citas en una fecha ó si tiene menos de 4 citas en una fecha; retorna falso de lo contrario
+     */
     public boolean ValidarCantCitas(Cita cita) {
         
-     //si está vacio ó hay menos de 4 citas    
-     return listar(cita) == null || listar(cita).size()<4;
+     //si está vacio ó hay menos de 4 citas
+    
+     return listarPorFecha(cita) == null || listarPorFecha(cita).size()<4;
      
     }
     
