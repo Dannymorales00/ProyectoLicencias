@@ -6,8 +6,6 @@
 package ventanasoficiales;
 
 import controladores.ControladorOficiales;
-import java.sql.Date;
-import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
 import modelos.Oficial;
 
@@ -50,6 +48,8 @@ public class AgregarOficiales extends javax.swing.JInternalFrame {
         salarioTxt = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+
+        setClosable(true);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 

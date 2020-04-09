@@ -20,6 +20,7 @@ import ventanascitas.EliminarCitas;
 import ventanascitas.JDialogBuscarCitas;
 import ventanasclientes.JDialogBuscarClientes;
 import ventanasoficiales.EliminarOficiales;
+import ventanasoficiales.ModificarOficiales;
 import ventanaspruebas.AgregarPruebas;
 
 /**
@@ -115,6 +116,7 @@ public class FrmMenu extends javax.swing.JFrame {
         jMenuItemEliminarUsuarios = new javax.swing.JMenuItem();
         jMenuOficial = new javax.swing.JMenu();
         jMenuItemAgregarOficiales = new javax.swing.JMenuItem();
+        jMenuItemModificar = new javax.swing.JMenuItem();
         jMenuItemCalcularSalario = new javax.swing.JMenuItem();
         jMenuItemEliminarOficiales = new javax.swing.JMenuItem();
         jMenuItemMostrarCitasOficiales = new javax.swing.JMenuItem();
@@ -184,6 +186,14 @@ public class FrmMenu extends javax.swing.JFrame {
             }
         });
         jMenuOficial.add(jMenuItemAgregarOficiales);
+
+        jMenuItemModificar.setText("Modificar");
+        jMenuItemModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemModificarActionPerformed(evt);
+            }
+        });
+        jMenuOficial.add(jMenuItemModificar);
 
         jMenuItemCalcularSalario.setText("Calcular salario");
         jMenuItemCalcularSalario.addActionListener(new java.awt.event.ActionListener() {
@@ -402,6 +412,12 @@ public class FrmMenu extends javax.swing.JFrame {
                 
     }//GEN-LAST:event_jMenuItemEliminarOficialesActionPerformed
 
+    private void jMenuItemModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemModificarActionPerformed
+        ModificarOficiales modificarOficiales = new ModificarOficiales();
+        this.jDesktopPane1.add(modificarOficiales);
+        modificarOficiales.setVisible(true);
+    }//GEN-LAST:event_jMenuItemModificarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -457,6 +473,7 @@ public class FrmMenu extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItemEliminarClientes;
     private javax.swing.JMenuItem jMenuItemEliminarOficiales;
     private javax.swing.JMenuItem jMenuItemEliminarUsuarios;
+    private javax.swing.JMenuItem jMenuItemModificar;
     private javax.swing.JMenuItem jMenuItemModificarClientes;
     private javax.swing.JMenuItem jMenuItemModificarUsuarios;
     private javax.swing.JMenuItem jMenuItemMostrarCitasOficiales;
