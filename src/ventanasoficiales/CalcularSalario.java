@@ -67,8 +67,25 @@ public class CalcularSalario extends javax.swing.JInternalFrame {
         TxtNombre = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         TxtCedula = new javax.swing.JTextField();
+        jLabel14 = new javax.swing.JLabel();
+        TxtSalario = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         BtnCalcularSalario = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        TxtEnfermedadyMaternidad = new javax.swing.JTextField();
+        TxtInvalidezyMuerte = new javax.swing.JTextField();
+        TxtAporteAsociacionSolidarista = new javax.swing.JTextField();
+        TxtAporteDelTrabajador = new javax.swing.JTextField();
+        TxtImpuestoRenta = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
 
         setClosable(true);
         setTitle("Calcular Salario");
@@ -96,6 +113,11 @@ public class CalcularSalario extends javax.swing.JInternalFrame {
 
         TxtCedula.setEditable(false);
 
+        jLabel14.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jLabel14.setText("Salario:");
+
+        TxtSalario.setEditable(false);
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -105,9 +127,13 @@ public class CalcularSalario extends javax.swing.JInternalFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel4)
                     .addComponent(jLabel3)
-                    .addComponent(jLabel1))
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel14))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(TxtSalario)
+                        .addGap(77, 77, 77))
                     .addComponent(TxtNombre)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -131,7 +157,11 @@ public class CalcularSalario extends javax.swing.JInternalFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(TxtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel14)
+                    .addComponent(TxtSalario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         BtnCalcularSalario.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
@@ -142,19 +172,101 @@ public class CalcularSalario extends javax.swing.JInternalFrame {
             }
         });
 
+        jLabel2.setText("Enfermedad y maternidad:");
+
+        jLabel5.setText("Invalidez y muerte:");
+
+        jLabel6.setText("Aporte del trabajador:");
+
+        jLabel7.setText("Aporte a la asociacion solidarista:");
+
+        jLabel8.setText("Impuestos sobre la renta:");
+
+        TxtEnfermedadyMaternidad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TxtEnfermedadyMaternidadActionPerformed(evt);
+            }
+        });
+
+        jLabel9.setText("5.5%");
+
+        jLabel10.setText("3.84%");
+
+        jLabel11.setText("1%");
+
+        jLabel12.setText("3.3%");
+
+        jLabel13.setText("variable");
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(BtnCalcularSalario)
-                .addContainerGap())
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(BtnCalcularSalario)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel8))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
+                                    .addComponent(TxtAporteAsociacionSolidarista, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel12))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
+                                    .addComponent(TxtAporteDelTrabajador, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(26, 26, 26)
+                                    .addComponent(jLabel11))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
+                                    .addComponent(TxtEnfermedadyMaternidad, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(26, 26, 26)
+                                    .addComponent(jLabel9)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
+                                .addComponent(TxtInvalidezyMuerte, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(26, 26, 26)
+                                .addComponent(jLabel10))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
+                                .addComponent(TxtImpuestoRenta, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(26, 26, 26)
+                                .addComponent(jLabel13)))))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(180, Short.MAX_VALUE)
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(TxtEnfermedadyMaternidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel9))
+                .addGap(14, 14, 14)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(TxtInvalidezyMuerte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel10))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(TxtAporteDelTrabajador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel11))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(TxtAporteAsociacionSolidarista, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel12))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(TxtImpuestoRenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel13))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                 .addComponent(BtnCalcularSalario)
                 .addContainerGap())
         );
@@ -173,9 +285,9 @@ public class CalcularSalario extends javax.swing.JInternalFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -195,6 +307,37 @@ public class CalcularSalario extends javax.swing.JInternalFrame {
 
     private void BtnCalcularSalarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCalcularSalarioActionPerformed
         
+        if(oficial!=null)
+        {
+            
+            double EyM = oficial.getSalario()*0.055;
+            double IyM = oficial.getSalario()*0.0384;
+            double AT  = oficial.getSalario()*0.01;
+            double AAS = oficial.getSalario()*0.033;
+            double ISR = CalcularImpuestoRenta();
+    
+            
+            
+    
+            
+            
+            
+            
+            this.TxtEnfermedadyMaternidad.setText(String.valueOf(EyM));
+            this.TxtInvalidezyMuerte.setText(String.valueOf(IyM));
+            this.TxtAporteDelTrabajador.setText(String.valueOf(AT));
+            this.TxtAporteAsociacionSolidarista.setText(String.valueOf(AAS));
+            this.TxtImpuestoRenta.setText(String.valueOf(ISR));
+            
+            
+            
+            
+            
+        
+        }else
+        {
+            JOptionPane.showMessageDialog(this, "Debe seleccionar un oficial");
+        }
 
        
         
@@ -212,17 +355,49 @@ public class CalcularSalario extends javax.swing.JInternalFrame {
             oficial = jdiagbuscarOficiales.getOficial();
             this.TxtCedula.setEditable(true);
             this.TxtNombre.setEditable(true);
+            this.TxtSalario.setEditable(true);
             this.TxtCedula.setText(String.valueOf(oficial.getCedula()));
             this.TxtNombre.setText(String.valueOf(oficial.getNombre()));
+            this.TxtSalario.setText(String.valueOf(oficial.getSalario()));
             this.TxtCedula.setEditable(false);
             this.TxtNombre.setEditable(false);
+            this.TxtSalario.setEditable(false);
+            
         }else
         {
             System.out.println("no selecciono un Oficial");
         }
     }//GEN-LAST:event_BtnSeleccionarOficialActionPerformed
 
+    private void TxtEnfermedadyMaternidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtEnfermedadyMaternidadActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TxtEnfermedadyMaternidadActionPerformed
+
       
+    public double CalcularImpuestoRenta() {
+            
+        
+        if(oficial.getSalario()>0 && oficial.getSalario()<=817000)
+        {
+            return   0;
+        
+        }else{
+                
+                
+            if(oficial.getSalario()>817000 && oficial.getSalario()<=122600)
+            {
+                return  oficial.getSalario()*0.10;
+                
+            }else{
+                    
+                return  oficial.getSalario()*0.15;
+            }
+            
+        }
+        
+        
+        
+    }
     
 
     
@@ -239,11 +414,28 @@ public class CalcularSalario extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnCalcularSalario;
     private javax.swing.JButton BtnSeleccionarOficial;
+    private javax.swing.JTextField TxtAporteAsociacionSolidarista;
+    private javax.swing.JTextField TxtAporteDelTrabajador;
     private javax.swing.JTextField TxtCedula;
+    private javax.swing.JTextField TxtEnfermedadyMaternidad;
+    private javax.swing.JTextField TxtImpuestoRenta;
+    private javax.swing.JTextField TxtInvalidezyMuerte;
     private javax.swing.JTextField TxtNombre;
+    private javax.swing.JTextField TxtSalario;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
