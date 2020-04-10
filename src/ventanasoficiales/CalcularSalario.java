@@ -414,20 +414,18 @@ public class CalcularSalario extends javax.swing.JInternalFrame {
             this.LblPorcentajeRenta.setText("0%");
             return   0;
         
+        }else if(oficial.getSalario()>817000 && oficial.getSalario()<=122600){
+                
+            this.LblPorcentajeRenta.setText("10%");
+            return  oficial.getSalario()*0.10;
+              
         }else{
-                
-                
-            if(oficial.getSalario()>817000 && oficial.getSalario()<=122600)
-            {
-                this.LblPorcentajeRenta.setText("10%");
-                return  oficial.getSalario()*0.10;
-                
-            }else{
-                this.LblPorcentajeRenta.setText("15%");    
-                return  oficial.getSalario()*0.15;
-            }
             
+            this.LblPorcentajeRenta.setText("15%");    
+            return  oficial.getSalario()*0.15;
+        
         }
+    
         
         
         
