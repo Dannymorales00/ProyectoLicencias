@@ -10,6 +10,7 @@ package ventanasoficiales;
 import ventanasclientes.JDialogBuscarClientes;
 import controladores.ControladorCitas;
 import controladores.ControladorClientes;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import modelos.Cita;
@@ -85,7 +86,11 @@ public class CalcularSalario extends javax.swing.JInternalFrame {
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
+        LblPorcentajeRenta = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        TxtSalarioNeto = new javax.swing.JTextField();
+        TxtTotalDeducciones = new javax.swing.JTextField();
 
         setClosable(true);
         setTitle("Calcular Salario");
@@ -161,7 +166,7 @@ public class CalcularSalario extends javax.swing.JInternalFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14)
                     .addComponent(TxtSalario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         BtnCalcularSalario.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
@@ -196,7 +201,11 @@ public class CalcularSalario extends javax.swing.JInternalFrame {
 
         jLabel12.setText("3.3%");
 
-        jLabel13.setText("variable");
+        LblPorcentajeRenta.setText("variable");
+
+        jLabel15.setText("Total deducciones:");
+
+        jLabel16.setText("Salario neto:");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -205,20 +214,21 @@ public class CalcularSalario extends javax.swing.JInternalFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(BtnCalcularSalario)
+                    .addComponent(jLabel16)
+                    .addComponent(jLabel15)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel7)
+                    .addComponent(jLabel8))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel8))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
-                                    .addComponent(TxtAporteAsociacionSolidarista, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(jPanel3Layout.createSequentialGroup()
+                                    .addComponent(TxtAporteAsociacionSolidarista)
+                                    .addGap(26, 26, 26)
                                     .addComponent(jLabel12))
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
                                     .addComponent(TxtAporteDelTrabajador, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -233,10 +243,17 @@ public class CalcularSalario extends javax.swing.JInternalFrame {
                                 .addGap(26, 26, 26)
                                 .addComponent(jLabel10))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
-                                .addComponent(TxtImpuestoRenta, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(TxtTotalDeducciones, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(TxtImpuestoRenta, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE))
                                 .addGap(26, 26, 26)
-                                .addComponent(jLabel13)))))
-                .addContainerGap(36, Short.MAX_VALUE))
+                                .addComponent(LblPorcentajeRenta)))
+                        .addGap(0, 25, Short.MAX_VALUE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(TxtSalarioNeto, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(BtnCalcularSalario)))
+                .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -265,10 +282,22 @@ public class CalcularSalario extends javax.swing.JInternalFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(TxtImpuestoRenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel13))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
-                .addComponent(BtnCalcularSalario)
-                .addContainerGap())
+                    .addComponent(LblPorcentajeRenta))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel15)
+                    .addComponent(TxtTotalDeducciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(BtnCalcularSalario)
+                        .addContainerGap())
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel16)
+                            .addComponent(TxtSalarioNeto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(27, Short.MAX_VALUE))))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -285,10 +314,9 @@ public class CalcularSalario extends javax.swing.JInternalFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -309,14 +337,15 @@ public class CalcularSalario extends javax.swing.JInternalFrame {
         
         if(oficial!=null)
         {
-            
-            double EyM = oficial.getSalario()*0.055;
-            double IyM = oficial.getSalario()*0.0384;
-            double AT  = oficial.getSalario()*0.01;
-            double AAS = oficial.getSalario()*0.033;
-            double ISR = CalcularImpuestoRenta();
-    
-            
+            //limita los decimales y convierte en string
+            DecimalFormat df = new DecimalFormat("#.00");
+            double EyM = Double.valueOf(  df.format(oficial.getSalario()*0.055) );
+            double IyM = Double.valueOf( df.format(oficial.getSalario()*0.0384) );
+            double AT  = Double.valueOf( df.format(oficial.getSalario()*0.01) );
+            double AAS = Double.valueOf( df.format(oficial.getSalario()*0.033) );
+            double ISR = Double.valueOf(  df.format(CalcularImpuestoRenta()) );
+            double TotalDeducciones = EyM+IyM+AT+AAS+ISR;
+            double SalarioNeto = oficial.getSalario()-TotalDeducciones;
             
     
             
@@ -328,6 +357,9 @@ public class CalcularSalario extends javax.swing.JInternalFrame {
             this.TxtAporteDelTrabajador.setText(String.valueOf(AT));
             this.TxtAporteAsociacionSolidarista.setText(String.valueOf(AAS));
             this.TxtImpuestoRenta.setText(String.valueOf(ISR));
+            this.TxtTotalDeducciones.setText(String.valueOf(TotalDeducciones));
+            this.TxtSalarioNeto.setText(String.valueOf(SalarioNeto));
+           
             
             
             
@@ -379,6 +411,7 @@ public class CalcularSalario extends javax.swing.JInternalFrame {
         
         if(oficial.getSalario()>0 && oficial.getSalario()<=817000)
         {
+            this.LblPorcentajeRenta.setText("0%");
             return   0;
         
         }else{
@@ -386,10 +419,11 @@ public class CalcularSalario extends javax.swing.JInternalFrame {
                 
             if(oficial.getSalario()>817000 && oficial.getSalario()<=122600)
             {
+                this.LblPorcentajeRenta.setText("10%");
                 return  oficial.getSalario()*0.10;
                 
             }else{
-                    
+                this.LblPorcentajeRenta.setText("15%");    
                 return  oficial.getSalario()*0.15;
             }
             
@@ -414,6 +448,7 @@ public class CalcularSalario extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnCalcularSalario;
     private javax.swing.JButton BtnSeleccionarOficial;
+    private javax.swing.JLabel LblPorcentajeRenta;
     private javax.swing.JTextField TxtAporteAsociacionSolidarista;
     private javax.swing.JTextField TxtAporteDelTrabajador;
     private javax.swing.JTextField TxtCedula;
@@ -422,12 +457,15 @@ public class CalcularSalario extends javax.swing.JInternalFrame {
     private javax.swing.JTextField TxtInvalidezyMuerte;
     private javax.swing.JTextField TxtNombre;
     private javax.swing.JTextField TxtSalario;
+    private javax.swing.JTextField TxtSalarioNeto;
+    private javax.swing.JTextField TxtTotalDeducciones;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
