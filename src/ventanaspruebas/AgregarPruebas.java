@@ -42,7 +42,7 @@ public class AgregarPruebas extends javax.swing.JInternalFrame {
      */
     public AgregarPruebas() {
         initComponents();
-       // cPrueba = new ControladorPruebas();
+        cPrueba = new ControladorPruebas();
         cCliente = new ControladorClientes();
         cOficial = new ControladorOficiales();
         cCita = new ControladorCitas();

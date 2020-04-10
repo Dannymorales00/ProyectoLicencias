@@ -196,6 +196,7 @@ public class JDialogBuscarCitas extends javax.swing.JDialog {
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         int seleccion = this.jTable1.rowAtPoint(evt.getPoint());
         
+        
         cita = new Cita();
         SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");  
         try {

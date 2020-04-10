@@ -12,6 +12,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import modelos.Oficial;
 import modelos.Prueba;
+import ventanas.FrmMenu;
 
 /**
  *
@@ -26,7 +27,7 @@ public class ControladorPruebas {
     
     public ControladorPruebas() {
        
-       //conn = FrmMenu.getConexion();
+       conn = FrmMenu.getConexion();
        this.sentencias= conn.getSentencias();
        this.datos=conn.getDatos();
     }

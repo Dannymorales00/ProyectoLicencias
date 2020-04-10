@@ -22,6 +22,7 @@ public class ModificarOficiales extends javax.swing.JInternalFrame {
      */
     public ModificarOficiales() {
         initComponents();
+        contrOficial = new ControladorOficiales();
     }
 
     /**
@@ -243,6 +244,7 @@ public class ModificarOficiales extends javax.swing.JInternalFrame {
         try{
             oficial.setCedula(Integer.parseInt( this.txtCedula.getText() ));
             oficial.setTelefono(Integer.parseInt(this.txtTelefono.getText()));
+            oficial.setSalario(Double.valueOf( this.txtSalario.getText()));
         }catch(NumberFormatException e){
 
         }
@@ -250,6 +252,7 @@ public class ModificarOficiales extends javax.swing.JInternalFrame {
         oficial.setNombre(this.txtNombre.getText());
         oficial.setCorreo(this.txtCorreo.getText());
         oficial.setFechanacimiento(this.jDateChooser1.getDate());
+    
         
         if (oficial.comprobar()) {
             if(this.contrOficial.actualizar(oficial)){

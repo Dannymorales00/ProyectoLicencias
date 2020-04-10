@@ -53,18 +53,18 @@ public class ControladorOficiales {
         try {
             
             this.datos = this.sentencias.executeQuery("select * from oficiales where cedula="+oficial.getCedula());
-            
+                
                 if(datos.next())
                 {
              
                     
                     Oficial oficial2 = new Oficial();
-                    oficial.setCedula(datos.getInt(2));
-                    oficial.setNombre(datos.getString(3));
-                    oficial.setFechanacimiento(datos.getDate(4));
-                    oficial.setTelefono(datos.getInt(5));
-                    oficial.setCorreo(datos.getString(6));
-                    oficial.setSalario(datos.getDouble(7));
+                    oficial2.setCedula(datos.getInt(2));
+                    oficial2.setNombre(datos.getString(3));
+                    oficial2.setFechanacimiento(datos.getDate(4));
+                    oficial2.setTelefono(datos.getInt(5));
+                    oficial2.setCorreo(datos.getString(6));
+                    oficial2.setSalario(datos.getDouble(7));
                     
                     return oficial2;
                 } 

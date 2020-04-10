@@ -19,6 +19,7 @@ import javax.swing.JOptionPane;
 import ventanascitas.EliminarCitas;
 import ventanascitas.JDialogBuscarCitas;
 import ventanasclientes.JDialogBuscarClientes;
+import ventanasoficiales.CalcularSalario;
 import ventanasoficiales.EliminarOficiales;
 import ventanasoficiales.ModificarOficiales;
 import ventanaspruebas.AgregarPruebas;
@@ -348,7 +349,9 @@ public class FrmMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemEliminarUsuariosActionPerformed
 
     private void jMenuItemCalcularSalarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCalcularSalarioActionPerformed
-        // TODO add your handling code here:
+        CalcularSalario calcularSalario = new CalcularSalario();
+        this.jDesktopPane1.add(calcularSalario);
+        calcularSalario.setVisible(true);
     }//GEN-LAST:event_jMenuItemCalcularSalarioActionPerformed
 
     private void jmenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmenuActionPerformed
