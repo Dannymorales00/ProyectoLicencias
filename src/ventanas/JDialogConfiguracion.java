@@ -270,7 +270,7 @@ public class JDialogConfiguracion extends javax.swing.JDialog {
     private void BtnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnGuardarActionPerformed
 
         if (Camposllenos()) {
-
+            Conectar();
             System.out.println("Creando Archivo Nuevo");
             CrearFicheroNuevo();
             this.processWindowEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));  
