@@ -183,10 +183,9 @@ public class JDialogBuscarCitas extends javax.swing.JDialog {
          
         cita.setFecha(fecha);
         
-        if( cCita.listarPorFecha(cita)!= null )
+        if( (citas=cCita.listarPorFecha(cita))!= null )
         {
             
-            citas=cCita.listarPorFecha(cita);
             mostrar();
              
         }else{JOptionPane.showMessageDialog(this, "No se encontraron citas para noy");} 

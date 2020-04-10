@@ -6,7 +6,6 @@
 package modelos;
 
 import java.util.Date;
-import java.sql.Time;
 
 /**
  *
@@ -16,15 +15,16 @@ public class Prueba {
     private Date fecha;
     private String hora;
     private Oficial oficial;// oficial que va realizar la Prueba enviamos la cedula a db para relacionar el oficial
+    private Cliente cliente;
     private String observaciones;
     private int nota;
-    private Boolean estado;//aprobado-reprobado
-
+    private int estado;//aprobado-reprobado
     
-    public Prueba(Date fecha, String hora, Oficial oficial, String observaciones, int nota, Boolean estado) {
+    public Prueba(Date fecha, String hora, Oficial oficial,Cliente cliente, String observaciones, int nota, int estado) {
         this.fecha = fecha;
         this.hora = hora;
         this.oficial = oficial;
+        this.cliente = cliente;
         this.observaciones = observaciones;
         this.nota = nota;
         this.estado = estado;
@@ -35,9 +35,10 @@ public class Prueba {
         this.fecha = null;
         this.hora = null;
         this.oficial = null;
+        this.cliente = null;
         this.observaciones = null;
         this.nota = 0;
-        this.estado = null;  
+        this.estado = 0;  
             
     }
     
@@ -66,6 +67,15 @@ public class Prueba {
         this.oficial = oficial;
     }
 
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
+    
     public String getObservaciones() {
         return observaciones;
     }
@@ -82,11 +92,11 @@ public class Prueba {
         this.nota = nota;
     }
 
-    public Boolean getEstado() {
+    public int getEstado() {
         return estado;
     }
 
-    public void setEstado(Boolean estado) {
+    public void setEstado(int estado) {
         this.estado = estado;
     }
 }

@@ -9,7 +9,9 @@ import conexion.Conexion;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import modelos.Cliente;
 import modelos.Oficial;
 import modelos.Prueba;
 import ventanas.FrmMenu;
@@ -24,36 +26,46 @@ public class ControladorPruebas {
     private ResultSet datos;
     private ControladorOficiales conOficiales;
     private Oficial oficial;
+    private Cliente cliente;
+    private ControladorClientes conCliente;
     
     public ControladorPruebas() {
        
        conn = FrmMenu.getConexion();
        this.sentencias= conn.getSentencias();
        this.datos=conn.getDatos();
+       
     }
 
     public ControladorPruebas(Conexion conn) {
         this.conn = conn;
         this.sentencias= conn.getSentencias();
         this.datos=conn.getDatos();
+        this.conCliente = new ControladorClientes();
+        this.conOficiales = new ControladorOficiales();
     }
     
         public boolean añadir(Prueba prueba){
         try {
-           sentencias.execute("insert into pruebas values(null,'"+prueba.getFecha()+"','"+prueba.getHora()+"','"+prueba.getOficial().getCedula()+"','"+prueba.getObservaciones()+"','"+prueba.getNota()+"','"+prueba.getEstado()+"')");
+           SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
+            System.out.println(f.format(prueba.getFecha()));
+            System.out.println(prueba.getHora());
+            System.out.println("insert into pruebas values(null,'"+f.format(prueba.getFecha())+"','"+prueba.getHora()+"','"+prueba.getOficial().getCedula()+"','"+prueba.getCliente().getCedula()+"','"+prueba.getObservaciones()+"','"+prueba.getNota()+"','"+prueba.getEstado()+"')");
+           sentencias.execute("insert into pruebas values(null,'"+f.format(prueba.getFecha())+"','"+prueba.getHora()+"','"+prueba.getOficial().getCedula()+"','"+prueba.getCliente().getCedula()+"','"+prueba.getObservaciones()+"','"+prueba.getNota()+"','"+prueba.getEstado()+"')");
            return true;
            
            
         } catch (SQLException ex) {
             System.out.println("Error al añadir");
-        }
+            System.out.println(ex);
+        }   
         return false;
     }
     
     public Prueba buscar(Prueba prueba){
         try {
             
-            this.datos = this.sentencias.executeQuery("select * from pruebas where cedula_oficial="+prueba.getOficial().getCedula());
+            this.datos = this.sentencias.executeQuery("select * from pruebas where cedula_cliente="+prueba.getCliente().getCedula());
             
                 if(datos.next())
                 {
@@ -61,8 +73,10 @@ public class ControladorPruebas {
                     //Para poder buscar el oficial
                     oficial = new Oficial();
                     oficial.setCedula(datos.getInt(4));
+                    cliente = new Cliente();
+                    cliente.setCedula(datos.getInt(5));
                     
-                    Prueba prueba2 = new Prueba(datos.getDate(2),datos.getTime(3).toString(),this.conOficiales.buscar(oficial),datos.getString(5),datos.getInt(6),datos.getBoolean(7));
+                    Prueba prueba2 = new Prueba(datos.getDate(2),datos.getTime(3).toString(),this.conOficiales.buscar(oficial),this.conCliente.buscar(cliente),datos.getString(6),datos.getInt(7),datos.getInt(8));
                     return prueba2;
                 } 
                 
@@ -75,7 +89,7 @@ public class ControladorPruebas {
         
     public boolean eliminar(Prueba prueba){
         try {
-            this.sentencias.executeUpdate("delete from pruebas where cedula_oficial="+prueba.getOficial().getCedula());
+            this.sentencias.executeUpdate("delete from pruebas where cedula_cliente="+prueba.getCliente().getCedula());
             return true;
             
         } catch (SQLException ex) {
@@ -107,8 +121,10 @@ public class ControladorPruebas {
                     
                     oficial = new Oficial();
                     oficial.setCedula(datos.getInt(4));
+                    cliente = new Cliente();
+                    cliente.setCedula(datos.getInt(5));
                     
-                    pruebas.add(new Prueba(datos.getDate(2),datos.getTime(3).toString(),this.conOficiales.buscar(oficial),datos.getString(5),datos.getInt(6),datos.getBoolean(7)));
+                    pruebas.add(new Prueba(datos.getDate(2),datos.getTime(3).toString(),this.conOficiales.buscar(oficial),this.conCliente.buscar(cliente),datos.getString(6),datos.getInt(7),datos.getInt(8)));
                
                 }
                 return pruebas;
@@ -139,7 +155,29 @@ public class ControladorPruebas {
          
         return false;
        
-    }  
+    }
+    //Valida que exista una cita de ese cliente
+    public boolean ValidarFKCliente(Prueba prueba){
+
+        try 
+        {
+            this.datos = this.sentencias.executeQuery("select * from citas where cedula_cliente="+prueba.getCliente().getCedula());
+                
+            if (datos.next()) 
+            {
+            
+                return true;
+              
+            }
+                
+        } catch (SQLException ex){
+            System.out.println("Error al validarFKCliente");
+            
+        }
+         
+        return false;
+       
+    }
     //valida que exista una cita con esa fecha para poder agregar una prueba
     public boolean ValidarFKFecha(Prueba prueba){
 

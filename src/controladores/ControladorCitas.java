@@ -35,7 +35,7 @@ public class ControladorCitas {
         try {
             this.sentencias2 = FrmMenu.getConexion().getConn().createStatement();
         } catch (SQLException ex) {
-            System.out.println("Erros al crear otra sentencia");
+            System.out.println("Error al crear otra sentencia");
         }
        this.sentencias = conn.getSentencias();
        this.datos = conn.getDatos();
@@ -137,8 +137,8 @@ public class ControladorCitas {
             try {
                 
                 SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
-                
-                this.datos = this.sentencias2.executeQuery("select * from citas where fecha ='"+f.format(cita.getFecha())+"';");
+                System.out.println(cita.getFecha());
+                this.datos = this.sentencias2.executeQuery("select * from citas where fecha ='"+f.format(cita.getFecha())+"' AND estado = 'activado' ;");
                 
                 //si se encontro resultados en la consulta se guardan en el arrayList
                 while(datos.next())
