@@ -51,8 +51,8 @@ public class ControladorPruebas {
             System.out.println(f.format(prueba.getFecha()));
             System.out.println(prueba.getHora());
             System.out.println("insert into pruebas values(null,'"+f.format(prueba.getFecha())+"','"+prueba.getHora()+"','"+prueba.getOficial().getCedula()+"','"+prueba.getCliente().getCedula()+"','"+prueba.getObservaciones()+"','"+prueba.getNota()+"','"+prueba.getEstado()+"')");
-           sentencias.execute("insert into pruebas values(null,'"+f.format(prueba.getFecha())+"','"+prueba.getHora()+"','"+prueba.getOficial().getCedula()+"','"+prueba.getCliente().getCedula()+"','"+prueba.getObservaciones()+"','"+prueba.getNota()+"','"+prueba.getEstado()+"')");
-           return true;
+            sentencias.execute("insert into pruebas values(null,'"+f.format(prueba.getFecha())+"','"+prueba.getHora()+"','"+prueba.getOficial().getCedula()+"','"+prueba.getCliente().getCedula()+"','"+prueba.getObservaciones()+"','"+prueba.getNota()+"','"+prueba.getEstado()+"')");
+            return true;
            
            
         } catch (SQLException ex) {

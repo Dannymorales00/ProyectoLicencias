@@ -9,9 +9,12 @@ import conexion.Conexion;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import modelos.Cita;
 import modelos.Cliente;
 import ventanas.FrmMenu;
@@ -137,7 +140,7 @@ public class ControladorCitas {
             try {
                 
                 SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
-                System.out.println(cita.getFecha());
+               
                 this.datos = this.sentencias2.executeQuery("select * from citas where fecha ='"+f.format(cita.getFecha())+"' AND estado = 'activado' ;");
                 
                 //si se encontro resultados en la consulta se guardan en el arrayList
@@ -145,7 +148,14 @@ public class ControladorCitas {
                 {
                     cliente = new Cliente();
                     cliente.setCedula(datos.getInt(4));
-                    citas.add(new Cita(datos.getDate(2),String.valueOf(datos.getTime(3)), ccliente.buscar(cliente)));
+                    Cita cita2 = new Cita(datos.getDate(2),String.valueOf(datos.getTime(3)), ccliente.buscar(cliente));
+                    if( CambiarEstadoCita(cita2) )
+                    {
+                        //si la fecha se vencio desactivamos la cita 
+                        actualizar(cita2);
+                    }
+                    
+                    citas.add(cita2);
                   
                                                                                             
                 }
@@ -240,13 +250,22 @@ public class ControladorCitas {
     
     private boolean CambiarEstadoCita(Cita cita ) {
         Date fechaActual = new Date();
-
+        
+        SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
+       //se utiliza para que el compareto funcione correctamente
+        try {
+            fechaActual = f.parse(f.format(fechaActual));
+        } catch (ParseException ex) {
+           
+        }
+     
         
         
+        System.out.println("fecha actual :"+fechaActual+"--fecha de la cita:"+cita.getFecha() );
         if ( cita.getFecha().compareTo(fechaActual)<0 )
         {
             cita.setEstado("desactivado");
-            System.out.println("La Fecha es menor ");
+            System.out.println("La Fecha es menor :"+cita.getFecha().compareTo(fechaActual));
             return true;
         
       
@@ -255,14 +274,14 @@ public class ControladorCitas {
         
             if (   cita.getFecha().compareTo(fechaActual)>0 )
             {
-                System.out.println("La Fecha es mayor");
+                System.out.println("La Fecha es mayor :"+cita.getFecha().compareTo(fechaActual));
                 return false;
         
             
             }else{
-                //System.out.println("son iguales");
-                cita.setEstado("desactivado");
-                return true;
+                
+                System.out.println("La Fecha es Igual :"+cita.getFecha().compareTo(fechaActual));
+                return false;
           
             }
         
