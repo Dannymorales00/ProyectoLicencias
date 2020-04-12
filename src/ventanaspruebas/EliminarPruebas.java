@@ -107,6 +107,13 @@ public class EliminarPruebas extends javax.swing.JInternalFrame {
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setText("ID de la Prueba a eliminar:");
 
+        jTextField1.setEditable(false);
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -114,9 +121,7 @@ public class EliminarPruebas extends javax.swing.JInternalFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(btnPrueba)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnPrueba, javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addGap(18, 18, 18)
@@ -165,7 +170,9 @@ public class EliminarPruebas extends javax.swing.JInternalFrame {
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         if (seleccionado) {
             this.cPrueba.eliminar(prueba);
+            this.jTextField1.setEditable(true);
             this.jTextField1.setText("");
+            this.jTextField1.setEditable(false);
         }else{
           JOptionPane.showMessageDialog(this, "Debe seleccionar una prueba para poder eliminar");  
         }      
@@ -184,9 +191,15 @@ public class EliminarPruebas extends javax.swing.JInternalFrame {
         buscarPrueba.setVisible(true);
         seleccionado = buscarPrueba.isSeleccionado();
         if ((prueba=buscarPrueba.getPrueba())!=null) {
+            this.jTextField1.setEditable(true);
             this.jTextField1.setText(String.valueOf(prueba.getId()));
+            this.jTextField1.setEditable(false);
         }
     }//GEN-LAST:event_btnPruebaActionPerformed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
