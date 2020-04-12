@@ -22,6 +22,7 @@ public class JDialogBuscarOficiales extends javax.swing.JDialog {
     private ArrayList <Oficial> oficiales;
     private ControladorOficiales cOficial;
     private Oficial oficial;
+    private boolean seleccionado;
     /**
      * Creates new form JDialogBuscarOficiales
      */
@@ -30,10 +31,15 @@ public class JDialogBuscarOficiales extends javax.swing.JDialog {
         initComponents();
         oficial=null;
         cOficial = new ControladorOficiales();
+        seleccionado = false;
     }
 
     public Oficial getOficial() {
         return oficial;
+    }
+
+    public boolean isSeleccionado() {
+        return seleccionado;
     }
 
     
@@ -50,8 +56,6 @@ public class JDialogBuscarOficiales extends javax.swing.JDialog {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        txtCedula = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         btnBuscar = new javax.swing.JButton();
@@ -82,9 +86,6 @@ public class JDialogBuscarOficiales extends javax.swing.JDialog {
         );
 
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel2.setText("Cedula");
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -139,11 +140,6 @@ public class JDialogBuscarOficiales extends javax.swing.JDialog {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 781, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
                         .addComponent(btnBuscar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnSeleccionar)))
@@ -152,11 +148,7 @@ public class JDialogBuscarOficiales extends javax.swing.JDialog {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(37, 37, 37)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -178,7 +170,7 @@ public class JDialogBuscarOficiales extends javax.swing.JDialog {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(56, 56, 56))
+                .addContainerGap())
         );
 
         pack();
@@ -189,7 +181,7 @@ public class JDialogBuscarOficiales extends javax.swing.JDialog {
         
         this.mostrar();
         
-        this.txtCedula.setText("");
+        
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnSeleccionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeleccionarActionPerformed
@@ -219,6 +211,8 @@ public class JDialogBuscarOficiales extends javax.swing.JDialog {
         oficial.setCorreo((String) this.jTable1.getValueAt(seleccion, 4));
         String salario = (String) this.jTable1.getValueAt(seleccion, 5);
         oficial.setSalario(Double.valueOf(salario));
+        
+        seleccionado = true;
     }//GEN-LAST:event_jTable1MouseClicked
 
     public void mostrar(){
@@ -285,11 +279,9 @@ public class JDialogBuscarOficiales extends javax.swing.JDialog {
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnSeleccionar;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField txtCedula;
     // End of variables declaration//GEN-END:variables
 }

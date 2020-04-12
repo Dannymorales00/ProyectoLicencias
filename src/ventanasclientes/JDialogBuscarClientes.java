@@ -25,6 +25,7 @@ public class JDialogBuscarClientes extends javax.swing.JDialog {
     private ArrayList <Cliente> clientes;
     private ControladorClientes ccliente;
     private Cliente cliente;
+    private boolean seleccionado;
     /**
      * Creates new form jDialogBuscarVehiculo
      */
@@ -33,18 +34,16 @@ public class JDialogBuscarClientes extends javax.swing.JDialog {
         initComponents();
         cliente = null;
         ccliente = new ControladorClientes();
-   
+        seleccionado = false;
     }
 
     public Cliente getCliente() {
         return cliente;
     }
 
- 
-    
-    
-    
-
+    public boolean isSeleccionado() {
+        return seleccionado;
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -232,7 +231,8 @@ public class JDialogBuscarClientes extends javax.swing.JDialog {
         cliente.setCorreo((String) this.jTable1.getValueAt(seleccion, 4));
         String edad = (String) this.jTable1.getValueAt(seleccion, 5);
         cliente.setEdad(Integer.parseInt(edad));
-     
+        
+        seleccionado = true;
     }//GEN-LAST:event_jTable1MouseClicked
       
     public void mostrar(){

@@ -3,51 +3,75 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ventanascitas;
+package ventanaspruebas;
 
-import controladores.ControladorCitas;
 import controladores.ControladorClientes;
+import controladores.ControladorOficiales;
+import controladores.ControladorPruebas;
 import java.awt.event.WindowEvent;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import javax.swing.JOptionPane;
-import modelos.Cita;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import modelos.Cliente;
+import modelos.Oficial;
+import modelos.Prueba;
 
 /**
  *
  * @author LeanPC
  */
-public class JDialogBuscarCitas extends javax.swing.JDialog {
+public class JDialogBuscarPruebas extends javax.swing.JDialog {
 
-    private ArrayList<Cita> citas;
-    private ControladorCitas cCita;
-    private Cita cita;
+    private ArrayList<Prueba> pruebas;
+    private ControladorPruebas conPrueba;
+    private Prueba prueba;
+    private ControladorOficiales conOficial;
+    private ControladorClientes conCliente;
     private Cliente cliente;
-    private ControladorClientes cCliente;
+    private Oficial oficial;
     private boolean seleccionado;
     /**
-     * Creates new form JDialogBuscarCitas
+     * Creates new form JDialogBuscarPruebas
      */
-    public JDialogBuscarCitas(java.awt.Frame parent, boolean modal) {
+    public JDialogBuscarPruebas(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        citas = new ArrayList();
-        cCita = new ControladorCitas();
-        cCliente = new ControladorClientes();
+        prueba = null;
+        conPrueba = new ControladorPruebas();
+        conOficial = new ControladorOficiales();
+        conCliente = new ControladorClientes();
         seleccionado = false;
     }
 
-    public Cita getCita() {
-        return cita;
+    public Prueba getPrueba() {
+        return prueba;
     }
 
     public boolean isSeleccionado() {
         return seleccionado;
     }
 
+
+    public void mostrar(){
+        String matriz[][] = new String[pruebas.size()][7];
+        
+        for (int i = 0; i < pruebas.size(); i++) {
+            matriz[i][0]=String.valueOf(pruebas.get(i).getId());
+            matriz[i][1]=String.valueOf(pruebas.get(i).getFecha());
+            matriz[i][2]=pruebas.get(i).getHora();
+            matriz[i][3]=String.valueOf(pruebas.get(i).getOficial().getCedula());
+            matriz[i][4]=String.valueOf(pruebas.get(i).getCliente().getCedula());
+            matriz[i][5]=pruebas.get(i).getObservaciones();
+            matriz[i][6]=String.valueOf(pruebas.get(i).getNota());
+            matriz[i][7]=String.valueOf(pruebas.get(i).getEstado());
+        }
+        
+        this.jTable1.setModel(new javax.swing.table.DefaultTableModel(
+                matriz,new String [] {"ID","Fecha","Hora","Cedula Oficial","Cedula Cliente","Observaciones","Nota","Estado"}));
+    }
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -71,21 +95,21 @@ public class JDialogBuscarCitas extends javax.swing.JDialog {
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
-        jLabel1.setText("Citas");
+        jLabel1.setText("Pruebas");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(333, 333, 333)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(381, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(367, 367, 367))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(28, 28, 28)
                 .addComponent(jLabel1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -97,14 +121,14 @@ public class JDialogBuscarCitas extends javax.swing.JDialog {
 
             },
             new String [] {
-                "Fecha", "Hora", "Cliente"
+                "ID", "Fecha", "Hora", "Cedula Oficial", "Cedula Cliente", "Observaciones", "Nota", "Estado"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -140,26 +164,23 @@ public class JDialogBuscarCitas extends javax.swing.JDialog {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+            .addComponent(jScrollPane1)
+            .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 747, Short.MAX_VALUE)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(btnBuscar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnSeleccionar)))
+                .addComponent(btnBuscar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnSeleccionar)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(56, 56, 56)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-                .addGap(28, 28, 28)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnBuscar)
                     .addComponent(btnSeleccionar))
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -173,64 +194,52 @@ public class JDialogBuscarCitas extends javax.swing.JDialog {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        pruebas = conPrueba.listar();
+        
+        this.mostrar();
+    }//GEN-LAST:event_btnBuscarActionPerformed
+
     private void btnSeleccionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeleccionarActionPerformed
         this.processWindowEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));  
     }//GEN-LAST:event_btnSeleccionarActionPerformed
 
-    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        Date fecha = new Date();
-        cita = new Cita();
-         
-        cita.setFecha(fecha);
-        
-        if( (citas=cCita.listarPorFecha(cita))!= null )
-        {
-            
-            mostrar();
-             
-        }else{JOptionPane.showMessageDialog(this, "No se encontraron citas para noy");} 
-
-    }//GEN-LAST:event_btnBuscarActionPerformed
-
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         int seleccion = this.jTable1.rowAtPoint(evt.getPoint());
         
-        
-        cita = new Cita();
-        SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");  
+        prueba = new Prueba();
+        prueba.setId((int)this.jTable1.getValueAt(seleccion, 0));
+        SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");   
         try {
-            Date fecha =  f.parse((String)this.jTable1.getValueAt(seleccion, 0));
-            cita.setFecha(fecha);
+            Date fecha =  f.parse((String)this.jTable1.getValueAt(seleccion, 1));
+            prueba.setFecha(fecha);
         } catch (ParseException ex) {
-             System.out.println("no se pudo convertir a fecha");
+            System.out.println("no se pudo convertir a fecha");
         }
-        cita.setHora((String)this.jTable1.getValueAt(seleccion, 1));
-        cliente = new Cliente();
-        cliente.setCedula(Integer.valueOf((String)this.jTable1.getValueAt(seleccion, 2)));
-        cita.setCliente(cCliente.buscar(cliente));
+        prueba.setHora((String)this.jTable1.getValueAt(seleccion, 2));
         
-        seleccionado = true;
+        //Genera cliente y oficial, los busca y los agrega a la prueba
+        cliente = new Cliente();
+        oficial = new Oficial();
+        cliente.setCedula((int)this.jTable1.getValueAt(seleccion, 3));
+        oficial.setCedula((int)this.jTable1.getValueAt(seleccion, 4));
+        prueba.setCliente(this.conCliente.buscar(cliente));
+        prueba.setOficial(this.conOficial.buscar(oficial));
+        
+        prueba.setObservaciones((String)this.jTable1.getValueAt(seleccion, 5));
+        prueba.setNota((int)this.jTable1.getValueAt(seleccion, 6));
+        prueba.setEstado((int)this.jTable1.getValueAt(seleccion, 7));
+        
+        seleccionado=true;
     }//GEN-LAST:event_jTable1MouseClicked
 
-    public void mostrar(){
-        String matriz[][] = new String[citas.size()][3];
-        
-        for (int i = 0; i < citas.size(); i++) {
-            matriz[i][0]=String.valueOf(citas.get(i).getFecha());
-            matriz[i][1]=citas.get(i).getHora();
-            matriz[i][2]=String.valueOf(citas.get(i).getCliente().getCedula());
-            
-        }
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            matriz,new String [] {"Fecha", "Hora","Cliente"}));
-    }
     /**
      * @param args the command line arguments
      */
@@ -248,20 +257,20 @@ public class JDialogBuscarCitas extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(JDialogBuscarCitas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JDialogBuscarPruebas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(JDialogBuscarCitas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JDialogBuscarPruebas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(JDialogBuscarCitas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JDialogBuscarPruebas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(JDialogBuscarCitas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JDialogBuscarPruebas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                JDialogBuscarCitas dialog = new JDialogBuscarCitas(new javax.swing.JFrame(), true);
+                JDialogBuscarPruebas dialog = new JDialogBuscarPruebas(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

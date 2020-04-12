@@ -12,6 +12,7 @@ import java.util.Date;
  * @author Danny_PC
  */
 public class Prueba {
+    private int id;
     private Date fecha;
     private String hora;
     private Oficial oficial;// oficial que va realizar la Prueba enviamos la cedula a db para relacionar el oficial
@@ -20,7 +21,8 @@ public class Prueba {
     private int nota;
     private int estado;//aprobado-reprobado
     
-    public Prueba(Date fecha, String hora, Oficial oficial,Cliente cliente, String observaciones, int nota, int estado) {
+    public Prueba(int id, Date fecha, String hora, Oficial oficial,Cliente cliente, String observaciones, int nota, int estado) {
+        this.id = id;
         this.fecha = fecha;
         this.hora = hora;
         this.oficial = oficial;
@@ -31,7 +33,8 @@ public class Prueba {
     }
 
     public Prueba() {
-            
+        
+
         this.fecha = null;
         this.hora = null;
         this.oficial = null;
@@ -41,7 +44,14 @@ public class Prueba {
         this.estado = 0;  
             
     }
-    
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public Date getFecha() {
         return fecha;

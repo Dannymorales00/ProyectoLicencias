@@ -45,12 +45,10 @@ public class ControladorPruebas {
         this.conOficiales = new ControladorOficiales();
     }
     
-        public boolean añadir(Prueba prueba){
+    public boolean añadir(Prueba prueba){
         try {
            SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
-            System.out.println(f.format(prueba.getFecha()));
-            System.out.println(prueba.getHora());
-            System.out.println("insert into pruebas values(null,'"+f.format(prueba.getFecha())+"','"+prueba.getHora()+"','"+prueba.getOficial().getCedula()+"','"+prueba.getCliente().getCedula()+"','"+prueba.getObservaciones()+"','"+prueba.getNota()+"','"+prueba.getEstado()+"')");
+   
             sentencias.execute("insert into pruebas values(null,'"+f.format(prueba.getFecha())+"','"+prueba.getHora()+"','"+prueba.getOficial().getCedula()+"','"+prueba.getCliente().getCedula()+"','"+prueba.getObservaciones()+"','"+prueba.getNota()+"','"+prueba.getEstado()+"')");
             return true;
            
@@ -65,18 +63,18 @@ public class ControladorPruebas {
     public Prueba buscar(Prueba prueba){
         try {
             
-            this.datos = this.sentencias.executeQuery("select * from pruebas where cedula_cliente="+prueba.getCliente().getCedula());
+            this.datos = this.sentencias.executeQuery("select * from pruebas where id="+prueba.getId());
             
                 if(datos.next())
                 {
              
-                    //Para poder buscar el oficial
+                    //Para poder buscar el oficial y cliente
                     oficial = new Oficial();
                     oficial.setCedula(datos.getInt(4));
                     cliente = new Cliente();
                     cliente.setCedula(datos.getInt(5));
                     
-                    Prueba prueba2 = new Prueba(datos.getDate(2),datos.getTime(3).toString(),this.conOficiales.buscar(oficial),this.conCliente.buscar(cliente),datos.getString(6),datos.getInt(7),datos.getInt(8));
+                    Prueba prueba2 = new Prueba(datos.getInt(1),datos.getDate(2),datos.getTime(3).toString(),this.conOficiales.buscar(oficial),this.conCliente.buscar(cliente),datos.getString(6),datos.getInt(7),datos.getInt(8));
                     return prueba2;
                 } 
                 
@@ -89,7 +87,7 @@ public class ControladorPruebas {
         
     public boolean eliminar(Prueba prueba){
         try {
-            this.sentencias.executeUpdate("delete from pruebas where cedula_cliente="+prueba.getCliente().getCedula());
+            this.sentencias.executeUpdate("delete from pruebas where id="+prueba.getId());
             return true;
             
         } catch (SQLException ex) {
@@ -103,7 +101,7 @@ public class ControladorPruebas {
         
         try {  
               
-            this.sentencias.executeUpdate("UPDATE pruebas SET nota='"+prueba.getNota()+"' WHERE cedula_oficial='"+prueba.getOficial().getCedula()+"';");
+            this.sentencias.executeUpdate("UPDATE pruebas SET nota='"+prueba.getNota()+"', observaciones='"+prueba.getObservaciones()+"', estado='"+prueba.getEstado()+"' WHERE id='"+prueba.getId()+"';");
             return true;
             
         } catch (SQLException ex) {
@@ -124,7 +122,7 @@ public class ControladorPruebas {
                     cliente = new Cliente();
                     cliente.setCedula(datos.getInt(5));
                     
-                    pruebas.add(new Prueba(datos.getDate(2),datos.getTime(3).toString(),this.conOficiales.buscar(oficial),this.conCliente.buscar(cliente),datos.getString(6),datos.getInt(7),datos.getInt(8)));
+                    pruebas.add(new Prueba(datos.getInt(1),datos.getDate(2),datos.getTime(3).toString(),this.conOficiales.buscar(oficial),this.conCliente.buscar(cliente),datos.getString(6),datos.getInt(7),datos.getInt(8)));
                
                 }
                 return pruebas;
@@ -183,7 +181,7 @@ public class ControladorPruebas {
 
         try 
         {
-            this.datos = this.sentencias.executeQuery("select * from citas where fecha="+prueba.getFecha());
+            this.datos = this.sentencias.executeQuery("select * from citas where fecha="+prueba.getFecha()+"'  AND estado = 'activado'  ;");
                 
             if (datos.next()) 
             {
@@ -205,7 +203,7 @@ public class ControladorPruebas {
 
         try 
         {
-            this.datos = this.sentencias.executeQuery("select * from citas where hora="+prueba.getHora());
+            this.datos = this.sentencias.executeQuery("select * from citas where hora="+prueba.getHora()+"'  AND estado = 'activado'  ;");
                 
             if (datos.next()) 
             {
