@@ -5,6 +5,19 @@
  */
 package ventanas;
 
+import Sigletone.Citas.SingletonAgregarCitas;
+import Sigletone.Oficiales.SingletonAgregarOficiales;
+import Sigletone.Oficiales.SingletonCalcularSalario;
+import Sigletone.Oficiales.SingletonEliminarOficiales;
+import Sigletone.Oficiales.SingletonModificarOficiales;
+import Sigletone.Citas.SingletonEliminarCitas;
+import Sigletone.Clientes.SingletonAgregarClientes;
+import Sigletone.Clientes.SingletonEliminarCliente;
+import Sigletone.Clientes.SingletonModificarCliente;
+import Sigletone.Pruebas.SingletonAgregarPrueba;
+import Sigletone.Usuarios.SingletonAgregarUsuarios;
+import Sigletone.Usuarios.SingletonEliminarUsuarios;
+import Sigletone.Usuarios.SingletonModificarUsuarios;
 import ventanascitas.AgregarCitas;
 import ventanasclientes.ModificarClientes;
 import ventanasclientes.AgregarClientes;
@@ -18,7 +31,6 @@ import java.awt.Frame;
 import javax.swing.JOptionPane;
 import ventanascitas.EliminarCitas;
 import ventanascitas.JDialogBuscarCitas;
-import ventanasclientes.JDialogBuscarClientes;
 import ventanasoficiales.CalcularSalario;
 import ventanasoficiales.EliminarOficiales;
 import ventanasoficiales.ModificarOficiales;
@@ -32,7 +44,7 @@ public class FrmMenu extends javax.swing.JFrame {
 
     private AgregarUsuarios agregarUsuarios;
     private ModificarUsuarios modificarUsuarios;
-    private AgregarOficiales agregarOficiales;
+  
     private static Conexion conexion = new Conexion();
     /**
      * Creates new form FrmMenu
@@ -318,22 +330,22 @@ public class FrmMenu extends javax.swing.JFrame {
 
     private void jMenuItemAgregarOficialesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAgregarOficialesActionPerformed
         
-        this.agregarOficiales = new AgregarOficiales();
-        this.jDesktopPane1.add(this.agregarOficiales);
+        AgregarOficiales agregarOficiales = SingletonAgregarOficiales.getInstance();
+        this.jDesktopPane1.add(agregarOficiales);
         agregarOficiales.setVisible(true);
   
         
     }//GEN-LAST:event_jMenuItemAgregarOficialesActionPerformed
 
     private void jMenuItemAgregarUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAgregarUsuariosActionPerformed
-        this.agregarUsuarios = new AgregarUsuarios();
+        this.agregarUsuarios = SingletonAgregarUsuarios.getInstance();
         this.jDesktopPane1.add(this.agregarUsuarios);
         this.agregarUsuarios.setVisible(true);
             
     }//GEN-LAST:event_jMenuItemAgregarUsuariosActionPerformed
 
     private void jMenuItemModificarUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemModificarUsuariosActionPerformed
-        this.modificarUsuarios = new ModificarUsuarios();
+        this.modificarUsuarios = SingletonModificarUsuarios.getInstance();
         this.jDesktopPane1.add(this.modificarUsuarios);
         this.modificarUsuarios.setVisible(true);
             
@@ -344,13 +356,13 @@ public class FrmMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemModificarUsuariosActionPerformed
 
     private void jMenuItemEliminarUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemEliminarUsuariosActionPerformed
-        EliminarUsuarios eliminarUsuarios = new EliminarUsuarios();
+        EliminarUsuarios eliminarUsuarios = SingletonEliminarUsuarios.getInstance();
         this.jDesktopPane1.add(eliminarUsuarios);
         eliminarUsuarios.setVisible(true);
     }//GEN-LAST:event_jMenuItemEliminarUsuariosActionPerformed
 
     private void jMenuItemCalcularSalarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCalcularSalarioActionPerformed
-        CalcularSalario calcularSalario = new CalcularSalario();
+        CalcularSalario calcularSalario = SingletonCalcularSalario.getInstance();
         this.jDesktopPane1.add(calcularSalario);
         calcularSalario.setVisible(true);
     }//GEN-LAST:event_jMenuItemCalcularSalarioActionPerformed
@@ -366,32 +378,33 @@ public class FrmMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemAbrirConfiguracionActionPerformed
 
     private void jMenuItemAgregarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAgregarClientesActionPerformed
-        AgregarClientes agregarClientes = new AgregarClientes();
+        AgregarClientes agregarClientes = SingletonAgregarClientes.getInstance();
         this.jDesktopPane1.add(agregarClientes);
         agregarClientes.setVisible(true);
     }//GEN-LAST:event_jMenuItemAgregarClientesActionPerformed
 
     private void jMenuItemEliminarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemEliminarClientesActionPerformed
-        EliminarClientes eliminarClientes =  new EliminarClientes();
+        EliminarClientes eliminarClientes = SingletonEliminarCliente.getInstance();
         this.jDesktopPane1.add(eliminarClientes);
         eliminarClientes.setVisible(true);
     }//GEN-LAST:event_jMenuItemEliminarClientesActionPerformed
 
     private void jMenuItemModificarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemModificarClientesActionPerformed
-        ModificarClientes modificarClientes = new ModificarClientes();
+        ModificarClientes modificarClientes = SingletonModificarCliente.getInstance();
         this.jDesktopPane1.add(modificarClientes);
         modificarClientes.setVisible(true);
         
     }//GEN-LAST:event_jMenuItemModificarClientesActionPerformed
 
     private void jMenuItemAgregarCitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAgregarCitaActionPerformed
-        AgregarCitas agregarCitas= new AgregarCitas();
+       
+       AgregarCitas agregarCitas = SingletonAgregarCitas.getInstance();
         this.jDesktopPane1.add(agregarCitas);
         agregarCitas.setVisible(true);
     }//GEN-LAST:event_jMenuItemAgregarCitaActionPerformed
 
     private void jMenuItemEliminarCitasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemEliminarCitasActionPerformed
-        EliminarCitas eliminarCitas = new EliminarCitas();
+        EliminarCitas eliminarCitas =SingletonEliminarCitas.getInstance();
         this.jDesktopPane1.add(eliminarCitas);
         eliminarCitas.setVisible(true);
         
@@ -404,20 +417,20 @@ public class FrmMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemMostrarCitasOficialesActionPerformed
 
     private void MenuItemAgregarPruebasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuItemAgregarPruebasActionPerformed
-       AgregarPruebas agregarPruebas = new AgregarPruebas();
+       AgregarPruebas agregarPruebas = SingletonAgregarPrueba.getInstance();
        this.jDesktopPane1.add(agregarPruebas);
        agregarPruebas.setVisible(true);
     }//GEN-LAST:event_MenuItemAgregarPruebasActionPerformed
 
     private void jMenuItemEliminarOficialesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemEliminarOficialesActionPerformed
-        EliminarOficiales eliminarOficiales = new EliminarOficiales();
+        EliminarOficiales eliminarOficiales = SingletonEliminarOficiales.getInstance();
         this.jDesktopPane1.add(eliminarOficiales);
         eliminarOficiales.setVisible(true);
                 
     }//GEN-LAST:event_jMenuItemEliminarOficialesActionPerformed
 
     private void jMenuItemModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemModificarActionPerformed
-        ModificarOficiales modificarOficiales = new ModificarOficiales();
+        ModificarOficiales modificarOficiales = SingletonModificarOficiales.getInstance();
         this.jDesktopPane1.add(modificarOficiales);
         modificarOficiales.setVisible(true);
     }//GEN-LAST:event_jMenuItemModificarActionPerformed
