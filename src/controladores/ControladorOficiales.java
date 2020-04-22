@@ -51,12 +51,12 @@ public class ControladorOficiales {
         
     public Oficial buscar(Oficial oficial){
         try {
-            
+          
             this.datos = this.sentencias.executeQuery("select * from oficiales where cedula="+oficial.getCedula());
                 
                 if(datos.next())
                 {
-             
+                 
                     
                     Oficial oficial2 = new Oficial();
                     oficial2.setCedula(datos.getInt(2));
@@ -66,12 +66,15 @@ public class ControladorOficiales {
                     oficial2.setCorreo(datos.getString(6));
                     oficial2.setSalario(datos.getDouble(7));
                     
+                    
                     return oficial2;
                 } 
                 
         }catch (SQLException ex) {
+           
                 System.out.println("Error al buscar");
             }
+        
         return null;
 
     }

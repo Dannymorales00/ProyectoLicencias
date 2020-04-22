@@ -66,7 +66,7 @@ public class ControladorClientes {
                     cliente2.setTelefono(datos.getInt(5));
                     cliente2.setCorreo(datos.getString(6));
                     cliente2.setEdad(calcularEdad(datos.getDate(4)));
-                
+              
                     
                     return cliente2;
                 } 

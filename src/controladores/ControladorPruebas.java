@@ -28,12 +28,14 @@ public class ControladorPruebas {
     private Oficial oficial;
     private Cliente cliente;
     private ControladorClientes conCliente;
-    
+ 
     public ControladorPruebas() {
        
        conn = FrmMenu.getConexion();
        this.sentencias= conn.getSentencias();
        this.datos=conn.getDatos();
+        this.conCliente = new ControladorClientes();
+        this.conOficiales = new ControladorOficiales();
        
     }
 
@@ -128,6 +130,17 @@ public class ControladorPruebas {
                 return pruebas;
             } catch (SQLException ex) {
                 System.out.println("Error al listar");
+            }
+        return null; 
+    }
+    
+     public ResultSet listarCedula(String cedula){
+            try {
+                
+                ResultSet datosPrueba = this.sentencias.executeQuery("SELECT * from pruebas JOIN oficiales on pruebas.cedula_oficial = oficiales.cedula JOIN clientes ON clientes.cedula = pruebas.cedula_cliente WHERE pruebas.cedula_cliente="+cedula+";");
+                return datosPrueba;
+            } catch (SQLException ex) {
+                System.out.println(ex);
             }
         return null; 
     }
