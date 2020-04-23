@@ -194,7 +194,10 @@ public class ControladorPruebas {
 
         try 
         {
-            this.datos = this.sentencias.executeQuery("select * from citas where fecha="+prueba.getFecha()+"'  AND estado = 'activado'  ;");
+            SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
+            System.out.println("fecha de la prueba "+prueba.getFecha());
+            this.datos = this.sentencias.executeQuery("select * from citas where fecha='"+f.format( prueba.getFecha() )+"'  AND estado = 'activado'  ;");
+
                 
             if (datos.next()) 
             {
@@ -205,6 +208,7 @@ public class ControladorPruebas {
                 
         } catch (SQLException ex){
             System.out.println("Error al validarFKFecha");
+            System.out.println(ex);
             
         }
          
@@ -216,7 +220,7 @@ public class ControladorPruebas {
 
         try 
         {
-            this.datos = this.sentencias.executeQuery("select * from citas where hora="+prueba.getHora()+"'  AND estado = 'activado'  ;");
+            this.datos = this.sentencias.executeQuery("select * from citas where hora='"+prueba.getHora()+"'  AND estado = 'activado'  ;");
                 
             if (datos.next()) 
             {
