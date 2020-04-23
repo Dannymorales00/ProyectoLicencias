@@ -172,8 +172,14 @@
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="TxtNombre">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="TxtNombreKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="TxtCorreo">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="TxtCorreoKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="BtnActualizar">
           <Properties>

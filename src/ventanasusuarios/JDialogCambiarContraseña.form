@@ -119,8 +119,14 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="TxtContrase&#xf1;aActual">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="TxtContrase&#xf1;aActualKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="TxtContrase&#xf1;aNueva">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="TxtContrase&#xf1;aNuevaKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="BtnCambiar">
           <Properties>

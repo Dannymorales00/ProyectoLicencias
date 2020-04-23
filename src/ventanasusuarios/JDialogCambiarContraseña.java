@@ -71,6 +71,18 @@ public class JDialogCambiarContraseña extends javax.swing.JDialog {
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel3.setText("Nueva Contraseña");
 
+        TxtContraseñaActual.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                TxtContraseñaActualKeyTyped(evt);
+            }
+        });
+
+        TxtContraseñaNueva.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                TxtContraseñaNuevaKeyTyped(evt);
+            }
+        });
+
         BtnCambiar.setText("Cambiar");
         BtnCambiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -188,6 +200,18 @@ public class JDialogCambiarContraseña extends javax.swing.JDialog {
         this.processWindowEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));  
         
     }//GEN-LAST:event_BtnCancelarActionPerformed
+
+    private void TxtContraseñaActualKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TxtContraseñaActualKeyTyped
+       if((this.TxtContraseñaActual.getText().length()==40)){
+             evt.consume();
+         }
+    }//GEN-LAST:event_TxtContraseñaActualKeyTyped
+
+    private void TxtContraseñaNuevaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TxtContraseñaNuevaKeyTyped
+       if((this.TxtContraseñaNueva.getText().length()==40)){
+             evt.consume();
+         }
+    }//GEN-LAST:event_TxtContraseñaNuevaKeyTyped
 
     /**
      * @param args the command line arguments

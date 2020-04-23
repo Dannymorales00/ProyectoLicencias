@@ -78,7 +78,7 @@
                               <Component id="TxtCorreo" min="-2" pref="237" max="-2" attributes="0"/>
                               <Component id="TxtNombreUsuario" min="-2" pref="153" max="-2" attributes="0"/>
                               <Group type="102" attributes="0">
-                                  <Component id="jPasswordField1" min="-2" pref="153" max="-2" attributes="0"/>
+                                  <Component id="TxtContraseña" min="-2" pref="153" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
                                   <Component id="BtnCambiarContraseña" min="-2" max="-2" attributes="0"/>
                               </Group>
@@ -133,7 +133,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jPasswordField1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="TxtContraseña" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="BtnCambiarContraseña" alignment="3" max="32767" attributes="0"/>
                   </Group>
                   <Group type="103" groupAlignment="0" attributes="0">
@@ -228,10 +228,19 @@
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="TxtNombre">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="TxtNombreKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="TxtCorreo">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="TxtCorreoKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="TxtNombreUsuario">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="TxtNombreUsuarioKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JComboBox" name="jComboBoxTipo">
           <Properties>
@@ -287,10 +296,13 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtnCambiarContrase&#xf1;aActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JPasswordField" name="jPasswordField1">
+        <Component class="javax.swing.JPasswordField" name="TxtContrase&#xf1;a">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
           </Properties>
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="TxtContrase&#xf1;aKeyTyped"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

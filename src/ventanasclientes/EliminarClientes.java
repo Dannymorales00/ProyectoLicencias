@@ -182,7 +182,7 @@ public class EliminarClientes extends javax.swing.JInternalFrame {
             evt.consume();
         }
         //limitamos el tamaño de caracteres ingresados
-        if(this.TxtCedula.getText().length()==8)
+        if(this.TxtCedula.getText().length()==11)
         {
             evt.consume();
         }

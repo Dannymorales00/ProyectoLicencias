@@ -169,6 +169,12 @@ public class JDialogBuscarPruebasPorCedula extends javax.swing.JDialog {
             }
         });
 
+        cedulaTxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                cedulaTxtKeyTyped(evt);
+            }
+        });
+
         jLabel2.setText("Cedula:");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -251,6 +257,15 @@ public class JDialogBuscarPruebasPorCedula extends javax.swing.JDialog {
 
 
     }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void cedulaTxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cedulaTxtKeyTyped
+        char c = evt.getKeyChar();
+        if(c<'0' || c>'9')evt.consume();
+        
+        if((this.cedulaTxt.getText().length()==11)){
+             evt.consume();
+        }
+    }//GEN-LAST:event_cedulaTxtKeyTyped
 
     /**
      * @param args the command line arguments

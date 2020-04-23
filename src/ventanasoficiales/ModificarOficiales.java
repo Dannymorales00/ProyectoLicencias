@@ -80,9 +80,21 @@ public class ModificarOficiales extends javax.swing.JInternalFrame {
             }
         });
 
+        txtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNombreKeyTyped(evt);
+            }
+        });
+
         txtTelefono.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtTelefonoKeyTyped(evt);
+            }
+        });
+
+        txtCorreo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCorreoKeyTyped(evt);
             }
         });
 
@@ -272,12 +284,39 @@ public class ModificarOficiales extends javax.swing.JInternalFrame {
     private void txtTelefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelefonoKeyTyped
         char c = evt.getKeyChar();
         if(c<'0' || c>'9')evt.consume();
+        
+        if((this.txtTelefono.getText().length()==11)){
+             evt.consume();
+        }
     }//GEN-LAST:event_txtTelefonoKeyTyped
 
     private void txtCedulaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCedulaKeyTyped
-        char c = evt.getKeyChar();
+         char c = evt.getKeyChar();
         if(c<'0' || c>'9')evt.consume();
+        
+        if((this.txtCedula.getText().length()==11)){
+             evt.consume();
+        }
     }//GEN-LAST:event_txtCedulaKeyTyped
+
+    private void txtNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyTyped
+        char c = evt.getKeyChar();
+     if(Character.isDigit(c)){
+
+     evt.consume();}
+     
+     if((this.txtNombre.getText().length()==65)){
+             evt.consume();
+             
+             
+    }  
+    }//GEN-LAST:event_txtNombreKeyTyped
+
+    private void txtCorreoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCorreoKeyTyped
+        if((this.txtCorreo.getText().length()==50)){
+             evt.consume();
+        }
+    }//GEN-LAST:event_txtCorreoKeyTyped
 
     public void Limpiar() {
         this.txtCedula.setText("");

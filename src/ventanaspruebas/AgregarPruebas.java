@@ -123,6 +123,11 @@ public class AgregarPruebas extends javax.swing.JInternalFrame {
 
         txtCedulaCliente.setEditable(false);
         txtCedulaCliente.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        txtCedulaCliente.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCedulaClienteKeyTyped(evt);
+            }
+        });
 
         txtHora.setEditable(false);
         txtHora.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
@@ -222,6 +227,11 @@ public class AgregarPruebas extends javax.swing.JInternalFrame {
         observacionesTxt.setColumns(20);
         observacionesTxt.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         observacionesTxt.setRows(5);
+        observacionesTxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                observacionesTxtKeyTyped(evt);
+            }
+        });
         jScrollPane1.setViewportView(observacionesTxt);
 
         BoxEstadoCliente.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
@@ -498,6 +508,18 @@ public class AgregarPruebas extends javax.swing.JInternalFrame {
         
         System.out.println(prueba2.getCliente().getCedula());
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void txtCedulaClienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCedulaClienteKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCedulaClienteKeyTyped
+
+    private void observacionesTxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_observacionesTxtKeyTyped
+        
+        
+        if((this.observacionesTxt.getText().length()==60)){
+             evt.consume();
+        }
+    }//GEN-LAST:event_observacionesTxtKeyTyped
 
     public void limpiar(){
         this.txtCedulaCliente.setText("");

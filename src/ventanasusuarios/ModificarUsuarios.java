@@ -56,7 +56,7 @@ public class ModificarUsuarios extends javax.swing.JInternalFrame {
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
         BtnCargar = new javax.swing.JButton();
         BtnCambiarContraseña = new javax.swing.JButton();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        TxtContraseña = new javax.swing.JPasswordField();
 
         setClosable(true);
         setTitle("Modificar Usuarios");
@@ -94,6 +94,24 @@ public class ModificarUsuarios extends javax.swing.JInternalFrame {
             }
         });
 
+        TxtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                TxtNombreKeyTyped(evt);
+            }
+        });
+
+        TxtCorreo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                TxtCorreoKeyTyped(evt);
+            }
+        });
+
+        TxtNombreUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                TxtNombreUsuarioKeyTyped(evt);
+            }
+        });
+
         jComboBoxTipo.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jComboBoxTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione un Tipo...", "oficial", "secretaria" }));
 
@@ -126,7 +144,12 @@ public class ModificarUsuarios extends javax.swing.JInternalFrame {
             }
         });
 
-        jPasswordField1.setEditable(false);
+        TxtContraseña.setEditable(false);
+        TxtContraseña.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                TxtContraseñaKeyTyped(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -155,7 +178,7 @@ public class ModificarUsuarios extends javax.swing.JInternalFrame {
                             .addComponent(TxtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(TxtNombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(TxtContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(2, 2, 2)
                                 .addComponent(BtnCambiarContraseña))
                             .addComponent(jComboBoxTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -197,7 +220,7 @@ public class ModificarUsuarios extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TxtContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(BtnCambiarContraseña, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -247,7 +270,7 @@ public class ModificarUsuarios extends javax.swing.JInternalFrame {
         usuario.setSobrenombre(this.TxtNombreUsuario.getText());
         usuario.setTipo((String) this.jComboBoxTipo.getSelectedItem());
         usuario.setFechanacimiento(this.jDateChooser1.getDate());
-        usuario.setContraseña(concatenar(this.jPasswordField1.getPassword()));
+        usuario.setContraseña(concatenar(this.TxtContraseña.getPassword()));
        
 
         
@@ -260,7 +283,7 @@ public class ModificarUsuarios extends javax.swing.JInternalFrame {
             {
                 JOptionPane.showMessageDialog(this, "Usuario actualizado");
                 this.TxtCedula.setEditable(true);
-                this.jPasswordField1.setEditable(true);
+                this.TxtContraseña.setEditable(true);
                 usuario=null;
                 Limpiar();
             }else{System.out.println("No se pudo actualizar ");}
@@ -279,12 +302,21 @@ public class ModificarUsuarios extends javax.swing.JInternalFrame {
         char c = evt.getKeyChar();
         if(c<'0' || c>'9')evt.consume();
         
+        if((this.TxtCedula.getText().length()==11)){
+             evt.consume();
+        }
     }//GEN-LAST:event_TxtCedulaKeyTyped
 
     private void TxtTelefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TxtTelefonoKeyTyped
         //capturamos caracter por caracter
         char c = evt.getKeyChar();
         if(c<'0' || c>'9')evt.consume();
+        
+        if((this.TxtTelefono.getText().length()==11)){
+             evt.consume();
+             
+             
+    }  
     }//GEN-LAST:event_TxtTelefonoKeyTyped
 
     private void BtnCargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCargarActionPerformed
@@ -309,9 +341,9 @@ public class ModificarUsuarios extends javax.swing.JInternalFrame {
                 this.TxtCorreo.setText(usuario.getCorreo());
                 this.TxtNombreUsuario.setText(usuario.getSobrenombre());
                 this.jComboBoxTipo.setSelectedItem(usuario.getTipo());
-                this.jPasswordField1.setEditable(true);
-                this.jPasswordField1.setText(usuario.getContraseña());
-                this.jPasswordField1.setEditable(false);
+                this.TxtContraseña.setEditable(true);
+                this.TxtContraseña.setText(usuario.getContraseña());
+                this.TxtContraseña.setEditable(false);
         
                 
                 
@@ -336,20 +368,54 @@ public class ModificarUsuarios extends javax.swing.JInternalFrame {
         if(usuario!=null && usuario.comprobar()){
             Frame f = JOptionPane.getFrameForComponent(this);
             JDialogCambiarContraseña jdialog = new JDialogCambiarContraseña(f,true);
-            jdialog.setContraseñaActual(concatenar(this.jPasswordField1.getPassword()));
+            jdialog.setContraseñaActual(concatenar(this.TxtContraseña.getPassword()));
             jdialog.setVisible(true);//cuando se muestra se pausa aquí
         
             if(jdialog.getUsuario()!=null)
             {
-                this.jPasswordField1.setEditable(true);
-                this.jPasswordField1.setText(    jdialog.getUsuario().getContraseña() );
-                this.jPasswordField1.setEditable(false);
+                this.TxtContraseña.setEditable(true);
+                this.TxtContraseña.setText(    jdialog.getUsuario().getContraseña() );
+                this.TxtContraseña.setEditable(false);
             }
         
         
         }else{JOptionPane.showMessageDialog(this, "Debe cargar un usuario");}
         
     }//GEN-LAST:event_BtnCambiarContraseñaActionPerformed
+
+    private void TxtNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TxtNombreKeyTyped
+     char c = evt.getKeyChar();
+     if(Character.isDigit(c)){
+
+     evt.consume();}
+     
+     if((this.TxtNombre.getText().length()==65)){
+             evt.consume();
+             
+             
+    }  
+    }//GEN-LAST:event_TxtNombreKeyTyped
+
+    private void TxtCorreoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TxtCorreoKeyTyped
+        if((this.TxtCorreo.getText().length()==50)){
+             evt.consume();
+             
+             
+    }  
+    }//GEN-LAST:event_TxtCorreoKeyTyped
+
+    private void TxtNombreUsuarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TxtNombreUsuarioKeyTyped
+        if((this.TxtNombreUsuario.getText().length()==15)){
+             evt.consume();
+             
+    }  
+    }//GEN-LAST:event_TxtNombreUsuarioKeyTyped
+
+    private void TxtContraseñaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TxtContraseñaKeyTyped
+             if((this.TxtContraseña.getPassword().length==20)){
+             evt.consume();
+        }  
+    }//GEN-LAST:event_TxtContraseñaKeyTyped
 
     
     
@@ -383,7 +449,7 @@ public class ModificarUsuarios extends javax.swing.JInternalFrame {
         this.TxtNombreUsuario.setText("");
         this.jComboBoxTipo.setSelectedIndex(0);
         this.jDateChooser1.setCalendar(null);
-        this.jPasswordField1.setText("");
+        this.TxtContraseña.setText("");
         
         
     }
@@ -393,6 +459,7 @@ public class ModificarUsuarios extends javax.swing.JInternalFrame {
     private javax.swing.JButton BtnCambiarContraseña;
     private javax.swing.JButton BtnCargar;
     private javax.swing.JTextField TxtCedula;
+    private javax.swing.JPasswordField TxtContraseña;
     private javax.swing.JTextField TxtCorreo;
     private javax.swing.JTextField TxtNombre;
     private javax.swing.JTextField TxtNombreUsuario;
@@ -408,6 +475,5 @@ public class ModificarUsuarios extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPasswordField jPasswordField1;
     // End of variables declaration//GEN-END:variables
 }

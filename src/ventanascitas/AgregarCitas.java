@@ -133,11 +133,21 @@ public class AgregarCitas extends javax.swing.JInternalFrame {
         jLabel1.setText("Nombre Cliente:");
 
         TxtNombre.setEditable(false);
+        TxtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                TxtNombreKeyTyped(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel4.setText("Cedula:");
 
         TxtCedula.setEditable(false);
+        TxtCedula.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                TxtCedulaKeyTyped(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -327,6 +337,19 @@ public class AgregarCitas extends javax.swing.JInternalFrame {
     private void JComboBoxHoraItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_JComboBoxHoraItemStateChanged
    
     }//GEN-LAST:event_JComboBoxHoraItemStateChanged
+
+    private void TxtCedulaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TxtCedulaKeyTyped
+        char c = evt.getKeyChar();
+        if(c<'0' || c>'9')evt.consume();
+        
+        if((this.TxtCedula.getText().length()==11)){
+             evt.consume();
+        }
+    }//GEN-LAST:event_TxtCedulaKeyTyped
+
+    private void TxtNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TxtNombreKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TxtNombreKeyTyped
 
       
     

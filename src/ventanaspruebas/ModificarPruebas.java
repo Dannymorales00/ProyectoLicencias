@@ -204,6 +204,11 @@ public class ModificarPruebas extends javax.swing.JInternalFrame {
         observacionesTxt.setColumns(20);
         observacionesTxt.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         observacionesTxt.setRows(5);
+        observacionesTxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                observacionesTxtKeyTyped(evt);
+            }
+        });
         jScrollPane1.setViewportView(observacionesTxt);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -391,6 +396,13 @@ public class ModificarPruebas extends javax.swing.JInternalFrame {
         }
         
     }//GEN-LAST:event_btnActualizarActionPerformed
+
+    private void observacionesTxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_observacionesTxtKeyTyped
+      
+        if((this.observacionesTxt.getText().length()==60)){
+             evt.consume();
+        }
+    }//GEN-LAST:event_observacionesTxtKeyTyped
 
     public void limpiar(){
         this.txtCedulaCliente.setText("");

@@ -91,6 +91,30 @@ public class AgregarUsuarios extends javax.swing.JInternalFrame {
             }
         });
 
+        TxtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                TxtNombreKeyTyped(evt);
+            }
+        });
+
+        TxtCorreo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                TxtCorreoKeyTyped(evt);
+            }
+        });
+
+        TxtNombreUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                TxtNombreUsuarioKeyTyped(evt);
+            }
+        });
+
+        TxtContraseña.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                TxtContraseñaKeyTyped(evt);
+            }
+        });
+
         jComboBoxTipo.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jComboBoxTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione un Tipo...", "oficial", "secretaria" }));
 
@@ -244,13 +268,51 @@ public class AgregarUsuarios extends javax.swing.JInternalFrame {
         char c = evt.getKeyChar();
         if(c<'0' || c>'9')evt.consume();
         
+        if((this.TxtCedula.getText().length()==11)){
+             evt.consume();
+        }
     }//GEN-LAST:event_TxtCedulaKeyTyped
 
     private void TxtTelefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TxtTelefonoKeyTyped
         //capturamos caracter por caracter
         char c = evt.getKeyChar();
         if(c<'0' || c>'9')evt.consume();
+        
+        if((this.TxtTelefono.getText().length()==11)){
+             evt.consume();
+             
+        }
     }//GEN-LAST:event_TxtTelefonoKeyTyped
+
+    private void TxtNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TxtNombreKeyTyped
+       char c = evt.getKeyChar();
+        if(Character.isDigit(c)){
+              evt.consume();
+         }  
+        
+        if((this.TxtNombre.getText().length()==65)){
+             evt.consume();
+             
+             
+    }//GEN-LAST:event_TxtNombreKeyTyped
+    }
+    private void TxtCorreoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TxtCorreoKeyTyped
+         if((this.TxtCorreo.getText().length()==50)){
+             evt.consume();
+         }
+    }//GEN-LAST:event_TxtCorreoKeyTyped
+
+    private void TxtNombreUsuarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TxtNombreUsuarioKeyTyped
+        if((this.TxtNombreUsuario.getText().length()==15)){
+             evt.consume();
+         }
+    }//GEN-LAST:event_TxtNombreUsuarioKeyTyped
+
+    private void TxtContraseñaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TxtContraseñaKeyTyped
+        if((this.TxtContraseña.getPassword().length==20)){
+             evt.consume();
+        }
+    }//GEN-LAST:event_TxtContraseñaKeyTyped
 
     
     

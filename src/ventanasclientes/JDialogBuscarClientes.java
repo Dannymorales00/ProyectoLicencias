@@ -94,6 +94,12 @@ public class JDialogBuscarClientes extends javax.swing.JDialog {
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel2.setText("Cedula");
 
+        TxtCedula.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                TxtCedulaKeyTyped(evt);
+            }
+        });
+
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -234,6 +240,15 @@ public class JDialogBuscarClientes extends javax.swing.JDialog {
         
         seleccionado = true;
     }//GEN-LAST:event_jTable1MouseClicked
+
+    private void TxtCedulaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TxtCedulaKeyTyped
+        char c = evt.getKeyChar();
+        if(c<'0' || c>'9')evt.consume();
+        
+        if((this.TxtCedula.getText().length()==11)){
+             evt.consume();
+         }
+    }//GEN-LAST:event_TxtCedulaKeyTyped
       
     public void mostrar(){
         

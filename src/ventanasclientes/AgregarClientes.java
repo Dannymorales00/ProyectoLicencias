@@ -76,6 +76,18 @@ public class AgregarClientes extends javax.swing.JInternalFrame {
             }
         });
 
+        TxtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                TxtNombreKeyTyped(evt);
+            }
+        });
+
+        TxtCorreo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                TxtCorreoKeyTyped(evt);
+            }
+        });
+
         BtnAgregar.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         BtnAgregar.setText("Agregar");
         BtnAgregar.addActionListener(new java.awt.event.ActionListener() {
@@ -206,14 +218,32 @@ public class AgregarClientes extends javax.swing.JInternalFrame {
         //capturamos caracter por caracter
         char c = evt.getKeyChar();
         if(c<'0' || c>'9')evt.consume();
-        
+        if((this.TxtCedula.getText().length()==11)){
+             evt.consume();
+         }
     }//GEN-LAST:event_TxtCedulaKeyTyped
 
     private void TxtTelefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TxtTelefonoKeyTyped
         //capturamos caracter por caracter
         char c = evt.getKeyChar();
         if(c<'0' || c>'9')evt.consume();
+        
+        if((this.TxtTelefono.getText().length()==11)){
+             evt.consume();
+         }
     }//GEN-LAST:event_TxtTelefonoKeyTyped
+
+    private void TxtNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TxtNombreKeyTyped
+        if((this.TxtNombre.getText().length()==65)){
+             evt.consume();
+         }
+    }//GEN-LAST:event_TxtNombreKeyTyped
+
+    private void TxtCorreoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TxtCorreoKeyTyped
+        if((this.TxtCorreo.getText().length()==50)){
+             evt.consume();
+         }
+    }//GEN-LAST:event_TxtCorreoKeyTyped
 
     
     

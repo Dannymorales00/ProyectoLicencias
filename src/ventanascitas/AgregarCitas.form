@@ -422,6 +422,9 @@
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
               </Properties>
+              <Events>
+                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="TxtNombreKeyTyped"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel4">
               <Properties>
@@ -435,6 +438,9 @@
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
               </Properties>
+              <Events>
+                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="TxtCedulaKeyTyped"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

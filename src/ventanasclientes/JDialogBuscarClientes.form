@@ -139,6 +139,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="TxtCedula">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="TxtCedulaKeyTyped"/>
+          </Events>
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane1">
           <AuxValues>
