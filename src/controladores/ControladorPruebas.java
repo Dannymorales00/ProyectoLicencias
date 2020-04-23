@@ -195,7 +195,7 @@ public class ControladorPruebas {
         try 
         {
             SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
-            System.out.println("fecha de la prueba "+prueba.getFecha());
+   
             this.datos = this.sentencias.executeQuery("select * from citas where fecha='"+f.format( prueba.getFecha() )+"'  AND estado = 'activado'  ;");
 
                 
