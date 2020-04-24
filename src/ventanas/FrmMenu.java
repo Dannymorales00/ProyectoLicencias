@@ -31,6 +31,7 @@ import ventanasoficiales.AgregarOficiales;
 import conexion.Conexion;
 import controladores.ControladorCitas;
 import java.awt.Frame;
+import javax.swing.JDesktopPane;
 import javax.swing.JOptionPane;
 import modelos.Cita;
 import ventanascitas.EliminarCitas;
@@ -562,11 +563,24 @@ public class FrmMenu extends javax.swing.JFrame {
         });
     }
 
+    public static JDesktopPane getjDesktopPane1() {
+        return jDesktopPane1;
+    }
+
+
+    
+    
+    
+    
+    
+    
+    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem MenuItemAgregarPruebas;
     private javax.swing.JMenuItem MenuItemEliminarPruebas;
     private javax.swing.JMenuItem MenuItemModificarPruebas;
-    private javax.swing.JDesktopPane jDesktopPane1;
+    private static javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;

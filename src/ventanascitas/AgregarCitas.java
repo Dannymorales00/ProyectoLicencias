@@ -6,6 +6,7 @@
 package ventanascitas;
 
 
+import Sigletone.Clientes.SingletonAgregarClientes;
 import ventanasclientes.JDialogBuscarClientes;
 import controladores.ControladorCitas;
 import controladores.ControladorClientes;
@@ -13,6 +14,8 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import modelos.Cita;
 import modelos.Cliente;
+import ventanas.FrmMenu;
+import ventanasclientes.AgregarClientes;
 
 
 
@@ -212,14 +215,14 @@ public class AgregarCitas extends javax.swing.JInternalFrame {
                         .addComponent(JCombreBoxMinutos, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 131, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(BtnAgregar)
-                .addGap(37, 37, 37))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(BtnAgregar)
+                .addGap(37, 37, 37))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

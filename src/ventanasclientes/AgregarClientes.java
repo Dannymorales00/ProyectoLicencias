@@ -23,6 +23,8 @@ public class AgregarClientes extends javax.swing.JInternalFrame {
     public AgregarClientes() {
         cc = new ControladorClientes(); 
         initComponents();
+        
+        
 
         
     }

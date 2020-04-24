@@ -6,6 +6,7 @@
 package ventanasclientes;
 
 
+
 import Sigletone.Clientes.SingletonAgregarClientes;
 import controladores.ControladorClientes;
 import java.awt.event.WindowEvent;
@@ -14,11 +15,9 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.JOptionPane;
-
-
-;
 import modelos.Cliente;
 import ventanas.FrmMenu;
+
 
 /**
  *
@@ -199,6 +198,7 @@ public class JDialogBuscarClientes extends javax.swing.JDialog {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarActionPerformed
@@ -211,9 +211,30 @@ public class JDialogBuscarClientes extends javax.swing.JDialog {
             clientes = ccliente.listarPorCedula(cliente);
        
            if(clientes==null){
-                
-               JOptionPane.showMessageDialog(this, "No se encontro ese cliente");
+               
+               
+               
+               
+                int confirmado = JOptionPane.showConfirmDialog(this,"¿No existe ese cliente? Deseas agregarlo? ");
 
+                if (JOptionPane.OK_OPTION == confirmado){
+                
+                System.out.println("confirmado");
+                AgregarClientes agregarClientes = SingletonAgregarClientes.getInstance();
+      
+                if (agregarClientes.isVisible()) {
+                    FrmMenu.getjDesktopPane1().remove(agregarClientes);
+                }
+        
+                FrmMenu.getjDesktopPane1().add(agregarClientes);
+                agregarClientes.setVisible(true);
+                this.processWindowEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
+
+                    
+                
+                }else{System.out.println("No agrego el cliente");}  
+            
+                
             }else{
            
                 this.mostrar();
