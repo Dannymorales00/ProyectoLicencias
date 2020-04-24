@@ -61,8 +61,6 @@ public class Conexion {
            
             //motor-basededatos-servidor-usuario-contraseña
             
-            
-            
             String user = datos[3] ;
             String password =datos[4];
             String url = "jdbc:"+datos[0]+"://"+datos[2]+"/"+datos[1]+"?useServerPrepStmts=true";

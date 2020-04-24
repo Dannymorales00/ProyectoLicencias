@@ -38,6 +38,7 @@ public class AgregarCitas extends javax.swing.JInternalFrame {
         ccliente = new ControladorClientes();
         cliente = null;
         initComponents();
+      
        
 
         

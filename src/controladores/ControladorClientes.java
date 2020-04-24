@@ -114,7 +114,12 @@ public class ControladorClientes {
                     clientes.add(new Cliente(datos.getInt(2),datos.getString(3),datos.getDate(4),datos.getInt(5),datos.getString(6),calcularEdad(datos.getDate(4)) ));
                
                 }
-                return clientes;
+                
+                if(clientes.size()>=1){
+                
+                    return clientes;
+                    
+                }    
             
             }catch (SQLException ex) {
                 
@@ -124,16 +129,53 @@ public class ControladorClientes {
         return null; 
     }
        
+       
+       
+       
+       
+    public ArrayList<Cliente> listarPorCedula(Cliente cliente){
+        ArrayList<Cliente> clientes = new ArrayList();
+            try {
+                this.datos = this.sentencias.executeQuery("select * from clientes where cedula="+cliente.getCedula());
+                
+                while(datos.next()){
+                  
+                   
+                    clientes.add(new Cliente(datos.getInt(2),datos.getString(3),datos.getDate(4),datos.getInt(5),datos.getString(6),calcularEdad(datos.getDate(4)) ));
+               
+                }
+                
+                if(clientes.size()>=1){
+                
+                    return clientes;
+                    
+                }    
+            
+            }catch (SQLException ex) {
+                
+                System.out.println("Error al listar por cedula");
+            }
+            
+        return null; 
+    }   
+       
+       
+       
+       
+       
+       
+       
     public int calcularEdad(Date fecha) {
         SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
         Date fechaActual = new Date();
         
-//        System.out.println("año actual:------- "+f.format(fechaActual).substring(0, 4));
-//        System.out.println("nacimiento:------- "+f.format(fecha).substring(0, 4) );
-//       
+        System.out.println("año actual:------- "+f.format(fechaActual).substring(0, 4));
+        System.out.println(" año nacimiento:------- "+f.format(fecha).substring(0, 4) );
+       
         int fechaActual2 = Integer.parseInt( f.format(fechaActual).substring(0, 4) );
         int fechanacimiento = Integer.parseInt( f.format(fecha).substring(0, 4) );
-    
+        
+        System.out.println("la edad es: "+(fechaActual2-fechanacimiento));
         return (fechaActual2-fechanacimiento) ;
            
     }

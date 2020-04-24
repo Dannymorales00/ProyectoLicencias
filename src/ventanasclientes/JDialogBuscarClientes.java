@@ -6,16 +6,19 @@
 package ventanasclientes;
 
 
+import Sigletone.Clientes.SingletonAgregarClientes;
 import controladores.ControladorClientes;
 import java.awt.event.WindowEvent;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import javax.swing.JOptionPane;
 
 
 ;
 import modelos.Cliente;
+import ventanas.FrmMenu;
 
 /**
  *
@@ -198,14 +201,35 @@ public class JDialogBuscarClientes extends javax.swing.JDialog {
 
     private void jButtonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarActionPerformed
        
-       clientes = ccliente.listar();
+        cliente= new Cliente();
+      
         
-       this.mostrar();
-        
-       this.TxtCedula.setText("");
+        if(!this.TxtCedula.getText().equals("")){
+            cliente.setCedula(Integer.valueOf(this.TxtCedula.getText()) );
+            clientes = ccliente.listarPorCedula(cliente);
        
+           if(clientes==null){
+                
+               JOptionPane.showMessageDialog(this, "No se encontro ese cliente");
+
+            }else{
+           
+                this.mostrar();
+                this.TxtCedula.setText("");
+            }
+    
+        }else{
+             
+            clientes = ccliente.listar();
+            this.mostrar();
+            this.TxtCedula.setText("");
+            
+            
+        }   
     }//GEN-LAST:event_jButtonBuscarActionPerformed
 
+        
+    
     private void jButtonSeleccionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSeleccionarActionPerformed
         
         //para cerrar solo tipos jdialog
