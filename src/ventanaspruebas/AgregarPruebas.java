@@ -448,10 +448,8 @@ public class AgregarPruebas extends javax.swing.JInternalFrame {
                             if (this.cPrueba.añadir(prueba)) {
                                 
                                 JOptionPane.showMessageDialog(this, "Prueba Agregada");
-                                System.out.println("id cita: "+cita.getId());
-                                System.out.println("estado cita: "+cita.getEstado());
+                              
                                 cita.setEstado("desactivado");
-                                System.out.println("nuevo estado cita:"+cita.getEstado());
                                 cCita.actualizar(cita);
                                 this.limpiar();
                                 
