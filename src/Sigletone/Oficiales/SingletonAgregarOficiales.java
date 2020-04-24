@@ -5,6 +5,7 @@
  */
 package Sigletone.Oficiales;
 
+
 import ventanasoficiales.AgregarOficiales;
 
 /**
@@ -18,10 +19,15 @@ import ventanasoficiales.AgregarOficiales;
     private SingletonAgregarOficiales() {}
 
     public static AgregarOficiales getInstance() {
+      
         if (ventana==null) {
-            ventana=new AgregarOficiales();
+      
+            ventana = new AgregarOficiales();
+            
+           
         }
         return ventana;
+     
     }
 }
 
