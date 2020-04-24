@@ -212,15 +212,7 @@ public class JDialogBuscarPruebas extends javax.swing.JDialog {
 
     private void btnSeleccionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeleccionarActionPerformed
         
-        if(oficial==null)
-        {
-            System.out.println("oficial está nulo");
-        
-        }
-        if(cliente==null)
-        {
-            System.out.println("cliente está nulo");
-        }
+
         
         this.processWindowEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));  
     }//GEN-LAST:event_btnSeleccionarActionPerformed
@@ -250,7 +242,6 @@ public class JDialogBuscarPruebas extends javax.swing.JDialog {
         String COficialStrg = String.valueOf(this.jTable1.getValueAt(seleccion, 3));
         oficial.setCedula(Integer.valueOf(COficialStrg));
         prueba.setCliente(this.conCliente.buscar(cliente));
-        System.out.println("oficial nombre: "+conOficial.buscar(oficial).getNombre());
         prueba.setOficial(this.conOficial.buscar(oficial));
         
         prueba.setObservaciones((String)this.jTable1.getValueAt(seleccion, 5));

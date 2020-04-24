@@ -371,6 +371,7 @@ public class ModificarPruebas extends javax.swing.JInternalFrame {
             this.txtNombreOficial.setEditable(true);
             this.txtCedulaOficial.setText(String.valueOf(oficial.getCedula()));
             this.txtNombreOficial.setText(oficial.getNombre());
+            this.txtCedulaOficial.setEditable(false);
             this.txtNombreOficial.setEditable(false);
             
             this.observacionesTxt.setText(prueba.getObservaciones());
@@ -394,7 +395,12 @@ public class ModificarPruebas extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnPruebaActionPerformed
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
-        if (seleccionado) {
+        if (seleccionado && this.BoxNota.getSelectedIndex()>0) {
+            
+            
+            prueba.setObservaciones(this.observacionesTxt.getText());
+            String NotaStrg = String.valueOf( this.BoxNota.getSelectedItem());
+            prueba.setNota(Integer.valueOf( NotaStrg));
             
             
             if(this.cPrueba.actualizar(prueba))
