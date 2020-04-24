@@ -25,6 +25,7 @@ public class JDialogBuscarCitas extends javax.swing.JDialog {
     private ArrayList<Cita> citas;
     private ControladorCitas cCita;
     private Cita cita;
+    private Cita cita2;
     private Cliente cliente;
     private ControladorClientes cCliente;
     private boolean seleccionado;
@@ -186,11 +187,11 @@ public class JDialogBuscarCitas extends javax.swing.JDialog {
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         Date fecha = new Date();
-        cita = new Cita();
+        cita2 = new Cita();
          
-        cita.setFecha(fecha);
+        cita2.setFecha(fecha);
         
-        if( (citas=cCita.listarPorFecha(cita))!= null )
+        if( (citas=cCita.listarPorFecha(cita2))!= null )
         {
             
             mostrar();
