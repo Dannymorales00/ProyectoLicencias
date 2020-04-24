@@ -196,7 +196,7 @@ public class JDialogBuscarCitas extends javax.swing.JDialog {
             
             mostrar();
              
-        }else{JOptionPane.showMessageDialog(this, "No se encontraron citas para noy");} 
+        }else{JOptionPane.showMessageDialog(this, "No se encontraron citas para hoy");} 
 
     }//GEN-LAST:event_btnBuscarActionPerformed
 

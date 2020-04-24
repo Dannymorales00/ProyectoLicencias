@@ -139,7 +139,7 @@ public class ControladorCitas {
                 
                 SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
                
-                this.datos = this.sentencias2.executeQuery("select * from citas where fecha ='"+f.format(cita.getFecha())+"' AND estado = 'activado' ;");
+                this.datos = this.sentencias2.executeQuery("select * from citas where fecha ='"+f.format(cita.getFecha())+"' AND estado = 'activado' order by hora asc ;");
                 
                 //si se encontro resultados en la consulta se guardan en el arrayList
                 while(datos.next())
