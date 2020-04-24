@@ -169,13 +169,13 @@ public class ControladorClientes {
         SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
         Date fechaActual = new Date();
         
-        System.out.println("año actual:------- "+f.format(fechaActual).substring(0, 4));
-        System.out.println(" año nacimiento:------- "+f.format(fecha).substring(0, 4) );
+//        System.out.println("año actual:------- "+f.format(fechaActual).substring(0, 4));
+//        System.out.println(" año nacimiento:------- "+f.format(fecha).substring(0, 4) );
        
         int fechaActual2 = Integer.parseInt( f.format(fechaActual).substring(0, 4) );
         int fechanacimiento = Integer.parseInt( f.format(fecha).substring(0, 4) );
         
-        System.out.println("la edad es: "+(fechaActual2-fechanacimiento));
+      
         return (fechaActual2-fechanacimiento) ;
            
     }

@@ -22,7 +22,9 @@ import ventanaspruebas.AgregarPruebas;
     public static AgregarPruebas getInstance() {
         if (ventana==null) {
             ventana=new AgregarPruebas();
+            
         }
+        ventana.limpiar();
         return ventana;
     }
 }
