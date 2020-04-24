@@ -98,6 +98,41 @@ public class ControladorCitas {
         return null;
 
     }
+    
+    
+    public Cita buscarCitaActiva(Cita cita){
+        try {
+           
+            this.datos = this.sentencias2.executeQuery("select * from citas where cedula_cliente = '"+cita.getCliente().getCedula()+"'  AND estado = 'activado'  ;");
+           
+                if(datos.next())
+                {
+                    
+                    
+                    cliente = new Cliente();
+                    cliente.setCedula(datos.getInt(4));
+                    cliente =  ccliente.buscar(cliente);
+                    Cita cita2 = new Cita(datos.getInt(1),datos.getDate(2),String.valueOf(datos.getTime(3)),cliente,datos.getString(5));
+                    
+                    if( CambiarEstadoCita(cita2) )
+                    {
+                        //si la fecha se vencio desactivamos la cita 
+                        actualizar(cita2);
+                    }
+                    
+                    return cita2;
+                } 
+                
+        }catch (SQLException ex) {
+                System.out.println("Error al buscar");
+                System.out.println(ex);
+            }
+        return null;
+
+    }
+    
+    
+    
         
     public boolean eliminar(Cita cita){
         try {
@@ -175,7 +210,7 @@ public class ControladorCitas {
         
         try{
       
-            
+            buscarCitaActiva(cita);
             this.datos = this.sentencias2.executeQuery("select * from citas where cedula_cliente = '"+cita.getCliente().getCedula()+"'  AND estado = 'activado'  ;");
           
             if (datos.next()) 
@@ -290,5 +325,11 @@ public class ControladorCitas {
     
       
     }
+    
+    
+    public void CambiarEstadoCitas() {
+        
+    }
+    
     
 }
