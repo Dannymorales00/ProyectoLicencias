@@ -45,72 +45,60 @@ public class FrmMenu extends javax.swing.JFrame {
 
     private AgregarUsuarios agregarUsuarios;
     private ModificarUsuarios modificarUsuarios;
-  
+    private AgregarOficiales agregarOficiales;
+
     private static Conexion conexion = new Conexion();
+
     /**
      * Creates new form FrmMenu
      */
     public FrmMenu() {
         initComponents();
         this.setExtendedState(this.MAXIMIZED_BOTH);
-        
-  
+
         conexion.Conectar();
-        
-        if(conexion.getConn()==null)
-        {
-            
+
+        if (conexion.getConn() == null) {
+
             Frame f = JOptionPane.getFrameForComponent(null);
-            JDialogConfiguracion jdconfig = new JDialogConfiguracion(f,true);
+            JDialogConfiguracion jdconfig = new JDialogConfiguracion(f, true);
             jdconfig.setVisible(true);
-            
-            if(jdconfig.getConn()==null)
-            {
+
+            if (jdconfig.getConn() == null) {
                 System.exit(0);
             }
-            
-            
+
         }
-        
-    
+
     }
 
     public static Conexion getConexion() {
         return conexion;
     }
 
-
-    
     public void VerificarConexion() {
         //sino se logro conectar abre la ventana para configurar
         //si en la ventana de configurar no se logra conectar se cierra toda la aplicacion
-        
-        if(conexion.getConn()==null)
-        {
-          
+
+        if (conexion.getConn() == null) {
+
             Frame f = JOptionPane.getFrameForComponent(null);
-            JDialogConfiguracion jdconfig = new JDialogConfiguracion(f,true);
+            JDialogConfiguracion jdconfig = new JDialogConfiguracion(f, true);
             jdconfig.setVisible(true);
-            
-            if(jdconfig.getConn()==null)
-            {
+
+            if (jdconfig.getConn() == null) {
                 System.out.println("no se conecto jdiag conn");
                 System.exit(0);
-            }else
-            {
+            } else {
                 // si en la ventana configuracion se conecto, volvemos a realizar la conexion aquí 
                 conexion.Conectar();
-            
+
             }
-            
-            
+
         }
-        
+
     }
-    
-    
-    
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -339,30 +327,30 @@ public class FrmMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItemAgregarOficialesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAgregarOficialesActionPerformed
-        
-        AgregarOficiales agregarOficiales = SingletonAgregarOficiales.getInstance();
+
+        agregarOficiales = SingletonAgregarOficiales.getInstance();
+        if (agregarOficiales.isVisible()) {
+            this.jDesktopPane1.remove(agregarOficiales);
+        }
         this.jDesktopPane1.add(agregarOficiales);
         agregarOficiales.setVisible(true);
-  
-        
+
+
     }//GEN-LAST:event_jMenuItemAgregarOficialesActionPerformed
 
     private void jMenuItemAgregarUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAgregarUsuariosActionPerformed
         this.agregarUsuarios = SingletonAgregarUsuarios.getInstance();
         this.jDesktopPane1.add(this.agregarUsuarios);
         this.agregarUsuarios.setVisible(true);
-            
+
     }//GEN-LAST:event_jMenuItemAgregarUsuariosActionPerformed
 
     private void jMenuItemModificarUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemModificarUsuariosActionPerformed
         this.modificarUsuarios = SingletonModificarUsuarios.getInstance();
         this.jDesktopPane1.add(this.modificarUsuarios);
         this.modificarUsuarios.setVisible(true);
-            
-        
-        
-        
-        
+
+
     }//GEN-LAST:event_jMenuItemModificarUsuariosActionPerformed
 
     private void jMenuItemEliminarUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemEliminarUsuariosActionPerformed
@@ -383,7 +371,7 @@ public class FrmMenu extends javax.swing.JFrame {
 
     private void jMenuItemAbrirConfiguracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAbrirConfiguracionActionPerformed
         Frame f = JOptionPane.getFrameForComponent(null);
-        JDialogConfiguracion jdconfig = new JDialogConfiguracion(f,true);
+        JDialogConfiguracion jdconfig = new JDialogConfiguracion(f, true);
         jdconfig.setVisible(true);
     }//GEN-LAST:event_jMenuItemAbrirConfiguracionActionPerformed
 
@@ -403,40 +391,40 @@ public class FrmMenu extends javax.swing.JFrame {
         ModificarClientes modificarClientes = SingletonModificarCliente.getInstance();
         this.jDesktopPane1.add(modificarClientes);
         modificarClientes.setVisible(true);
-        
+
     }//GEN-LAST:event_jMenuItemModificarClientesActionPerformed
 
     private void jMenuItemAgregarCitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAgregarCitaActionPerformed
-       
-       AgregarCitas agregarCitas = SingletonAgregarCitas.getInstance();
+
+        AgregarCitas agregarCitas = SingletonAgregarCitas.getInstance();
         this.jDesktopPane1.add(agregarCitas);
         agregarCitas.setVisible(true);
     }//GEN-LAST:event_jMenuItemAgregarCitaActionPerformed
 
     private void jMenuItemEliminarCitasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemEliminarCitasActionPerformed
-        EliminarCitas eliminarCitas =SingletonEliminarCitas.getInstance();
+        EliminarCitas eliminarCitas = SingletonEliminarCitas.getInstance();
         this.jDesktopPane1.add(eliminarCitas);
         eliminarCitas.setVisible(true);
-        
-        
+
+
     }//GEN-LAST:event_jMenuItemEliminarCitasActionPerformed
 
     private void jMenuItemMostrarCitasOficialesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemMostrarCitasOficialesActionPerformed
-        JDialogBuscarCitas jdiagbuscarcitas = new JDialogBuscarCitas(null,true);
+        JDialogBuscarCitas jdiagbuscarcitas = new JDialogBuscarCitas(null, true);
         jdiagbuscarcitas.setVisible(true);
     }//GEN-LAST:event_jMenuItemMostrarCitasOficialesActionPerformed
 
     private void MenuItemAgregarPruebasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuItemAgregarPruebasActionPerformed
-       AgregarPruebas agregarPruebas = SingletonAgregarPrueba.getInstance();
-       this.jDesktopPane1.add(agregarPruebas);
-       agregarPruebas.setVisible(true);
+        AgregarPruebas agregarPruebas = SingletonAgregarPrueba.getInstance();
+        this.jDesktopPane1.add(agregarPruebas);
+        agregarPruebas.setVisible(true);
     }//GEN-LAST:event_MenuItemAgregarPruebasActionPerformed
 
     private void jMenuItemEliminarOficialesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemEliminarOficialesActionPerformed
         EliminarOficiales eliminarOficiales = SingletonEliminarOficiales.getInstance();
         this.jDesktopPane1.add(eliminarOficiales);
         eliminarOficiales.setVisible(true);
-                
+
     }//GEN-LAST:event_jMenuItemEliminarOficialesActionPerformed
 
     private void jMenuItemModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemModificarActionPerformed
@@ -446,8 +434,8 @@ public class FrmMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemModificarActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-       JDialogBuscarPruebasPorCedula buscarPruebasPorCedula = new JDialogBuscarPruebasPorCedula(null, true);
-       buscarPruebasPorCedula.setVisible(true);
+        JDialogBuscarPruebasPorCedula buscarPruebasPorCedula = new JDialogBuscarPruebasPorCedula(null, true);
+        buscarPruebasPorCedula.setVisible(true);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     /**
