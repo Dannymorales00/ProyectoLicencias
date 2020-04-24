@@ -111,7 +111,7 @@ public class ControladorPruebas {
         
         try {  
               
-            this.sentencias.executeUpdate("UPDATE pruebas SET nota='"+prueba.getNota()+"', observaciones='"+prueba.getObservaciones()+"', estado='"+prueba.getEstado()+"' WHERE id='"+prueba.getId()+"';");
+            this.sentencias.executeUpdate("UPDATE pruebas SET nota='"+prueba.getNota()+"', observaciones='"+prueba.getObservaciones()+"', estado='"+prueba.getEstado()+"' WHERE id='"+prueba.getId()+"' ;");
             return true;
             
         } catch (SQLException ex) {

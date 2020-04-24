@@ -346,7 +346,8 @@ public class ModificarPruebas extends javax.swing.JInternalFrame {
         JDialogBuscarPruebas buscarPrueba = new JDialogBuscarPruebas(null,true);
         buscarPrueba.setVisible(true);
         
-        if ((prueba=buscarPrueba.getPrueba())!=null) {
+        if (( cliente = buscarPrueba.getPrueba().getCliente() )!=null && (oficial = buscarPrueba.getPrueba().getOficial())!=null && (prueba = buscarPrueba.getPrueba() )!=null) {
+            //prueba
             this.txtFecha.setEditable(true);
             this.txtHora.setEditable(true);
             SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd"); 
@@ -357,7 +358,7 @@ public class ModificarPruebas extends javax.swing.JInternalFrame {
            
          
             
-            cliente = prueba.getCliente();
+            //cliente
             this.txtCedulaCliente.setEditable(true);
             this.txtNombreCliente.setEditable(true);
             this.txtCedulaCliente.setText(String.valueOf(cliente.getCedula()));
@@ -365,11 +366,12 @@ public class ModificarPruebas extends javax.swing.JInternalFrame {
             this.txtCedulaCliente.setEditable(false);
             this.txtNombreCliente.setEditable(false);
             
-            oficial = prueba.getOficial();
+            //oficial
             this.txtCedulaOficial.setEditable(true);
             this.txtNombreOficial.setEditable(true);
             this.txtCedulaOficial.setText(String.valueOf(oficial.getCedula()));
             this.txtNombreOficial.setText(oficial.getNombre());
+            this.txtNombreOficial.setEditable(false);
             
             this.observacionesTxt.setText(prueba.getObservaciones());
             
@@ -384,15 +386,24 @@ public class ModificarPruebas extends javax.swing.JInternalFrame {
             }
             
             seleccionado = buscarPrueba.isSeleccionado();
-        }
+        
+        
+        
+        }else{System.out.println("un dato esta nulo");}
      
     }//GEN-LAST:event_btnPruebaActionPerformed
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
         if (seleccionado) {
-            this.cPrueba.actualizar(prueba);
+            
+            
+            if(this.cPrueba.actualizar(prueba))
+            {
+                JOptionPane.showMessageDialog(this, "Prueba actualizada");  
+                this.limpiar();
+            }else{System.out.println("no se logro actualizar");}
         
-            this.limpiar();
+           
         }else{
             JOptionPane.showMessageDialog(this, "Debe seleccionar una prueba para poder actualizar");  
         }

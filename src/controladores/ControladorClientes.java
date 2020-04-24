@@ -71,6 +71,7 @@ public class ControladorClientes {
                     return cliente2;
                 } 
                 
+                
         }catch (SQLException ex) {
                 System.out.println("Error al buscar");
             }

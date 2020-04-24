@@ -13,8 +13,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import modelos.Cliente;
 import modelos.Oficial;
 import modelos.Prueba;
@@ -213,6 +211,17 @@ public class JDialogBuscarPruebas extends javax.swing.JDialog {
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnSeleccionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeleccionarActionPerformed
+        
+        if(oficial==null)
+        {
+            System.out.println("oficial está nulo");
+        
+        }
+        if(cliente==null)
+        {
+            System.out.println("cliente está nulo");
+        }
+        
         this.processWindowEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));  
     }//GEN-LAST:event_btnSeleccionarActionPerformed
 
@@ -223,6 +232,7 @@ public class JDialogBuscarPruebas extends javax.swing.JDialog {
         String idStrg = String.valueOf( this.jTable1.getValueAt(seleccion, 0) );
         prueba.setId(Integer.valueOf( idStrg ));
         SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");   
+        
         try {
             Date fecha =  f.parse((String)this.jTable1.getValueAt(seleccion, 1));
             prueba.setFecha(fecha);
@@ -234,12 +244,13 @@ public class JDialogBuscarPruebas extends javax.swing.JDialog {
         //Genera cliente y oficial, los busca y los agrega a la prueba
         cliente = new Cliente();
         oficial = new Oficial();
-        String CClienteStrg = String.valueOf( this.jTable1.getValueAt(seleccion, 3));
+        String CClienteStrg = String.valueOf( this.jTable1.getValueAt(seleccion, 4));
         cliente.setCedula(Integer.valueOf(CClienteStrg) );
-        String COficialStrg = String.valueOf(this.jTable1.getValueAt(seleccion, 4));
         
+        String COficialStrg = String.valueOf(this.jTable1.getValueAt(seleccion, 3));
         oficial.setCedula(Integer.valueOf(COficialStrg));
         prueba.setCliente(this.conCliente.buscar(cliente));
+        System.out.println("oficial nombre: "+conOficial.buscar(oficial).getNombre());
         prueba.setOficial(this.conOficial.buscar(oficial));
         
         prueba.setObservaciones((String)this.jTable1.getValueAt(seleccion, 5));
