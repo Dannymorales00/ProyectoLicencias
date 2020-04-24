@@ -173,19 +173,18 @@ public class ControladorCitas {
     public boolean validarPK(Cita cita) {
         
         
-        try 
-        {
-            if( CambiarEstadoCita(cita) )
-                {
-                    //si la fecha se vencio desactivamos la cita 
-                    actualizar(cita);
-                }
-            this.datos = this.sentencias.executeQuery("select * from citas where cedula_cliente = '"+cita.getCliente().getCedula()+"'  AND estado = 'activado'  ;");
+        try{
+      
+            
+            this.datos = this.sentencias2.executeQuery("select * from citas where cedula_cliente = '"+cita.getCliente().getCedula()+"'  AND estado = 'activado'  ;");
           
             if (datos.next()) 
             {
-              
+               
+           
                 return false;
+                
+                
             }
                 
         } catch (SQLException ex){
@@ -210,7 +209,7 @@ public class ControladorCitas {
      */
     public boolean ValidarCantCitas(Cita cita) {
         
-     //si está vacio ó hay menos de 4 citas
+     //si está vacio ó hay menos de 4 citas retorna true
     
      return listarPorFecha(cita) == null || listarPorFecha(cita).size()<4;
      
@@ -263,7 +262,7 @@ public class ControladorCitas {
      
         
         
-        System.out.println("fecha actual :"+fechaActual+"--fecha de la cita:"+cita.getFecha() );
+//        System.out.println("fecha actual :"+fechaActual+"--fecha de la cita:"+cita.getFecha() );
         if ( cita.getFecha().compareTo(fechaActual)<0 )
         {
             cita.setEstado("desactivado");
@@ -276,13 +275,13 @@ public class ControladorCitas {
         
             if (   cita.getFecha().compareTo(fechaActual)>0 )
             {
-                System.out.println("La Fecha es mayor :"+cita.getFecha().compareTo(fechaActual));
+//                System.out.println("La Fecha es mayor :"+cita.getFecha().compareTo(fechaActual));
                 return false;
         
             
             }else{
                 
-                System.out.println("La Fecha es Igual :"+cita.getFecha().compareTo(fechaActual));
+//                System.out.println("La Fecha es Igual :"+cita.getFecha().compareTo(fechaActual));
                 return false;
           
             }
