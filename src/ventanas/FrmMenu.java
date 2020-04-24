@@ -29,13 +29,10 @@ import ventanasusuarios.ModificarUsuarios;
 import ventanasusuarios.EliminarUsuarios;
 import ventanasoficiales.AgregarOficiales;
 import conexion.Conexion;
-import controladores.ControladorCitas;
 import java.awt.Frame;
 import javax.swing.JDesktopPane;
 import javax.swing.JOptionPane;
-import modelos.Cita;
 import ventanascitas.EliminarCitas;
-import ventanascitas.JDialogBuscarCitas;
 import ventanasoficiales.CalcularSalario;
 import ventanasoficiales.EliminarOficiales;
 import ventanasoficiales.ModificarOficiales;
@@ -347,9 +344,9 @@ public class FrmMenu extends javax.swing.JFrame {
         agregarOficiales = SingletonAgregarOficiales.getInstance();
         
         if (agregarOficiales.isVisible()) {
-            this.jDesktopPane1.remove(agregarOficiales);
+            jDesktopPane1.remove(agregarOficiales);
         }
-        this.jDesktopPane1.add(agregarOficiales);
+        jDesktopPane1.add(agregarOficiales);
         agregarOficiales.setVisible(true);
 
 
@@ -359,9 +356,9 @@ public class FrmMenu extends javax.swing.JFrame {
         this.agregarUsuarios = SingletonAgregarUsuarios.getInstance();
         
         if (agregarUsuarios.isVisible()) {
-            this.jDesktopPane1.remove(agregarUsuarios);
+            jDesktopPane1.remove(agregarUsuarios);
         }
-        this.jDesktopPane1.add(this.agregarUsuarios);
+        jDesktopPane1.add(this.agregarUsuarios);
         this.agregarUsuarios.setVisible(true);
 
     }//GEN-LAST:event_jMenuItemAgregarUsuariosActionPerformed
@@ -370,10 +367,10 @@ public class FrmMenu extends javax.swing.JFrame {
         this.modificarUsuarios = SingletonModificarUsuarios.getInstance();
         
         if (modificarUsuarios.isVisible()) {
-            this.jDesktopPane1.remove(modificarUsuarios);
+            jDesktopPane1.remove(modificarUsuarios);
         }
         
-        this.jDesktopPane1.add(this.modificarUsuarios);
+        jDesktopPane1.add(this.modificarUsuarios);
         this.modificarUsuarios.setVisible(true);
 
 
@@ -383,10 +380,10 @@ public class FrmMenu extends javax.swing.JFrame {
         EliminarUsuarios eliminarUsuarios = SingletonEliminarUsuarios.getInstance();
         
         if (eliminarUsuarios.isVisible()) {
-            this.jDesktopPane1.remove(eliminarUsuarios);
+            jDesktopPane1.remove(eliminarUsuarios);
         }
         
-        this.jDesktopPane1.add(eliminarUsuarios);
+        jDesktopPane1.add(eliminarUsuarios);
         eliminarUsuarios.setVisible(true);
     }//GEN-LAST:event_jMenuItemEliminarUsuariosActionPerformed
 
@@ -394,10 +391,10 @@ public class FrmMenu extends javax.swing.JFrame {
         CalcularSalario calcularSalario = SingletonCalcularSalario.getInstance();
         
         if (calcularSalario.isVisible()) {
-            this.jDesktopPane1.remove(calcularSalario);
+            jDesktopPane1.remove(calcularSalario);
         }
         
-        this.jDesktopPane1.add(calcularSalario);
+        jDesktopPane1.add(calcularSalario);
         calcularSalario.setVisible(true);
     }//GEN-LAST:event_jMenuItemCalcularSalarioActionPerformed
 
@@ -415,10 +412,10 @@ public class FrmMenu extends javax.swing.JFrame {
         AgregarClientes agregarClientes = SingletonAgregarClientes.getInstance();
         
         if (agregarClientes.isVisible()) {
-            this.jDesktopPane1.remove(agregarClientes);
+            jDesktopPane1.remove(agregarClientes);
         }
         
-        this.jDesktopPane1.add(agregarClientes);
+        jDesktopPane1.add(agregarClientes);
         agregarClientes.setVisible(true);
     }//GEN-LAST:event_jMenuItemAgregarClientesActionPerformed
 
@@ -426,10 +423,10 @@ public class FrmMenu extends javax.swing.JFrame {
         EliminarClientes eliminarClientes = SingletonEliminarCliente.getInstance();
         
         if (eliminarClientes.isVisible()) {
-            this.jDesktopPane1.remove(eliminarClientes);
+            jDesktopPane1.remove(eliminarClientes);
         }
         
-        this.jDesktopPane1.add(eliminarClientes);
+        jDesktopPane1.add(eliminarClientes);
         eliminarClientes.setVisible(true);
     }//GEN-LAST:event_jMenuItemEliminarClientesActionPerformed
 
@@ -437,10 +434,10 @@ public class FrmMenu extends javax.swing.JFrame {
         ModificarClientes modificarClientes = SingletonModificarCliente.getInstance();
         
         if (modificarClientes.isVisible()) {
-            this.jDesktopPane1.remove(modificarClientes);
+            jDesktopPane1.remove(modificarClientes);
         }
         
-        this.jDesktopPane1.add(modificarClientes);
+        jDesktopPane1.add(modificarClientes);
         modificarClientes.setVisible(true);
 
     }//GEN-LAST:event_jMenuItemModificarClientesActionPerformed
@@ -450,10 +447,10 @@ public class FrmMenu extends javax.swing.JFrame {
         AgregarCitas agregarCitas = SingletonAgregarCitas.getInstance();
         
         if (agregarCitas.isVisible()) {
-            this.jDesktopPane1.remove(agregarCitas);
+            jDesktopPane1.remove(agregarCitas);
         }
         
-        this.jDesktopPane1.add(agregarCitas);
+        jDesktopPane1.add(agregarCitas);
         agregarCitas.setVisible(true);
     }//GEN-LAST:event_jMenuItemAgregarCitaActionPerformed
 
@@ -461,10 +458,10 @@ public class FrmMenu extends javax.swing.JFrame {
         EliminarCitas eliminarCitas = SingletonEliminarCitas.getInstance();
         
         if (eliminarCitas.isVisible()) {
-            this.jDesktopPane1.remove(eliminarCitas);
+            jDesktopPane1.remove(eliminarCitas);
         }
         
-        this.jDesktopPane1.add(eliminarCitas);
+        jDesktopPane1.add(eliminarCitas);
         eliminarCitas.setVisible(true);
 
 
@@ -474,10 +471,10 @@ public class FrmMenu extends javax.swing.JFrame {
         AgregarPruebas agregarPruebas = SingletonAgregarPrueba.getInstance();
         
         if (agregarPruebas.isVisible()) {
-            this.jDesktopPane1.remove(agregarPruebas);
+            jDesktopPane1.remove(agregarPruebas);
         }
         
-        this.jDesktopPane1.add(agregarPruebas);
+        jDesktopPane1.add(agregarPruebas);
         agregarPruebas.setVisible(true);
     }//GEN-LAST:event_MenuItemAgregarPruebasActionPerformed
 
@@ -485,10 +482,10 @@ public class FrmMenu extends javax.swing.JFrame {
         EliminarOficiales eliminarOficiales = SingletonEliminarOficiales.getInstance();
 
         if (eliminarOficiales.isVisible()) {
-            this.jDesktopPane1.remove(eliminarOficiales);
+            jDesktopPane1.remove(eliminarOficiales);
         }
 
-        this.jDesktopPane1.add(eliminarOficiales);
+        jDesktopPane1.add(eliminarOficiales);
         eliminarOficiales.setVisible(true);
 
     }//GEN-LAST:event_jMenuItemEliminarOficialesActionPerformed
@@ -497,10 +494,10 @@ public class FrmMenu extends javax.swing.JFrame {
         ModificarOficiales modificarOficiales = SingletonModificarOficiales.getInstance();
 
         if (modificarOficiales.isVisible()) {
-            this.jDesktopPane1.remove(modificarOficiales);
+            jDesktopPane1.remove(modificarOficiales);
         }
 
-        this.jDesktopPane1.add(modificarOficiales);
+        jDesktopPane1.add(modificarOficiales);
         modificarOficiales.setVisible(true);
     }//GEN-LAST:event_jMenuItemModificarActionPerformed
 
@@ -511,20 +508,20 @@ public class FrmMenu extends javax.swing.JFrame {
 
     private void MenuItemEliminarPruebasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuItemEliminarPruebasActionPerformed
     EliminarPruebas eliminarPruebas = SingletonEliminarPrueba.getInstance();
-           if (eliminarPruebas.isVisible()) {
-            this.jDesktopPane1.remove(eliminarPruebas);
+        if (eliminarPruebas.isVisible()) {
+           jDesktopPane1.remove(eliminarPruebas);
         }
-           this.jDesktopPane1.add(eliminarPruebas);
-           eliminarPruebas.setVisible(true);
+        jDesktopPane1.add(eliminarPruebas);
+        eliminarPruebas.setVisible(true);
     }//GEN-LAST:event_MenuItemEliminarPruebasActionPerformed
 
     private void MenuItemModificarPruebasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuItemModificarPruebasActionPerformed
         ModificarPruebas modificarPruebas = SingletonModificarPruebas.getInstance();
-           if (modificarPruebas.isVisible()) {
-            this.jDesktopPane1.remove(modificarPruebas);
+        if (modificarPruebas.isVisible()) {
+            jDesktopPane1.remove(modificarPruebas);
         }
-           this.jDesktopPane1.add(modificarPruebas);
-           modificarPruebas.setVisible(true);
+        jDesktopPane1.add(modificarPruebas);
+        modificarPruebas.setVisible(true);
     }//GEN-LAST:event_MenuItemModificarPruebasActionPerformed
 
     /**
