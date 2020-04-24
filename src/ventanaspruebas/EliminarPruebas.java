@@ -35,6 +35,10 @@ public class EliminarPruebas extends javax.swing.JInternalFrame {
         this.cPrueba = new ControladorPruebas();
         this.cOficial = new ControladorOficiales();
     }
+    
+    public void limpiar(){
+        jTextField1.setText("");
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -175,7 +179,8 @@ public class EliminarPruebas extends javax.swing.JInternalFrame {
             this.jTextField1.setEditable(false);
         }else{
           JOptionPane.showMessageDialog(this, "Debe seleccionar una prueba para poder eliminar");  
-        }      
+        }
+        this.limpiar();
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed

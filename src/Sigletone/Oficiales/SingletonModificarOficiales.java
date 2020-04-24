@@ -23,6 +23,7 @@ import ventanasoficiales.ModificarOficiales;
         if (ventana==null) {
             ventana=new ModificarOficiales();
         }
+        ventana.Limpiar();
         return ventana;
     }
 }

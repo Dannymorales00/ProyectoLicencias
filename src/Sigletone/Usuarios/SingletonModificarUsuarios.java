@@ -21,6 +21,7 @@ public class SingletonModificarUsuarios {
         if (ventana==null) {
             ventana=new ModificarUsuarios();
         }
+        ventana.Limpiar();
         return ventana;
     }
 }

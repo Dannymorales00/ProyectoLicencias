@@ -183,6 +183,7 @@ public class AgregarOficiales extends javax.swing.JInternalFrame {
             oficial.setCorreo(correoTxt.getText());
             oficial.setSalario(Double.parseDouble(salarioTxt.getText()));
             contrOficiales.añadir(oficial);
+            this.limpiar();
         }
     }//GEN-LAST:event_jButton1ActionPerformed
     
@@ -193,6 +194,15 @@ public class AgregarOficiales extends javax.swing.JInternalFrame {
         }else{
             return true;
         }
+    }
+    
+    public void limpiar(){
+        nombreTxt.setText("");
+        cedulaTxt.setText("");
+        fechaDt.setCalendar(null);
+        telefonoTxt.setText("");
+        correoTxt.setText("");
+        salarioTxt.setText("");
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

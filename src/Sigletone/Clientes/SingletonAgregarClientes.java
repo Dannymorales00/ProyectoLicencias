@@ -23,6 +23,7 @@ import ventanasclientes.AgregarClientes;
         if (ventana==null) {
             ventana=new AgregarClientes();
         }
+        ventana.Limpiar();
         return ventana;
     }
 }

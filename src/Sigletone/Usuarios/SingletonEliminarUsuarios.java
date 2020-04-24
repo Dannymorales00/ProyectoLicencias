@@ -21,6 +21,7 @@ public class SingletonEliminarUsuarios {
         if (ventana==null) {
             ventana=new EliminarUsuarios();
         }
+        ventana.limpiar();
         return ventana;
     }
 }

@@ -21,6 +21,7 @@ public class SingletonModificarPruebas {
         if (ventana==null) {
             ventana=new ModificarPruebas();
         }
+        ventana.limpiar();
         return ventana;
     }
 }

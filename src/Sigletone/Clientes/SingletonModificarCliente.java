@@ -21,6 +21,7 @@ public class SingletonModificarCliente {
         if (ventana==null) {
             ventana=new ModificarClientes();
         }
+        ventana.Limpiar();
         return ventana;
     }
 }

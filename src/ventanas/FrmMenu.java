@@ -15,6 +15,8 @@ import Sigletone.Clientes.SingletonAgregarClientes;
 import Sigletone.Clientes.SingletonEliminarCliente;
 import Sigletone.Clientes.SingletonModificarCliente;
 import Sigletone.Pruebas.SingletonAgregarPrueba;
+import Sigletone.Pruebas.SingletonEliminarPrueba;
+import Sigletone.Pruebas.SingletonModificarPruebas;
 import Sigletone.Usuarios.SingletonAgregarUsuarios;
 import Sigletone.Usuarios.SingletonEliminarUsuarios;
 import Sigletone.Usuarios.SingletonModificarUsuarios;
@@ -27,15 +29,19 @@ import ventanasusuarios.ModificarUsuarios;
 import ventanasusuarios.EliminarUsuarios;
 import ventanasoficiales.AgregarOficiales;
 import conexion.Conexion;
+import controladores.ControladorCitas;
 import java.awt.Frame;
 import javax.swing.JOptionPane;
+import modelos.Cita;
 import ventanascitas.EliminarCitas;
 import ventanascitas.JDialogBuscarCitas;
 import ventanasoficiales.CalcularSalario;
 import ventanasoficiales.EliminarOficiales;
 import ventanasoficiales.ModificarOficiales;
 import ventanaspruebas.AgregarPruebas;
+import ventanaspruebas.EliminarPruebas;
 import ventanaspruebas.JDialogBuscarPruebasPorCedula;
+import ventanaspruebas.ModificarPruebas;
 
 /**
  *
@@ -121,7 +127,6 @@ public class FrmMenu extends javax.swing.JFrame {
         jMenuItemModificar = new javax.swing.JMenuItem();
         jMenuItemCalcularSalario = new javax.swing.JMenuItem();
         jMenuItemEliminarOficiales = new javax.swing.JMenuItem();
-        jMenuItemMostrarCitasOficiales = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
         jMenuItemAgregarClientes = new javax.swing.JMenuItem();
         jMenuItemModificarClientes = new javax.swing.JMenuItem();
@@ -129,6 +134,8 @@ public class FrmMenu extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
         MenuItemAgregarPruebas = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
+        MenuItemEliminarPruebas = new javax.swing.JMenuItem();
+        MenuItemModificarPruebas = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenuItemAgregarCita = new javax.swing.JMenuItem();
         jMenuItemEliminarCitas = new javax.swing.JMenuItem();
@@ -215,14 +222,6 @@ public class FrmMenu extends javax.swing.JFrame {
         });
         jMenuOficial.add(jMenuItemEliminarOficiales);
 
-        jMenuItemMostrarCitasOficiales.setText("MostrarCitas");
-        jMenuItemMostrarCitasOficiales.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemMostrarCitasOficialesActionPerformed(evt);
-            }
-        });
-        jMenuOficial.add(jMenuItemMostrarCitasOficiales);
-
         jMenuBar2.add(jMenuOficial);
 
         jMenu1.setText("Clientes");
@@ -270,6 +269,22 @@ public class FrmMenu extends javax.swing.JFrame {
             }
         });
         jMenu2.add(jMenuItem3);
+
+        MenuItemEliminarPruebas.setText("Eliminar");
+        MenuItemEliminarPruebas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuItemEliminarPruebasActionPerformed(evt);
+            }
+        });
+        jMenu2.add(MenuItemEliminarPruebas);
+
+        MenuItemModificarPruebas.setText("Modificar");
+        MenuItemModificarPruebas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuItemModificarPruebasActionPerformed(evt);
+            }
+        });
+        jMenu2.add(MenuItemModificarPruebas);
 
         jMenuBar2.add(jMenu2);
 
@@ -454,11 +469,6 @@ public class FrmMenu extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jMenuItemEliminarCitasActionPerformed
 
-    private void jMenuItemMostrarCitasOficialesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemMostrarCitasOficialesActionPerformed
-        JDialogBuscarCitas jdiagbuscarcitas = new JDialogBuscarCitas(null, true);
-        jdiagbuscarcitas.setVisible(true);
-    }//GEN-LAST:event_jMenuItemMostrarCitasOficialesActionPerformed
-
     private void MenuItemAgregarPruebasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuItemAgregarPruebasActionPerformed
         AgregarPruebas agregarPruebas = SingletonAgregarPrueba.getInstance();
         
@@ -498,6 +508,24 @@ public class FrmMenu extends javax.swing.JFrame {
         buscarPruebasPorCedula.setVisible(true);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
+    private void MenuItemEliminarPruebasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuItemEliminarPruebasActionPerformed
+    EliminarPruebas eliminarPruebas = SingletonEliminarPrueba.getInstance();
+           if (eliminarPruebas.isVisible()) {
+            this.jDesktopPane1.remove(eliminarPruebas);
+        }
+           this.jDesktopPane1.add(eliminarPruebas);
+           eliminarPruebas.setVisible(true);
+    }//GEN-LAST:event_MenuItemEliminarPruebasActionPerformed
+
+    private void MenuItemModificarPruebasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuItemModificarPruebasActionPerformed
+        ModificarPruebas modificarPruebas = SingletonModificarPruebas.getInstance();
+           if (modificarPruebas.isVisible()) {
+            this.jDesktopPane1.remove(modificarPruebas);
+        }
+           this.jDesktopPane1.add(modificarPruebas);
+           modificarPruebas.setVisible(true);
+    }//GEN-LAST:event_MenuItemModificarPruebasActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -536,6 +564,8 @@ public class FrmMenu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem MenuItemAgregarPruebas;
+    private javax.swing.JMenuItem MenuItemEliminarPruebas;
+    private javax.swing.JMenuItem MenuItemModificarPruebas;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
@@ -557,7 +587,6 @@ public class FrmMenu extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItemModificar;
     private javax.swing.JMenuItem jMenuItemModificarClientes;
     private javax.swing.JMenuItem jMenuItemModificarUsuarios;
-    private javax.swing.JMenuItem jMenuItemMostrarCitasOficiales;
     private javax.swing.JMenu jMenuOficial;
     private javax.swing.JMenu jMenuRegistar;
     private javax.swing.JMenu jmenu;

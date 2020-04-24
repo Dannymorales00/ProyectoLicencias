@@ -21,6 +21,7 @@ import ventanascitas.EliminarCitas;
         if (ventana==null) {
             ventana=new EliminarCitas();
         }
+        ventana.limpiar();
         return ventana;
     }
 }

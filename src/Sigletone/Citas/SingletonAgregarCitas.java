@@ -22,6 +22,7 @@ import ventanascitas.AgregarCitas;
         if (ventana==null) {
             ventana=new AgregarCitas();
         }
+        ventana.Limpiar();
         return ventana;
     }
 }

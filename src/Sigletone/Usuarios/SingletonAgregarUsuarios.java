@@ -23,6 +23,7 @@ import ventanasusuarios.AgregarUsuarios;
         if (ventana==null) {
             ventana=new AgregarUsuarios();
         }
+        ventana.Limpiar();
         return ventana;
     }
 }

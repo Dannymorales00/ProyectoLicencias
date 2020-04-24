@@ -26,8 +26,11 @@ import ventanasoficiales.AgregarOficiales;
             
            
         }
+        ventana.limpiar();
         return ventana;
      
     }
 }
+
+    
 

@@ -22,6 +22,7 @@ import ventanasoficiales.CalcularSalario;
         if (ventana==null) {
             ventana=new CalcularSalario();
         }
+        ventana.Limpiar();
         return ventana;
     }
 }

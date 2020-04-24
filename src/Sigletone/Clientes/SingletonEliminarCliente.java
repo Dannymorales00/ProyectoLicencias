@@ -21,6 +21,7 @@ public class SingletonEliminarCliente {
         if (ventana==null) {
             ventana=new EliminarClientes();
         }
+        ventana.limpiar();
         return ventana;
     }
 }

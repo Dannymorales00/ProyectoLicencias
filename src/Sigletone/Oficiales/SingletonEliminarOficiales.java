@@ -25,6 +25,7 @@ import ventanasoficiales.EliminarOficiales;
         if (ventana==null) {
             ventana=new EliminarOficiales();
         }
+        ventana.limpiar();
         return ventana;
     }
 }
