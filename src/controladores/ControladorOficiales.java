@@ -94,12 +94,14 @@ public class ControladorOficiales {
     public boolean actualizar(Oficial oficial){
         
         try {  
-              
-            this.sentencias.executeUpdate("UPDATE oficiales SET nombre='"+oficial.getNombre()+"' WHERE cedula ='"+oficial.getCedula()+"';");
+            SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd"); 
+                                     
+            this.sentencias.executeUpdate("UPDATE oficiales SET nombre='"+oficial.getNombre()+"',fecha_nacimiento='"+(f.format(oficial.getFechanacimiento()))+"',correo='"+oficial.getCorreo()+"',telefono='"+oficial.getTelefono()+"',salario='"+oficial.getSalario()+"' WHERE cedula ='"+oficial.getCedula()+"';");
             return true;
             
         } catch (SQLException ex) {
             System.out.println("Error al actualizar");
+            System.out.println(ex);
         }
         return false;
     }    
