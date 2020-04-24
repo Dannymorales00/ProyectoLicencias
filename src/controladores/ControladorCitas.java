@@ -210,7 +210,7 @@ public class ControladorCitas {
         
         
         try{
-      
+            //verifica y cambia si la cita esta vencida
             buscarCitaActiva(cita);
             this.datos = this.sentencias2.executeQuery("select * from citas where cedula_cliente = '"+cita.getCliente().getCedula()+"'  AND estado = 'activado'  ;");
           
