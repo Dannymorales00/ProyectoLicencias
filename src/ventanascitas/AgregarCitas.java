@@ -319,10 +319,9 @@ public class AgregarCitas extends javax.swing.JInternalFrame {
         JDialogBuscarClientes jdiagbuscarclientes = new JDialogBuscarClientes(null,true);
         jdiagbuscarclientes.setVisible(true);
         
-        if( jdiagbuscarclientes.getCliente()!=null )
+        if( (cliente = jdiagbuscarclientes.getClienteSeleccionado() )!=null )
         {
             
-            cliente = jdiagbuscarclientes.getCliente();
             this.TxtCedula.setEditable(true);
             this.TxtNombre.setEditable(true);
             this.TxtCedula.setText(String.valueOf( cliente.getCedula()));

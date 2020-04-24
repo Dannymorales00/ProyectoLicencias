@@ -13,8 +13,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import modelos.Cita;
 import modelos.Cliente;
 import ventanas.FrmMenu;
@@ -177,7 +175,11 @@ public class ControladorCitas {
         
         try 
         {
-          
+            if( CambiarEstadoCita(cita) )
+                {
+                    //si la fecha se vencio desactivamos la cita 
+                    actualizar(cita);
+                }
             this.datos = this.sentencias.executeQuery("select * from citas where cedula_cliente = '"+cita.getCliente().getCedula()+"'  AND estado = 'activado'  ;");
           
             if (datos.next()) 

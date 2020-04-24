@@ -27,26 +27,28 @@ import ventanas.FrmMenu;
 public class JDialogBuscarClientes extends javax.swing.JDialog {
     private ArrayList <Cliente> clientes;
     private ControladorClientes ccliente;
+    
     private Cliente cliente;
-    private boolean seleccionado;
-    /**
+    private Cliente clienteSeleccionado; /**
      * Creates new form jDialogBuscarVehiculo
      */
     public JDialogBuscarClientes(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        
         cliente = null;
+        clienteSeleccionado=null;
         ccliente = new ControladorClientes();
-        seleccionado = false;
+    
     }
 
-    public Cliente getCliente() {
-        return cliente;
+    public Cliente getClienteSeleccionado() {
+        return clienteSeleccionado;
     }
 
-    public boolean isSeleccionado() {
-        return seleccionado;
-    }
+ 
+
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -232,9 +234,11 @@ public class JDialogBuscarClientes extends javax.swing.JDialog {
     
     private void jButtonSeleccionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSeleccionarActionPerformed
         
-        //para cerrar solo tipos jdialog
-        this.processWindowEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));  
-    
+       
+      
+             //para cerrar solo tipos jdialog}
+            this.processWindowEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));  
+       
       
     }//GEN-LAST:event_jButtonSeleccionarActionPerformed
 
@@ -261,8 +265,9 @@ public class JDialogBuscarClientes extends javax.swing.JDialog {
         cliente.setCorreo((String) this.jTable1.getValueAt(seleccion, 4));
         String edad = (String) this.jTable1.getValueAt(seleccion, 5);
         cliente.setEdad(Integer.parseInt(edad));
+        clienteSeleccionado = cliente;
         
-        seleccionado = true;
+        
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void TxtCedulaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TxtCedulaKeyTyped
