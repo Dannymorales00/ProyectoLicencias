@@ -40,6 +40,8 @@ public class JDialogBuscarPruebas extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         prueba = null;
+        oficial= null;
+        cliente= null;
         conPrueba = new ControladorPruebas();
         conOficial = new ControladorOficiales();
         conCliente = new ControladorClientes();
@@ -56,7 +58,7 @@ public class JDialogBuscarPruebas extends javax.swing.JDialog {
 
 
     public void mostrar(){
-        String matriz[][] = new String[pruebas.size()][7];
+        String matriz[][] = new String[pruebas.size()][8];
         
         for (int i = 0; i < pruebas.size(); i++) {
             matriz[i][0]=String.valueOf(pruebas.get(i).getId());
@@ -204,7 +206,10 @@ public class JDialogBuscarPruebas extends javax.swing.JDialog {
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         pruebas = conPrueba.listar();
         
-        this.mostrar();
+        if(pruebas!=null){
+
+            this.mostrar();
+        }    
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnSeleccionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeleccionarActionPerformed
@@ -215,7 +220,8 @@ public class JDialogBuscarPruebas extends javax.swing.JDialog {
         int seleccion = this.jTable1.rowAtPoint(evt.getPoint());
         
         prueba = new Prueba();
-        prueba.setId((int)this.jTable1.getValueAt(seleccion, 0));
+        String idStrg = String.valueOf( this.jTable1.getValueAt(seleccion, 0) );
+        prueba.setId(Integer.valueOf( idStrg ));
         SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");   
         try {
             Date fecha =  f.parse((String)this.jTable1.getValueAt(seleccion, 1));
@@ -228,14 +234,19 @@ public class JDialogBuscarPruebas extends javax.swing.JDialog {
         //Genera cliente y oficial, los busca y los agrega a la prueba
         cliente = new Cliente();
         oficial = new Oficial();
-        cliente.setCedula((int)this.jTable1.getValueAt(seleccion, 3));
-        oficial.setCedula((int)this.jTable1.getValueAt(seleccion, 4));
+        String CClienteStrg = String.valueOf( this.jTable1.getValueAt(seleccion, 3));
+        cliente.setCedula(Integer.valueOf(CClienteStrg) );
+        String COficialStrg = String.valueOf(this.jTable1.getValueAt(seleccion, 4));
+        
+        oficial.setCedula(Integer.valueOf(COficialStrg));
         prueba.setCliente(this.conCliente.buscar(cliente));
         prueba.setOficial(this.conOficial.buscar(oficial));
         
         prueba.setObservaciones((String)this.jTable1.getValueAt(seleccion, 5));
-        prueba.setNota((int)this.jTable1.getValueAt(seleccion, 6));
-        prueba.setEstado((int)this.jTable1.getValueAt(seleccion, 7));
+        String NotaStrg = String.valueOf( this.jTable1.getValueAt(seleccion, 6) );
+        prueba.setNota(Integer.valueOf(NotaStrg));
+        String EstadoStrg = String.valueOf(this.jTable1.getValueAt(seleccion, 7) );
+        prueba.setEstado(Integer.valueOf(EstadoStrg));
         
         seleccionado=true;
     }//GEN-LAST:event_jTable1MouseClicked

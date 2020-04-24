@@ -23,6 +23,7 @@ import ventanas.FrmMenu;
 public class ControladorPruebas {
     private Conexion conn;
     private Statement sentencias;
+    private Statement sentencias2;
     private ResultSet datos;
     private ControladorOficiales conOficiales;
     private Oficial oficial;
@@ -32,8 +33,15 @@ public class ControladorPruebas {
     public ControladorPruebas() {
        
        conn = FrmMenu.getConexion();
-       this.sentencias= conn.getSentencias();
-       this.datos=conn.getDatos();
+        try {
+            this.sentencias2 = FrmMenu.getConexion().getConn().createStatement();
+        } catch (SQLException ex) {
+            System.out.println("Error al crear otra sentencia");
+        }
+       
+       
+        this.sentencias= conn.getSentencias();
+        this.datos=conn.getDatos();
         this.conCliente = new ControladorClientes();
         this.conOficiales = new ControladorOficiales();
        
@@ -115,7 +123,7 @@ public class ControladorPruebas {
     public ArrayList<Prueba> listar(){
         ArrayList<Prueba> pruebas = new ArrayList();
             try {
-                this.datos = this.sentencias.executeQuery("select * from pruebas");
+                this.datos = this.sentencias2.executeQuery("select * from pruebas");
                 
                 while(datos.next()){
                     
@@ -127,9 +135,14 @@ public class ControladorPruebas {
                     pruebas.add(new Prueba(datos.getInt(1),datos.getDate(2),datos.getTime(3).toString(),this.conOficiales.buscar(oficial),this.conCliente.buscar(cliente),datos.getString(6),datos.getInt(7),datos.getInt(8)));
                
                 }
-                return pruebas;
+                if(pruebas.size()>=1)
+                {
+                   return pruebas;
+                }
+            
             } catch (SQLException ex) {
                 System.out.println("Error al listar");
+                System.out.println(ex);
             }
         return null; 
     }
