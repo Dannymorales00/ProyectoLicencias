@@ -98,14 +98,14 @@ public class JDialogBuscarCitas extends javax.swing.JDialog {
 
             },
             new String [] {
-                "Fecha", "Hora", "Cliente"
+                "ID", "Fecha", "Hora", "Cliente"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -205,32 +205,37 @@ public class JDialogBuscarCitas extends javax.swing.JDialog {
         
         
         cita = new Cita();
-        SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");  
+        SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd"); 
+        
+        
+        String IdStrg = String.valueOf( this.jTable1.getValueAt(seleccion, 0));
+        cita.setId(Integer.valueOf(IdStrg));
         try {
-            Date fecha =  f.parse((String)this.jTable1.getValueAt(seleccion, 0));
+            Date fecha =  f.parse((String)this.jTable1.getValueAt(seleccion, 1));
             cita.setFecha(fecha);
         } catch (ParseException ex) {
              System.out.println("no se pudo convertir a fecha");
         }
-        cita.setHora((String)this.jTable1.getValueAt(seleccion, 1));
+        cita.setHora((String)this.jTable1.getValueAt(seleccion, 2));
         cliente = new Cliente();
-        cliente.setCedula(Integer.valueOf((String)this.jTable1.getValueAt(seleccion, 2)));
+        cliente.setCedula(Integer.valueOf((String)this.jTable1.getValueAt(seleccion, 3)));
         cita.setCliente(cCliente.buscar(cliente));
         
         seleccionado = true;
     }//GEN-LAST:event_jTable1MouseClicked
 
     public void mostrar(){
-        String matriz[][] = new String[citas.size()][3];
+        String matriz[][] = new String[citas.size()][4];
         
         for (int i = 0; i < citas.size(); i++) {
-            matriz[i][0]=String.valueOf(citas.get(i).getFecha());
-            matriz[i][1]=citas.get(i).getHora();
-            matriz[i][2]=String.valueOf(citas.get(i).getCliente().getCedula());
+            matriz[i][0]= String.valueOf(citas.get(i).getId());
+            matriz[i][1]=String.valueOf(citas.get(i).getFecha());
+            matriz[i][2]=citas.get(i).getHora();
+            matriz[i][3]=String.valueOf(citas.get(i).getCliente().getCedula());
             
         }
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            matriz,new String [] {"Fecha", "Hora","Cliente"}));
+            matriz,new String [] {"ID","Fecha", "Hora","Cliente"}));
     }
     /**
      * @param args the command line arguments

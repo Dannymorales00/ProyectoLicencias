@@ -35,6 +35,8 @@ public class Cita {
         this.cliente = cliente;
         this.estado = estado;
     }
+    
+
 
     
 

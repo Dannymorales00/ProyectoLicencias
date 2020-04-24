@@ -149,13 +149,14 @@ public class ControladorCitas {
     public boolean actualizar(Cita cita){
         
         try {  
-              
-            this.sentencias.executeUpdate("UPDATE citas SET fecha='"+cita.getFecha()+"', hora='"+cita.getHora()+"', estado='"+cita.getEstado()+"'  WHERE id ='"+cita.getId()+"';");
+            SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");  
+            this.sentencias.executeUpdate("UPDATE citas SET fecha='"+f.format(cita.getFecha())+"', hora='"+cita.getHora()+"', estado='"+cita.getEstado()+"'  WHERE id ='"+cita.getId()+"';");
             
             return true;
             
         } catch (SQLException ex) {
             System.out.println("Error al actualizar");
+            System.out.println(ex);
         }
         return false;
     }    
@@ -181,7 +182,7 @@ public class ControladorCitas {
                 {
                     cliente = new Cliente();
                     cliente.setCedula(datos.getInt(4));
-                    Cita cita2 = new Cita(datos.getDate(2),String.valueOf(datos.getTime(3)), ccliente.buscar(cliente));
+                    Cita cita2 = new Cita(datos.getInt(1),datos.getDate(2),String.valueOf(datos.getTime(3)), ccliente.buscar(cliente),datos.getString(5));
                     if( CambiarEstadoCita(cita2) )
                     {
                         //si la fecha se vencio desactivamos la cita 
@@ -326,10 +327,7 @@ public class ControladorCitas {
       
     }
     
-    
-    public void CambiarEstadoCitas() {
-        
-    }
+   
     
     
 }

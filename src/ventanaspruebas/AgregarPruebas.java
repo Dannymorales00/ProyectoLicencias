@@ -62,7 +62,7 @@ public class AgregarPruebas extends javax.swing.JInternalFrame {
         txtCedulaOficial = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         btnOficial = new javax.swing.JButton();
-        btnCliente = new javax.swing.JButton();
+        btnSeleccionarCitas = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         txtCedulaCliente = new javax.swing.JTextField();
         txtHora = new javax.swing.JTextField();
@@ -109,11 +109,11 @@ public class AgregarPruebas extends javax.swing.JInternalFrame {
             }
         });
 
-        btnCliente.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        btnCliente.setText("Seleccionar Citas");
-        btnCliente.addActionListener(new java.awt.event.ActionListener() {
+        btnSeleccionarCitas.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btnSeleccionarCitas.setText("Seleccionar Citas");
+        btnSeleccionarCitas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnClienteActionPerformed(evt);
+                btnSeleccionarCitasActionPerformed(evt);
             }
         });
 
@@ -170,7 +170,7 @@ public class AgregarPruebas extends javax.swing.JInternalFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnOficial)
-                            .addComponent(btnCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnSeleccionarCitas, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -186,7 +186,7 @@ public class AgregarPruebas extends javax.swing.JInternalFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnCliente)
+                .addComponent(btnSeleccionarCitas)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
@@ -374,11 +374,11 @@ public class AgregarPruebas extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 //cliente y cita activa
-    private void btnClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClienteActionPerformed
+    private void btnSeleccionarCitasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeleccionarCitasActionPerformed
         JDialogBuscarCitas buscarCitas = new JDialogBuscarCitas(null,true);
         buscarCitas.setVisible(true);
         
-        if ((cita=buscarCitas.getCita())!=null) {
+        if (( cita=buscarCitas.getCita() )!=null) {
             this.txtFecha.setEditable(true);
             this.txtHora.setEditable(true);
             SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd"); 
@@ -398,7 +398,7 @@ public class AgregarPruebas extends javax.swing.JInternalFrame {
             citaSelect = buscarCitas.isSeleccionado();
         }
      
-    }//GEN-LAST:event_btnClienteActionPerformed
+    }//GEN-LAST:event_btnSeleccionarCitasActionPerformed
 
     private void btnOficialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOficialActionPerformed
         JDialogBuscarOficiales buscarOficiales = new JDialogBuscarOficiales(null,true);
@@ -446,7 +446,12 @@ public class AgregarPruebas extends javax.swing.JInternalFrame {
                         if (this.cPrueba.ValidarFKHora(prueba)) {
                             
                             if (this.cPrueba.añadir(prueba)) {
-                                cita.setEstado("Desactivado");
+                                
+                                JOptionPane.showMessageDialog(this, "Prueba Agregada");
+                                System.out.println("id cita: "+cita.getId());
+                                System.out.println("estado cita: "+cita.getEstado());
+                                cita.setEstado("desactivado");
+                                System.out.println("nuevo estado cita:"+cita.getEstado());
                                 cCita.actualizar(cita);
                                 this.limpiar();
                                 
@@ -519,8 +524,8 @@ public class AgregarPruebas extends javax.swing.JInternalFrame {
     private javax.swing.JComboBox<String> BoxEstadoCliente;
     private javax.swing.JComboBox<String> BoxNota;
     private javax.swing.JButton btnAgregar;
-    private javax.swing.JButton btnCliente;
     private javax.swing.JButton btnOficial;
+    private javax.swing.JButton btnSeleccionarCitas;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
