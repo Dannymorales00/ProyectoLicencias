@@ -168,7 +168,7 @@ public class ControladorCitas {
    
      * @return Arraylist de citas
      */
-    public ArrayList<Cita> listarPorFecha(Cita cita){
+    public ArrayList<Cita> listarPorFechaActivado(Cita cita){
         
         ArrayList<Cita> citas = new ArrayList();
             try {
@@ -204,6 +204,57 @@ public class ControladorCitas {
             }
         return null; 
     }
+    
+    
+        public ArrayList<Cita> listarPorFecha(Cita cita){
+        
+        ArrayList<Cita> citas = new ArrayList();
+            try {
+                
+                SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
+               
+                this.datos = this.sentencias2.executeQuery("select * from citas where fecha ='"+f.format(cita.getFecha())+"' ;");
+                
+                //si se encontro resultados en la consulta se guardan en el arrayList
+                while(datos.next())
+                {
+                    cliente = new Cliente();
+                    cliente.setCedula(datos.getInt(4));
+                    Cita cita2 = new Cita(datos.getInt(1),datos.getDate(2),String.valueOf(datos.getTime(3)), ccliente.buscar(cliente),datos.getString(5));
+                    if( CambiarEstadoCita(cita2) )
+                    {
+                        //si la fecha se vencio desactivamos la cita 
+                        actualizar(cita2);
+                    }
+                    
+                    citas.add(cita2);
+                  
+                                                                                            
+                }
+                //si se encontro una cita o más, las retornamos
+                if(citas.size()>0)
+                {
+                    return citas;
+                }
+            } catch (SQLException ex) {
+                System.out.println("Error al listar");
+                System.out.println(ex);
+            }
+        return null; 
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     public boolean validarPK(Cita cita) {

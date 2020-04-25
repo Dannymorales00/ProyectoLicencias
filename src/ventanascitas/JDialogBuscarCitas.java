@@ -191,7 +191,7 @@ public class JDialogBuscarCitas extends javax.swing.JDialog {
          
         cita2.setFecha(fecha);
         
-        if( (citas=cCita.listarPorFecha(cita2))!= null )
+        if( (citas=cCita.listarPorFechaActivado(cita2))!= null )
         {
             
             mostrar();
